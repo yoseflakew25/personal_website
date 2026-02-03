@@ -1,8 +1,7 @@
-import {Post} from '#site/content'
-import {Calendar, Timer} from 'lucide-react'
+import { Post } from '#site/content'
+import { Calendar, Timer } from 'lucide-react'
 import React from 'react'
-import {cn, formatDate} from '~/lib/utils'
-import PostViews from './post-views'
+import { cn, formatDate } from '~/lib/utils'
 
 interface PostMetaProps {
   title: string
@@ -19,7 +18,7 @@ const PostMetadata: React.FC<PostMetaProps> = ({
   slug,
 }) => {
   return (
-    <hgroup className={cn('p-0 space-y-2', {'p-0': isDetailPage})}>
+    <hgroup className={cn('p-0 space-y-2', { 'p-0': isDetailPage })}>
       <h3
         className={cn(
           `font-ubuntu text-lg transition-colors group-hover:text-ring group-hover:underline`,
@@ -50,7 +49,7 @@ const PostMetadata: React.FC<PostMetaProps> = ({
               <span>Published on </span>
             ) : (
               <Calendar
-                className={cn('size-3', {'size-4': isDetailPage})}
+                className={cn('size-3', { 'size-4': isDetailPage })}
                 aria-hidden="true"
               />
             )}
@@ -64,7 +63,6 @@ const PostMetadata: React.FC<PostMetaProps> = ({
         </dl>
 
         <div className="flex items-center gap-3">
-          {isDetailPage && <PostViews slug={slug!} />}
           <dl>
             <dt className="sr-only">Reading time</dt>
             <dd
@@ -76,7 +74,7 @@ const PostMetadata: React.FC<PostMetaProps> = ({
               )}
             >
               <Timer
-                className={cn('size-3', {'size-4': isDetailPage})}
+                className={cn('size-3', { 'size-4': isDetailPage })}
                 aria-hidden="true"
               />
               <span>{metadata.readingTime} min read</span>

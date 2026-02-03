@@ -6,7 +6,7 @@ import { typo } from './ui/typograpghy'
 
 const notableProjects = [
 
-  
+
   {
     title: 'Creativa',
     description:
@@ -31,7 +31,6 @@ const notableProjects = [
       'React.js',
       'Tailwind CSS',
       'MongoDB',
-      'Prisma ORM',
       'NextAuth.js',
     ],
     repoUrl: 'https://github.com/yoseflakew25/airbnb-clone',
@@ -132,7 +131,7 @@ const notableProjects = [
     repoUrl: 'https://github.com/yoseflakew25/Hyper-Keep',
     livePreview: 'https://hyper-keep.vercel.app/',
   }
- 
+
 ]
 
 const GithubProjects = () => {
