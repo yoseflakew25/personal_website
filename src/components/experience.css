@@ -1,0 +1,103 @@
+/**
+ * Timeline styling - Premium Version
+ */
+
+.timeline-list {
+    position: relative;
+    border-left: 2px solid transparent;
+    padding-left: 2rem;
+    margin-left: 1rem;
+    background: linear-gradient(to bottom,
+            hsl(var(--ring) / 0.5) 0%,
+            hsl(var(--ring) / 0.2) 50%,
+            transparent 100%) 0 0 / 2px 100% no-repeat;
+}
+
+.timeline-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 0.85rem;
+    /* Centered visually on the first line of text */
+    left: -2rem;
+    /* Start of the padding area where line is */
+    margin-left: 1px;
+    /* Align with the center of the 2px line */
+    height: 12px;
+    width: 12px;
+    background-color: hsl(var(--background));
+    border: 2px solid hsl(var(--ring));
+    border-radius: 50%;
+    z-index: 2;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.timeline-item:hover::after {
+    transform: translate(-50%, -50%) scale(1.4);
+    background-color: hsl(var(--ring));
+}
+
+/* Current position pulse effect */
+.timeline-item:first-child::before {
+    content: "";
+    position: absolute;
+    top: 0.85rem;
+    left: -2rem;
+    margin-left: 1px;
+    height: 20px;
+    width: 20px;
+    background-color: hsl(var(--ring) / 0.2);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 2s infinite;
+    transform: translate(-50%, -50%);
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+}
+
+/* Ensure the line doesn't extend past the last item */
+.timeline-list li:last-child {
+    padding-bottom: 0;
+}
+
+/* Custom list bullet styles for the description */
+.timeline-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-text li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-text li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: hsl(var(--ring));
+    font-size: 1.1rem;
+    line-height: 1.25;
+}
