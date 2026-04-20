@@ -121,7 +121,8 @@ const AboutSection = () => {
       </div>
 
       {/* Hero Image with Cyberpunk Treatment */}
-      <ScrollReveal variant="scaleIn" delay={0.3} className="relative block sm:hidden md:block md:col-span-2 order-1 sm:order-2 self-center">
+      <ScrollReveal variant="scaleIn" delay={0.3} className="relative block sm:hidden md:block md:col-span-2 order-1 sm:order-2 self-center max-w-[420px] mx-auto">
+
         <div className="relative group">
           <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-cyber-cyan/30 via-transparent to-cyber-cyan/10 opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
 

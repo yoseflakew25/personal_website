@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { dankMono, fontSans, ubuntu, orbitron, jetbrainsMono } from '~/components/ui/fonts'
+import { dankMono, fontSans, ubuntu, orbitron, jetbrainsMono, silkscreen } from '~/components/ui/fonts'
+
 import { getSEOTags, renderSchemaTags } from '~/lib/seo'
 import { cn } from '~/lib/utils'
 import RootProviders from '~/providers'
 import '~/styles/globals.css'
+import BinaryBackground from '~/components/ui/binary-background'
+
 
 export const viewport = {
   viewportFit: 'cover',
@@ -21,6 +24,7 @@ export const viewport = {
 export const metadata = getSEOTags()
 
 export default function RootLayout({
+
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -35,14 +39,17 @@ export default function RootLayout({
           dankMono.variable,
           orbitron.variable,
           jetbrainsMono.variable,
+          silkscreen.variable,
         )}>
+
         {renderSchemaTags()}
 
         {/* Cyberpunk background effects */}
-        <div className="grid-bg" aria-hidden="true" />
+        <BinaryBackground />
         <div className="scanline-overlay" aria-hidden="true" />
 
         <RootProviders>{children}</RootProviders>
+
 
         {process.env.NODE_ENV === 'production' && (
           <>

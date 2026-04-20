@@ -62,7 +62,9 @@ const shadcnPlugin = plugin(
           dank: 'var(--font-dank)',
           orbitron: 'var(--font-orbitron)',
           jetbrains: 'var(--font-jetbrains)',
+          silkscreen: 'var(--font-silkscreen)',
         },
+
         screens: {
           xs: '380px',
           sm: '500px',

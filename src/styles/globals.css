@@ -73,6 +73,7 @@
         hsl(180 100% 50% / 0.015) 4px);
     animation: scanline-scroll 8s linear infinite;
     will-change: transform;
+
   }
 
   @keyframes scanline-scroll {
@@ -85,18 +86,19 @@
     }
   }
 
-  /* ===== Grid Background (Vercel Style) ===== */
-  .grid-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 60px 60px;
+  @keyframes binary-loop {
+    0% {
+      transform: translateY(-50%);
+    }
+
+    100% {
+      transform: translateY(0%);
+    }
   }
+
+
+
+
 
   /* ===== Glitch Text ===== */
   .glitch-text {

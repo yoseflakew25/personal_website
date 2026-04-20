@@ -29,7 +29,7 @@ const ExperiencePage = () => {
     return (
         <div className="!mt-8 space-y-0 relative">
             {/* Skills */}
-            <section className="py-12">
+            <section className="pb-12">
                 <Skills />
             </section>
 

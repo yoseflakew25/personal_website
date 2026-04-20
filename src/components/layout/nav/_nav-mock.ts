@@ -19,12 +19,12 @@ export const navData = [
   {
     id: createId(),
     label: 'GitHub',
-    path: '/#github',
+    path: '/github',
   },
   {
     id: createId(),
     label: 'Contact',
-    path: '/#contact',
+    path: '/contact',
   },
 
 
@@ -42,3 +42,4 @@ export const navData = [
 ]
 
 export type NavType = typeof navData
+
