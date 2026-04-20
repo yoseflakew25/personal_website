@@ -10,13 +10,16 @@ const SearchInput = () => {
   const { replace } = useRouter();
 
 
+  const timerRef = React.useRef<NodeJS.Timeout>()
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value
-    const params = new URLSearchParams(searchParams);
+    if (timerRef.current) clearTimeout(timerRef.current)
 
-    term ? params.set('search', term) : params.delete('search')
-
-    replace(`${pathname}?${params.toString()}`);
+    timerRef.current = setTimeout(() => {
+      const params = new URLSearchParams(searchParams)
+      term ? params.set('search', term) : params.delete('search')
+      replace(`${pathname}?${params.toString()}`, { scroll: false })
+    }, 400)
   }
 
   return (

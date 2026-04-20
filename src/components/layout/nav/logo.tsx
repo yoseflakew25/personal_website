@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import GlitchText from '~/components/ui/glitch-text'
 
 const Logo = () => {
   return (
@@ -8,14 +9,11 @@ const Logo = () => {
       href="/"
       role="link"
       aria-label="Home"
-      className="el-focus-styles font-bold italic text-2xl rounded-md"
+      className="el-focus-styles rounded-md flex items-center gap-2.5 group"
     >
-      <Image
-        src="/images/logo.png"
-        alt="personal avatar"
-        height={40}
-        width={40}
-        className=" shadow-sm border rounded-md"
+      <GlitchText
+        text="YL"
+        className="font-orbitron text-xl font-bold tracking-[0.2em] text-cyber-cyan group-hover:text-white transition-colors duration-300"
       />
     </Link>
   )

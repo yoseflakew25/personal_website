@@ -1,5 +1,8 @@
+'use client'
 import React from 'react'
-import { typo } from '../ui/typograpghy'
+import SectionHeader from '../ui/section-header'
+import ScrollReveal from '../ui/scroll-reveal'
+import { StaggerList, StaggerItem } from '../ui/scroll-reveal'
 import EducationItem from './education-item'
 
 const educationData = [
@@ -31,12 +34,16 @@ const educationData = [
 const EducationList = () => {
     return (
         <section aria-label="education" className="space-y-6 mt-5">
-            <h2 className={typo({ variant: 'h2' })}>Education</h2>
-            <ol className="space-y-6" role="list">
+            <ScrollReveal variant="fadeUp">
+                <SectionHeader title="Education" />
+            </ScrollReveal>
+            <StaggerList className="space-y-6">
                 {educationData.map((item, index) => (
-                    <EducationItem key={index} {...item} />
+                    <StaggerItem key={index}>
+                        <EducationItem {...item} />
+                    </StaggerItem>
                 ))}
-            </ol>
+            </StaggerList>
         </section>
     )
 }

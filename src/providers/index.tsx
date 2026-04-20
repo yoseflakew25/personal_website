@@ -6,6 +6,7 @@ import { TooltipProvider } from '~/components/ui/tooltip'
 import TopLoader from '~/components/ui/top-loader'
 import ReactQueryProvider from './react-query'
 import { Toaster } from '~/components/ui/sonner'
+import CyberCursor from '~/components/ui/cyber-cursor'
 
 const RootProviders = ({ children }: { children: ReactNode }) => {
   return (
@@ -13,6 +14,7 @@ const RootProviders = ({ children }: { children: ReactNode }) => {
       <TooltipProvider>
         <ScrollProgress />
         <TopLoader />
+        <CyberCursor />
         {children}
         <Toaster />
       </TooltipProvider>

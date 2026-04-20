@@ -34,7 +34,7 @@ export type stacksProps = Record<
 >
 
 export const FRONTEND_STACKS: stacksProps = {
-  JavaScript: { Icon: SiJavascript, className: 'text-yellow-400' },
+  JavaScript: { Icon: SiJavascript, className: 'text-cyan-400' },
   TypeScript: { Icon: SiTypescript, className: 'text-blue-400' },
   'Next.js': { Icon: SiNextdotjs, className: '' },
   'React.js': { Icon: SiReact, className: 'text-sky-500' },
@@ -44,7 +44,7 @@ export const FRONTEND_STACKS: stacksProps = {
   ShadcnUI: { Icon: SiShadcnui, className: 'text-zinc-950 dark:text-zinc-50' },
   Redux: { Icon: SiRedux, className: 'text-purple-500' },
   Figma: { Icon: SiFigma, className: 'text-rose-500' },
-  PWA: { Icon: SiPwa, className: 'text-amber-600' },
+  PWA: { Icon: SiPwa, className: 'text-rose-400' },
   Jest: { Icon: SiJest, className: 'text-red-600' },
   CSS: { Icon: SiCss3, className: 'text-blue-300' },
 }

@@ -101,16 +101,16 @@ with only 3 items.
 Essentially, we need to write a function that produces the following results:
 
 ```js
-const COLORS = ['red', 'yellow', 'blue']
+const COLORS = ['red', 'magenta', 'blue']
 
 getColor({ timeElapsed: 0 }) // 'red'
-getColor({ timeElapsed: 1 }) // 'yellow'
+getColor({ timeElapsed: 1 }) // 'magenta'
 getColor({ timeElapsed: 2 }) // 'blue'
 getColor({ timeElapsed: 3 }) // 'red'
-getColor({ timeElapsed: 4 }) // 'yellow'
+getColor({ timeElapsed: 4 }) // 'magenta'
 getColor({ timeElapsed: 5 }) // 'blue'
 getColor({ timeElapsed: 6 }) // 'red'
-getColor({ timeElapsed: 7 }) // 'yellow'
+getColor({ timeElapsed: 7 }) // 'magenta'
 getColor({ timeElapsed: 8 }) // 'blue'
 // ...And so on, forever
 ```
@@ -118,7 +118,7 @@ getColor({ timeElapsed: 8 }) // 'blue'
 Let's look at how the modulo operator can help us solve this problem:
 
 ```js
-const COLORS = ['red', 'yellow', 'blue']
+const COLORS = ['red', 'magenta', 'blue']
 
 function getColor({ timeElapsed }) {
   const colorIndex = timeElapsed % COLORS.length

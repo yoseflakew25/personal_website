@@ -1,31 +1,31 @@
 import animatePlugin from 'tailwindcss-animate'
 import plugin from 'tailwindcss/plugin'
-import {fontFamily} from 'tailwindcss/defaultTheme'
-import type {Config} from 'tailwindcss'
+import { fontFamily } from 'tailwindcss/defaultTheme'
+import type { Config } from 'tailwindcss'
 
 const shadcnPlugin = plugin(
-  function ({addBase}) {
+  function ({ addBase }) {
     addBase({
       ':root': {
-        '--background': '240 10% 3.9%',
-        '--foreground': '0 0% 98%',
-        '--card': '240 10% 3.9%',
-        '--card-foreground': '0 0% 98%',
-        '--popover': '240 10% 3.9%',
-        '--popover-foreground': '0 0% 98%',
-        '--primary': '0 0% 98%',
-        '--primary-foreground': '240 5.9% 10%',
-        '--secondary': '240 3.7% 15.9%',
-        '--secondary-foreground': '0 0% 98%',
-        '--muted': '240 3.7% 15.9%',
-        '--muted-foreground': '240 5% 64.9%',
-        '--accent': '240 3.7% 15.9%',
-        '--accent-foreground': '0 0% 98%',
+        '--background': '240 15% 5%',
+        '--foreground': '0 0% 95%',
+        '--card': '240 12% 8%',
+        '--card-foreground': '0 0% 95%',
+        '--popover': '240 12% 8%',
+        '--popover-foreground': '0 0% 95%',
+        '--primary': '180 100% 50%',
+        '--primary-foreground': '240 15% 5%',
+        '--secondary': '240 8% 12%',
+        '--secondary-foreground': '0 0% 95%',
+        '--muted': '240 8% 14%',
+        '--muted-foreground': '240 5% 55%',
+        '--accent': '240 8% 14%',
+        '--accent-foreground': '0 0% 95%',
         '--destructive': '0 62.8% 30.6%',
         '--destructive-foreground': '0 0% 98%',
-        '--border': '240 3.7% 15.9%',
-        '--input': '240 3.7% 15.9%',
-        '--ring': '182.7 100.0% 35.5%',
+        '--border': '240 8% 14%',
+        '--input': '240 8% 14%',
+        '--ring': '180 100% 45%',
         '--radius': '0.5rem',
       },
     }),
@@ -60,6 +60,8 @@ const shadcnPlugin = plugin(
           sans: ['var(--font-sans)', ...fontFamily.sans],
           ubuntu: 'var(--font-ubuntu)',
           dank: 'var(--font-dank)',
+          orbitron: 'var(--font-orbitron)',
+          jetbrains: 'var(--font-jetbrains)',
         },
         screens: {
           xs: '380px',
@@ -99,25 +101,45 @@ const shadcnPlugin = plugin(
             DEFAULT: 'hsl(var(--card))',
             foreground: 'hsl(var(--card-foreground))',
           },
+          cyber: {
+            cyan: 'hsl(180 100% 50%)',
+            magenta: 'hsl(320 100% 60%)',
+            purple: 'hsl(270 80% 60%)',
+          },
         },
         borderRadius: {
           lg: 'var(--radius)',
           md: 'calc(var(--radius) - 2px)',
           sm: 'calc(var(--radius) - 4px)',
         },
+        boxShadow: {
+          'neon-cyan': '0 0 5px hsl(180 100% 50% / 0.3), 0 0 20px hsl(180 100% 50% / 0.15), 0 0 40px hsl(180 100% 50% / 0.05)',
+          'neon-magenta': '0 0 5px hsl(320 100% 60% / 0.3), 0 0 20px hsl(320 100% 60% / 0.15)',
+          'neon-sm': '0 0 5px hsl(180 100% 50% / 0.2), 0 0 10px hsl(180 100% 50% / 0.1)',
+        },
         keyframes: {
           'accordion-down': {
-            from: {height: '0'},
-            to: {height: 'var(--radix-accordion-content-height)'},
+            from: { height: '0' },
+            to: { height: 'var(--radix-accordion-content-height)' },
           },
           'accordion-up': {
-            from: {height: 'var(--radix-accordion-content-height)'},
-            to: {height: '0'},
+            from: { height: 'var(--radix-accordion-content-height)' },
+            to: { height: '0' },
+          },
+          'pulse-glow': {
+            '0%, 100%': { opacity: '0.4' },
+            '50%': { opacity: '1' },
+          },
+          'float': {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-10px)' },
           },
         },
         animation: {
           'accordion-down': 'accordion-down 0.2s ease-out',
           'accordion-up': 'accordion-up 0.2s ease-out',
+          'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+          'float': 'float 6s ease-in-out infinite',
         },
       },
     },

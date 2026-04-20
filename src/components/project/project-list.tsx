@@ -1,27 +1,33 @@
+'use client'
+import SectionHeader from '../ui/section-header'
+import ScrollReveal from '../ui/scroll-reveal'
+import { StaggerList, StaggerItem } from '../ui/scroll-reveal'
+import { TProjectSerialized } from './_project-mock'
 import ContentNotFound from '../ui/content-not-found'
-import {typo} from '../ui/typograpghy'
-import {TProject} from './_project-mock'
-
-import ProjectItem from './project-item'
+import ProjectCarousel from './project-carousel'
+import mockProjects from './_project-mock'
 
 const ProjectList = ({
-  projects,
   metadata,
+  projects,
 }: {
-  projects: TProject[]
   metadata?: boolean
+  projects?: TProjectSerialized[]
 }) => {
+  const displayProjects = projects || mockProjects
   return (
-    <section aria-label="projects" className="space-y-6 mt-5" id="main-content">
-      {metadata && <h2 className={typo({variant: 'h2'})}>Featured Projects</h2>}
+    <section aria-label="projects" className="space-y-6 pb-20 pt-0 relative" id="main-content">
+      {metadata && (
+        <ScrollReveal variant="fadeUp">
+          <SectionHeader title="Featured Projects" />
+        </ScrollReveal>
+      )}
 
-      <div className="!mt-8">
-        {projects.length > 0 ? (
-          <ol className="gap-8 grid md:grid-cols-2 " role="list">
-            {projects.map(project => (
-              <ProjectItem key={project.id} {...project} />
-            ))}
-          </ol>
+      <div className="backdrop-shadow rounded-3xl border border-white/[0.03] bg-white/[0.01]">
+        {displayProjects.length > 0 ? (
+          <ScrollReveal variant="scaleIn" delay={0.2}>
+            <ProjectCarousel projects={displayProjects} />
+          </ScrollReveal>
         ) : (
           <ContentNotFound text="No Projects Found" />
         )}

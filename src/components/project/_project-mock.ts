@@ -47,7 +47,7 @@ const projects = [
     isRepo: true,
     repoUrl: 'https://github.com/A2SV/AKIL',
   },
-  
+
   {
     id: createId(),
     Icon: HomeFinder,
@@ -116,3 +116,5 @@ const projects = [
 
 export default projects
 export type TProject = (typeof projects)[0]
+export const serializedProjects = projects.map(({ Icon, ...rest }) => ({ ...rest }))
+export type TProjectSerialized = (typeof serializedProjects)[0]

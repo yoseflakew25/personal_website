@@ -12,6 +12,7 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
   setOpen,
 }) => {
   const pathname = usePathname()
+  const isActive = pathname === path
 
   const onClickHandler = () => {
     if (typeof setOpen === 'function') {
@@ -23,9 +24,10 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
     <li
       role="listitem"
       className={cn(
-        'relative h-7 px-2 flex items-center  sm:px-0 font-medium rounded-md transition-colors duration-300 ',
+        'relative h-7 px-2 flex items-center sm:px-0 font-medium rounded-md transition-all duration-300 font-jetbrains text-sm tracking-wide',
         {
-          'bg-ring sm:text-ring sm:bg-transparent': pathname === path,
+          'text-cyber-cyan sm:text-cyber-cyan': isActive,
+          'text-muted-foreground hover:text-foreground': !isActive,
         },
       )}
       onClick={onClickHandler}
@@ -39,13 +41,13 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
         {label}
       </Link>
 
-      {pathname === path && (
+      {isActive && (
         <motion.span
           layoutId="pill-tab"
           transition={{ type: 'spring', duration: 0.4, bounce: 0, delay: 0.1 }}
-          className="hidden sm:flex absolute left-0 top-1  size-full h-full w-full items-end justify-center"
+          className="hidden sm:flex absolute left-0 top-1 size-full h-full w-full items-end justify-center"
         >
-          <span className="z-0 h-[3px] w-full rounded-t-full bg-ring"></span>
+          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-cyber-cyan to-cyber-magenta/60 shadow-neon-cyan" />
         </motion.span>
       )}
     </li>

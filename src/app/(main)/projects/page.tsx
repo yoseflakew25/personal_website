@@ -19,18 +19,15 @@ export const metadata: ReturnType<typeof getSEOTags> = getSEOTags({
 })
 
 const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undefined } }) => {
-  const filteredProjects = projects.filter(project =>
-    project.title.toLowerCase().includes(decodeURIComponent(searchParams.search || '')),
-  )
+  const filteredProjects = projects
+    .filter(project =>
+      project.title.toLowerCase().includes(decodeURIComponent(searchParams.search || '')),
+    )
+    .map(({ Icon, ...rest }) => rest)
 
   return (
     <div className="!mt-8">
-      <div className="flex sm:items-center flex-col sm:flex-row flex-wrap gap-4 justify-between">
-        <h1 className="font-medium text-xl text-left"> All Projects </h1>
-        <SearchInput />
-      </div>
-
-      <div className="mt-6">
+      <div>
         <ProjectList projects={filteredProjects} metadata={false} />
       </div>
     </div>
