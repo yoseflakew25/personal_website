@@ -32,7 +32,7 @@ const ContactUs = () => {
   }
 
   return (
-    <section aria-label="contact" className="!mt-8">
+    <section id="contact" aria-label="contact" className="!mt-8 scroll-mt-24">
       <ScrollReveal variant="fadeUp">
         <SectionHeader title="Get in Touch" />
       </ScrollReveal>
@@ -50,7 +50,7 @@ const ContactUs = () => {
 
             <div className="space-y-3">
               <h3 className="font-orbitron text-sm tracking-wide text-foreground/80">
-                <span className="text-cyber-magenta/70 mr-1 font-jetbrains text-xs">{'> '}</span>
+                <span className="text-cyber-cyan/70 mr-1 font-jetbrains text-xs">{'> '}</span>
                 Follow me
               </h3>
               <Socials />
@@ -64,8 +64,8 @@ const ContactUs = () => {
                   <span className="h-px flex-1 bg-gradient-to-r from-cyber-cyan/20 to-transparent" />
                 </div>
                 <div className="flex items-center gap-2 ml-4">
-                  <span className="w-1.5 h-1.5 bg-cyber-magenta/20 rounded-full" />
-                  <span className="h-px flex-1 bg-gradient-to-r from-cyber-magenta/15 to-transparent" />
+                  <span className="w-1.5 h-1.5 bg-cyber-cyan/20 rounded-full" />
+                  <span className="h-px flex-1 bg-gradient-to-r from-cyber-cyan/15 to-transparent" />
                 </div>
                 <div className="flex items-center gap-2 ml-8">
                   <span className="w-1 h-1 bg-cyber-cyan/15 rounded-full" />
@@ -158,7 +158,7 @@ const ContactUs = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-cyber-cyan/80 to-cyber-magenta/60 hover:from-cyber-cyan hover:to-cyber-magenta text-background font-orbitron font-semibold tracking-wider text-sm uppercase hover:shadow-neon-cyan transition-all duration-300 border-0"
+                className="w-full bg-gradient-to-r from-cyber-cyan/80 to-cyber-cyan/40 hover:from-cyber-cyan hover:to-cyber-cyan/70 text-background font-orbitron font-semibold tracking-wider text-sm uppercase hover:shadow-neon-cyan transition-all duration-300 border-0"
                 disabled={isPending}
               >
                 {isPending ? (

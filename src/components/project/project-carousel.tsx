@@ -35,9 +35,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
             <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                     {projects.map((project, index) => (
-                        <div key={project.id} className="flex-[0_0_100%] min-w-0 min-h-[500px] flex flex-col md:flex-row gap-8 items-center px-4 pt-0 pb-4">
+                        <div key={project.id} className="flex-[0_0_100%] min-w-0 min-h-[550px] flex flex-col md:flex-row gap-10 items-center px-4 pt-0 pb-4">
                             {/* Left Content */}
-                            <div className="flex-1 space-y-6">
+                            <div className="flex-[0.9] space-y-6">
                                 <div className="space-y-2">
                                     <motion.span
                                         initial={{ opacity: 0, x: -20 }}
@@ -64,7 +64,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 0.2 }}
                                         key={`subtitle-${index}`}
-                                        className="text-cyber-magenta/80 font-jetbrains text-sm uppercase tracking-widest"
+                                        className="text-cyber-cyan/60 font-jetbrains text-sm uppercase tracking-widest"
                                     >
                                         Fullstack Project
                                     </motion.p>
@@ -117,7 +117,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                             </div>
 
                             {/* Right Image */}
-                            <div className="flex-1 w-full max-w-2xl">
+                            <div className="flex-[1.1] w-full">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
@@ -130,7 +130,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         alt={project.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover/img:scale-105"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
                                     <div className="absolute inset-0 scanline-overlay opacity-20" />

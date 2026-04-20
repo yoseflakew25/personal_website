@@ -11,7 +11,7 @@ export default function Callout({ children, type = 'default', ...props }: Callou
     <div
       className={cn('my-6 items-start rounded-md border bodrer-l-4 p-4 w-full ', {
         'border-red-900 bg-red-50/10 ': type === 'danger',
-        'border-cyber-magenta/50 bg-cyber-magenta/5 ': type === 'warning',
+        'border-cyber-cyan/50 bg-cyber-cyan/5 ': type === 'warning',
       })}
       {...props}
     >

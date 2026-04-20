@@ -91,7 +91,7 @@ const notableProjects = [
 
 const GithubProjects = () => {
   return (
-    <section className="my-12 space-y-8 bg-transparent">
+    <section id="github" className="my-12 space-y-8 bg-transparent scroll-mt-24">
       <ScrollReveal variant="fadeUp">
         <SectionHeader
           title="Other Notable Projects"
@@ -126,7 +126,7 @@ const GithubProjects = () => {
                   {project.stack.map(tech => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded-sm bg-cyber-magenta/5 text-cyber-magenta neon-text-magenta text-[10px] font-jetbrains font-medium border border-cyber-magenta/20 transition-all duration-300"
+                      className="px-2 py-0.5 rounded-sm bg-cyber-cyan/5 text-cyber-cyan neon-text-cyan text-[10px] font-jetbrains font-medium border border-cyber-cyan/20 transition-all duration-300"
                     >
                       {tech}
                     </span>
@@ -149,7 +149,7 @@ const GithubProjects = () => {
                   href={project.livePreview}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-[11px] font-jetbrains font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-cyber-magenta transition-colors duration-300"
+                  className="flex items-center text-[11px] font-jetbrains font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-cyber-cyan transition-colors duration-300"
                 >
                   <span>Live Demo</span>
                   <span className="ml-1">↗</span>

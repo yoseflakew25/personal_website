@@ -44,7 +44,7 @@ const TimelineItem = ({
             )}
           </hgroup>
           <div className="flex items-center gap-3">
-            <span className="text-cyber-magenta neon-text-magenta text-xs font-jetbrains bg-cyber-magenta/5 border border-cyber-magenta/20 px-2.5 py-1 rounded-sm shrink-0">
+            <span className="text-cyber-cyan neon-text-cyan text-xs font-jetbrains bg-cyber-cyan/5 border border-cyber-cyan/20 px-2.5 py-1 rounded-sm shrink-0">
               {date}
             </span>
             <ChevronDown

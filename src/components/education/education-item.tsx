@@ -23,7 +23,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
                     <h3 className="font-orbitron text-base font-semibold text-cyber-cyan/80 tracking-wide">
                         {degree}
                     </h3>
-                    <div className="flex items-center gap-1 text-xs text-cyber-magenta neon-text-magenta font-jetbrains bg-cyber-magenta/5 border border-cyber-magenta/20 px-2.5 py-1 rounded-sm w-fit">
+                    <div className="flex items-center gap-1 text-xs text-cyber-cyan neon-text-cyan font-jetbrains bg-cyber-cyan/5 border border-cyber-cyan/20 px-2.5 py-1 rounded-sm w-fit">
                         <Calendar size={12} />
                         <span>{date}</span>
                     </div>

@@ -45,7 +45,7 @@ const shadcnPlugin = plugin(
         center: true,
         padding: '1rem',
         screens: {
-          xl: '57rem',
+          xl: '72rem',
         },
       },
       extend: {
@@ -103,8 +103,8 @@ const shadcnPlugin = plugin(
           },
           cyber: {
             cyan: 'hsl(180 100% 50%)',
-            magenta: 'hsl(320 100% 60%)',
-            purple: 'hsl(270 80% 60%)',
+            'cyan-dark': 'hsl(180 100% 35%)',
+            'cyan-light': 'hsl(180 100% 65%)',
           },
         },
         borderRadius: {
@@ -114,7 +114,6 @@ const shadcnPlugin = plugin(
         },
         boxShadow: {
           'neon-cyan': '0 0 5px hsl(180 100% 50% / 0.3), 0 0 20px hsl(180 100% 50% / 0.15), 0 0 40px hsl(180 100% 50% / 0.05)',
-          'neon-magenta': '0 0 5px hsl(320 100% 60% / 0.3), 0 0 20px hsl(320 100% 60% / 0.15)',
           'neon-sm': '0 0 5px hsl(180 100% 50% / 0.2), 0 0 10px hsl(180 100% 50% / 0.1)',
         },
         keyframes: {

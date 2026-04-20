@@ -43,7 +43,7 @@ const FloatingShape = ({ className, delay = 0 }: { className: string; delay?: nu
 
 const AboutSection = () => {
   return (
-    <section className="grid md:grid-cols-3 gap-8 sm:gap-6 relative pt-8 " aria-label="About">
+    <section className="grid md:grid-cols-5 gap-8 sm:gap-12 relative pt-8 " aria-label="About">
       {/* Floating Background Shapes */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
         <FloatingShape
@@ -51,11 +51,11 @@ const AboutSection = () => {
           delay={0}
         />
         <FloatingShape
-          className="absolute top-40 right-0 w-20 h-20 border border-cyber-magenta/10 rotate-12"
+          className="absolute top-40 right-0 w-20 h-20 border border-cyber-cyan/10 rotate-12"
           delay={2}
         />
         <FloatingShape
-          className="absolute bottom-20 left-1/4 w-16 h-16 border border-cyber-purple/10 rotate-[30deg]"
+          className="absolute bottom-20 left-1/4 w-16 h-16 border border-cyber-cyan/10 rotate-[30deg]"
           delay={4}
         />
         <FloatingShape
@@ -63,12 +63,12 @@ const AboutSection = () => {
           delay={1}
         />
         <FloatingShape
-          className="absolute bottom-1/3 right-1/3 w-1 h-1 rounded-full bg-cyber-magenta/30"
+          className="absolute bottom-1/3 right-1/3 w-1 h-1 rounded-full bg-cyber-cyan/30"
           delay={3}
         />
       </div>
 
-      <div className="space-y-6 md:col-span-2 order-2 sm:order-1 self-center">
+      <div className="space-y-6 md:col-span-3 order-2 sm:order-1 self-center">
         <ScrollReveal variant="fadeUp" delay={0.1}>
           <div className="flex items-center gap-2 mb-2">
             <span className="h-px w-6 bg-cyber-cyan/50" />
@@ -98,7 +98,7 @@ const AboutSection = () => {
             <p className="text-muted-foreground text-base sm:text-lg font-sans leading-relaxed">
               I love building tools that are{' '}
               <span className="text-cyber-cyan neon-text-cyan">user friendly, simple</span> and{' '}
-              <span className="text-cyber-magenta neon-text-magenta">delightful</span>.
+              <span className="text-cyber-cyan neon-text-cyan">delightful</span>.
             </p>
           </ScrollReveal>
 
@@ -121,15 +121,15 @@ const AboutSection = () => {
       </div>
 
       {/* Hero Image with Cyberpunk Treatment */}
-      <ScrollReveal variant="scaleIn" delay={0.3} className="relative block sm:hidden md:block order-1 sm:order-2 self-center">
+      <ScrollReveal variant="scaleIn" delay={0.3} className="relative block sm:hidden md:block md:col-span-2 order-1 sm:order-2 self-center">
         <div className="relative group">
-          <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-cyber-cyan/30 via-transparent to-cyber-magenta/20 opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
+          <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-cyber-cyan/30 via-transparent to-cyber-cyan/10 opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
 
           <div className="absolute -inset-2 pointer-events-none">
             <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyber-cyan/50 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
             <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyber-cyan/50 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
-            <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyber-magenta/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-magenta" />
-            <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyber-magenta/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-magenta" />
+            <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyber-cyan/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
+            <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyber-cyan/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
           </div>
 
           <div className="relative overflow-hidden rounded-md aspect-square mb-6">
@@ -155,7 +155,7 @@ const AboutSection = () => {
           <div className="grid grid-cols-3 gap-3">
             {[
               { label: 'Companies', value: '5+', color: 'cyan' },
-              { label: 'Users Served', value: '2,000+', color: 'magenta' },
+              { label: 'Users Served', value: '2,000+', color: 'cyan' },
               { label: 'Projects Shipped', value: '6+', color: 'cyan' },
             ].map((stat, i) => (
               <div

@@ -1,4 +1,4 @@
-import {createId} from '@paralleldrive/cuid2'
+import { createId } from '@paralleldrive/cuid2'
 
 export const navData = [
   {
@@ -11,7 +11,22 @@ export const navData = [
     label: 'Projects',
     path: '/projects',
   },
- 
+  {
+    id: createId(),
+    label: 'Experience',
+    path: '/experience',
+  },
+  {
+    id: createId(),
+    label: 'GitHub',
+    path: '/#github',
+  },
+  {
+    id: createId(),
+    label: 'Contact',
+    path: '/#contact',
+  },
+
 
   // {
   //   id: createId(),
