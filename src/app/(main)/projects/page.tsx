@@ -26,10 +26,8 @@ const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undef
     .map(({ Icon, ...rest }) => rest)
 
   return (
-    <div className="!mt-8">
-      <div>
-        <ProjectList projects={filteredProjects} metadata={false} />
-      </div>
+    <div className="space-y-0 relative overflow-y-hidden h-[calc(100dvh-10rem)]">
+      <ProjectList projects={filteredProjects} metadata={false} />
     </div>
   )
 }

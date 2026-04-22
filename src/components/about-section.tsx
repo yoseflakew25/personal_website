@@ -43,7 +43,10 @@ const FloatingShape = ({ className, delay = 0 }: { className: string; delay?: nu
 
 const AboutSection = () => {
   return (
-    <section className="grid md:grid-cols-5 gap-8 sm:gap-12 relative pt-8 " aria-label="About">
+    <section
+      className="grid md:grid-cols-5 gap-8 sm:gap-12 relative pt-8 !border-b-0"
+      aria-label="About"
+    >
       {/* Floating Background Shapes */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
         <FloatingShape
@@ -54,8 +57,9 @@ const AboutSection = () => {
           className="absolute top-40 right-0 w-20 h-20 border border-cyber-cyan/10 rotate-12"
           delay={2}
         />
+        {/* Adjusted: smaller, more transparent to avoid a visible line */}
         <FloatingShape
-          className="absolute bottom-20 left-1/4 w-16 h-16 border border-cyber-cyan/10 rotate-[30deg]"
+          className="absolute bottom-20 left-1/4 w-12 h-12 border border-cyber-cyan/5 rotate-[30deg]"
           delay={4}
         />
         <FloatingShape
@@ -121,18 +125,9 @@ const AboutSection = () => {
       </div>
 
       {/* Hero Image with Cyberpunk Treatment */}
-      <ScrollReveal variant="scaleIn" delay={0.3} className="relative block sm:hidden md:block md:col-span-2 order-1 sm:order-2 self-center max-w-[420px] mx-auto">
+      <div className="relative block sm:hidden md:block md:col-span-2 order-1 sm:order-2 self-center max-w-[340px] mx-auto">
 
         <div className="relative group">
-          <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-cyber-cyan/30 via-transparent to-cyber-cyan/10 opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
-
-          <div className="absolute -inset-2 pointer-events-none">
-            <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyber-cyan/50 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
-            <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyber-cyan/50 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
-            <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyber-cyan/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
-            <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyber-cyan/40 transition-all duration-300 group-hover:w-7 group-hover:h-7 group-hover:border-cyber-cyan" />
-          </div>
-
           <div className="relative overflow-hidden rounded-md aspect-square mb-6">
             <Image
               alt="Speaking on stage at Dubai police station during a presentation"
@@ -141,14 +136,6 @@ const AboutSection = () => {
               className="rounded-md shadow-md size-full object-cover transition-transform duration-700 group-hover:scale-105"
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyber-cyan/5 to-cyber-cyan/10 pointer-events-none" />
-            <div
-              className="absolute inset-0 pointer-events-none opacity-30"
-              style={{
-                background:
-                  'repeating-linear-gradient(0deg, transparent, transparent 3px, hsla(180,100%,50%,0.03) 3px, hsla(180,100%,50%,0.03) 4px)',
-              }}
             />
           </div>
 
@@ -182,7 +169,7 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
-      </ScrollReveal>
+      </div>
     </section>
   )
 }

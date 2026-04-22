@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
       <SocialSidebar />
       <EmailSidebar />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

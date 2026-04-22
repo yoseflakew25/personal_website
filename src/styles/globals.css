@@ -73,7 +73,7 @@
         hsl(180 100% 50% / 0.015) 4px);
     animation: scanline-scroll 8s linear infinite;
     will-change: transform;
-
+    transform: translateZ(0);
   }
 
   @keyframes scanline-scroll {
@@ -373,3 +373,4 @@
     }
   }
 }
+

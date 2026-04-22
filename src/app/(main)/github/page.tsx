@@ -1,3 +1,4 @@
+import GithubActivity from '~/components/github-activity'
 import GithubProjects from '~/components/githubProjects'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
@@ -11,8 +12,11 @@ export const metadata = getSEOTags({
 const GithubPage = () => {
     return (
         <div className="!mt-8 space-y-0 relative">
+
+            <GithubActivity />
+
             <section className="pb-12">
-                <GithubProjects title="GitHub Projects" />
+                <GithubProjects title="Notable Repositories" />
             </section>
         </div>
     )

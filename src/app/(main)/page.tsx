@@ -1,25 +1,15 @@
-import dynamic from 'next/dynamic'
 import AboutSection from '~/components/about-section'
-import { ProjectList } from '~/components/project'
-import Skills from '~/components/skills'
-
-const Experience = dynamic(() => import('~/components/experience'), {
-  loading: () => <div className="h-96 animate-pulse bg-white/5 rounded-xl" />
-})
-const EducationList = dynamic(() => import('~/components/education').then(mod => mod.EducationList), {
-  loading: () => <div className="h-64 animate-pulse bg-white/5 rounded-xl" />
-})
 
 
 const HomePage = () => {
   return (
-    <div className="!mt-8 space-y-0 relative">
+    <div className="space-y-0 relative overflow-y-hidden h-[calc(100dvh-10rem)]">
       {/* Hero / About */}
-      <section className="pb-16">
+      <section>
         <AboutSection />
       </section>
 
-    
+
     </div>
   )
 }

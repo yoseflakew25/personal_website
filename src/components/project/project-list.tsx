@@ -16,7 +16,7 @@ const ProjectList = ({
 }) => {
   const displayProjects = projects || mockProjects
   return (
-    <section aria-label="projects" className="space-y-6 pb-20 pt-0 relative" id="main-content">
+    <section aria-label="projects" className="space-y-6 pt-0 relative" id="main-content">
       {metadata && (
         <ScrollReveal variant="fadeUp">
           <SectionHeader title="Featured Projects" />

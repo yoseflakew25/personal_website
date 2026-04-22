@@ -16,24 +16,24 @@ interface ScrollRevealProps {
 
 const variants: Record<RevealVariant, Variants> = {
     fadeUp: {
-        hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
-        visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0 },
     },
     fadeDown: {
-        hidden: { opacity: 0, y: -40, filter: 'blur(4px)' },
-        visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+        hidden: { opacity: 0, y: -24 },
+        visible: { opacity: 1, y: 0 },
     },
     fadeLeft: {
-        hidden: { opacity: 0, x: -40, filter: 'blur(4px)' },
-        visible: { opacity: 1, x: 0, filter: 'blur(0px)' },
+        hidden: { opacity: 0, x: -24 },
+        visible: { opacity: 1, x: 0 },
     },
     fadeRight: {
-        hidden: { opacity: 0, x: 40, filter: 'blur(4px)' },
-        visible: { opacity: 1, x: 0, filter: 'blur(0px)' },
+        hidden: { opacity: 0, x: 24 },
+        visible: { opacity: 1, x: 0 },
     },
     scaleIn: {
-        hidden: { opacity: 0, scale: 0.9, filter: 'blur(6px)' },
-        visible: { opacity: 1, scale: 1, filter: 'blur(0px)' },
+        hidden: { opacity: 0, scale: 0.94 },
+        visible: { opacity: 1, scale: 1 },
     },
     glitchIn: {
         hidden: { opacity: 0, x: -10, skewX: -5 },
@@ -91,12 +91,11 @@ const container: Variants = {
 }
 
 const item: Variants = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
+    hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
-        transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
+        transition: { duration: 0.45, ease: [0.25, 0.4, 0.25, 1] },
     },
 }
 
