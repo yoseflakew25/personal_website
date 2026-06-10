@@ -2,7 +2,7 @@
 import React, { ReactNode, useRef } from 'react'
 import { motion, useInView, Variants } from 'framer-motion'
 
-type RevealVariant = 'fadeUp' | 'fadeLeft' | 'fadeRight' | 'fadeDown' | 'scaleIn' | 'glitchIn'
+type RevealVariant = 'fadeUp' | 'fadeLeft' | 'fadeRight' | 'fadeDown' | 'scaleIn'
 
 interface ScrollRevealProps {
     children: ReactNode
@@ -34,10 +34,6 @@ const variants: Record<RevealVariant, Variants> = {
     scaleIn: {
         hidden: { opacity: 0, scale: 0.94 },
         visible: { opacity: 1, scale: 1 },
-    },
-    glitchIn: {
-        hidden: { opacity: 0, x: -10, skewX: -5 },
-        visible: { opacity: 1, x: 0, skewX: 0 },
     },
 }
 

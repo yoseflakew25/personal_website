@@ -23,7 +23,7 @@ const SocialSidebar = () => {
             transition={{ delay: 1.1, duration: 0.5 }}
             className="fixed bottom-0 left-4 md:left-8 z-50 hidden lg:flex flex-col items-center gap-0"
         >
-            <div className="flex flex-col items-center gap-6 before:content-[''] before:w-px before:h-24 before:bg-gradient-to-t before:from-cyber-cyan before:to-transparent after:content-[''] after:w-px after:h-24 after:bg-gradient-to-b after:from-cyber-cyan after:to-transparent mb-0">
+            <div className="flex flex-col items-center gap-6 before:content-[''] before:w-px before:h-24 before:bg-gradient-to-t before:from-foreground/15 before:to-transparent after:content-[''] after:w-px after:h-24 after:bg-gradient-to-b after:from-foreground/15 after:to-transparent mb-0">
                 <div className="flex flex-col items-center gap-5 py-6">
                     {socials.map((social, i) => (
                         <a
@@ -31,7 +31,7 @@ const SocialSidebar = () => {
                             href={social.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-foreground/80 hover:text-cyber-cyan hover:-translate-y-1 transition-all duration-300"
+                            className="text-foreground/80 hover:text-primary hover:-translate-y-1 transition-all duration-300"
                             aria-label={social.label}
                         >
                             {social.icon}
@@ -44,3 +44,4 @@ const SocialSidebar = () => {
 }
 
 export default SocialSidebar
+

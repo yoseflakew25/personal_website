@@ -7,23 +7,20 @@ import ScrollReveal from './ui/scroll-reveal'
 import { StaggerList, StaggerItem } from './ui/scroll-reveal'
 import { notableProjects } from '~/constants/github-projects'
 
-const GithubProjects = ({ title = "Other Notable Projects" }: { title?: string }) => {
+const GithubProjects = ({ title = "Other Notable Projects", titleClassName = "" }: { title?: string, titleClassName?: string }) => {
   return (
     <section id="github" className="my-12 space-y-8 bg-transparent scroll-mt-24">
       <ScrollReveal variant="fadeUp">
-        <SectionHeader
-          title={title}
-        />
+        <SectionHeader title={title} titleClassName={titleClassName} />
       </ScrollReveal>
-
 
       <StaggerList className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
         {notableProjects.map((project, index) => (
           <StaggerItem key={index}>
-            <div className="gradient-border-card group flex flex-col justify-between p-5 rounded-xl border border-white/5 bg-card/40 backdrop-blur-sm hover:bg-card/70 transition-all duration-400 hover:border-cyber-cyan/20 hover:shadow-neon-sm">
+            <div className="group flex flex-col justify-between p-5 rounded-xl border border-border/40 bg-transparent transition-all duration-300 hover:border-border">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-cyber-cyan/80 font-orbitron font-medium text-sm tracking-wide group-hover:text-cyber-cyan transition-colors duration-300">
+                  <h3 className="text-foreground font-sans font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-3">
@@ -31,7 +28,7 @@ const GithubProjects = ({ title = "Other Notable Projects" }: { title?: string }
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-cyber-cyan transition-colors duration-300"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
                     >
                       <FiGithub className="size-[18px]" />
                     </a>
@@ -45,7 +42,7 @@ const GithubProjects = ({ title = "Other Notable Projects" }: { title?: string }
                   {project.stack.map(tech => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded-sm bg-cyber-cyan/5 text-cyber-cyan neon-text-cyan text-[10px] font-jetbrains font-medium border border-cyber-cyan/20 transition-all duration-300"
+                      className="px-2 py-0.5 rounded-full bg-primary/5 text-primary text-[10px] font-mono font-medium border border-primary/20 transition-all duration-300"
                     >
                       {tech}
                     </span>
@@ -53,12 +50,12 @@ const GithubProjects = ({ title = "Other Notable Projects" }: { title?: string }
                 </div>
               </div>
 
-              <div className="mt-5 flex items-center justify-between pt-3 border-t border-white/5">
+              <div className="mt-5 flex items-center justify-between pt-3 border-t border-border/40">
                 <a
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-[11px] font-jetbrains font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-cyber-cyan transition-colors duration-300"
+                  className="flex items-center text-[11px] font-mono font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-primary transition-colors duration-300"
                 >
                   <span>Source Code</span>
                   <span className="ml-1">→</span>
@@ -68,7 +65,7 @@ const GithubProjects = ({ title = "Other Notable Projects" }: { title?: string }
                   href={project.livePreview}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-[11px] font-jetbrains font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-cyber-cyan transition-colors duration-300"
+                  className="flex items-center text-[11px] font-mono font-medium uppercase tracking-wider text-muted-foreground/60 hover:text-primary transition-colors duration-300"
                 >
                   <span>Live Demo</span>
                   <span className="ml-1">↗</span>

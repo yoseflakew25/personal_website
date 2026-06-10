@@ -9,7 +9,7 @@ interface GlitchTextProps {
 
 const GlitchText: React.FC<GlitchTextProps> = ({ text, className = '', as: Tag = 'span' }) => {
     return (
-        <Tag className={`glitch-text ${className}`} data-text={text}>
+        <Tag className={`${className}`}>
             {text}
         </Tag>
     )

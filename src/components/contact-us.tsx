@@ -34,7 +34,7 @@ const ContactUs = () => {
   return (
     <section id="contact" aria-label="contact" className="!mt-8 scroll-mt-24">
       <ScrollReveal variant="fadeUp">
-        <SectionHeader title="Get in Touch" />
+        <SectionHeader title="Get in Touch" titleClassName="text-primary" />
       </ScrollReveal>
 
       <ScrollReveal variant="fadeUp" delay={0.2}>
@@ -44,43 +44,24 @@ const ContactUs = () => {
               If you have any inquiries, please feel free to reach out. You can contact me via email
               at{' '}
               <CustomLink href={`mailto:${config.social.email}`} aria-label={config.social.email}>
-                <span className="text-cyber-cyan">{config.social.email}</span>
+                <span className="text-primary">{config.social.email}</span>
               </CustomLink>
             </p>
 
             <div className="space-y-3">
-              <h3 className="font-orbitron text-sm tracking-wide text-foreground/80">
-                <span className="text-cyber-cyan/70 mr-1 font-jetbrains text-xs">{'> '}</span>
+              <h3 className="font-sans font-medium text-sm tracking-wide text-foreground/80">
                 Follow me
               </h3>
               <Socials />
-            </div>
-
-            {/* Decorative circuit lines */}
-            <div className="hidden md:block pt-4" aria-hidden="true">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 border border-cyber-cyan/30 rotate-45" />
-                  <span className="h-px flex-1 bg-gradient-to-r from-cyber-cyan/20 to-transparent" />
-                </div>
-                <div className="flex items-center gap-2 ml-4">
-                  <span className="w-1.5 h-1.5 bg-cyber-cyan/20 rounded-full" />
-                  <span className="h-px flex-1 bg-gradient-to-r from-cyber-cyan/15 to-transparent" />
-                </div>
-                <div className="flex items-center gap-2 ml-8">
-                  <span className="w-1 h-1 bg-cyber-cyan/15 rounded-full" />
-                  <span className="h-px flex-1 bg-gradient-to-r from-cyber-cyan/10 to-transparent" />
-                </div>
-              </div>
             </div>
           </div>
 
           <Form {...form}>
             <form
-              className="border border-cyber-cyan/10 bg-card/30 backdrop-blur-sm p-5 rounded-md space-y-4 w-full hover:border-cyber-cyan/20 transition-colors duration-300"
+              className="border border-border/40 bg-card/50 backdrop-blur-sm p-5 rounded-lg space-y-4 w-full hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--primary)/0.05)] transition-all duration-500"
               onSubmit={form.handleSubmit(onSubmit)}
             >
-              <h2 className="text-center text-sm font-jetbrains block sm:hidden text-cyber-cyan/70 tracking-wider uppercase">
+              <h2 className="text-center text-sm font-sans block sm:hidden text-primary/70 tracking-wider font-semibold">
                 Send a Message
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
@@ -94,7 +75,7 @@ const ContactUs = () => {
                           type="text"
                           placeholder="Full Name"
                           {...field}
-                          className="bg-transparent border-cyber-cyan/15 focus:border-cyber-cyan/50 focus:shadow-neon-sm placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
+                          className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
                         />
                       </FormControl>
                       <FormMessage />
@@ -112,7 +93,7 @@ const ContactUs = () => {
                           type="text"
                           placeholder="Phone No"
                           {...field}
-                          className="bg-transparent border-cyber-cyan/15 focus:border-cyber-cyan/50 focus:shadow-neon-sm placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
+                          className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
                         />
                       </FormControl>
                       <FormMessage />
@@ -126,12 +107,12 @@ const ContactUs = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl>
+                     <FormControl>
                       <Input
                         type="text"
                         placeholder="Email"
                         {...field}
-                        className="bg-transparent border-cyber-cyan/15 focus:border-cyber-cyan/50 focus:shadow-neon-sm placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
+                        className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
                       />
                     </FormControl>
                     <FormMessage />
@@ -148,7 +129,7 @@ const ContactUs = () => {
                       <Textarea
                         placeholder="Message"
                         {...field}
-                        className="bg-transparent border-cyber-cyan/15 focus:border-cyber-cyan/50 focus:shadow-neon-sm placeholder:text-muted-foreground/50 font-sans transition-all duration-300 min-h-[120px]"
+                        className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300 min-h-[120px]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -158,11 +139,11 @@ const ContactUs = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-cyber-cyan/80 to-cyber-cyan/40 hover:from-cyber-cyan hover:to-cyber-cyan/70 text-background font-orbitron font-semibold tracking-wider text-sm uppercase hover:shadow-neon-cyan transition-all duration-300 border-0"
+                className="w-full text-primary-foreground font-sans font-medium tracking-wide text-sm transition-all duration-300 border-0"
                 disabled={isPending}
               >
                 {isPending ? (
-                  <span className="animate-pulse">Transmitting...</span>
+                  <span className="animate-pulse">Sending...</span>
                 ) : (
                   'Send Message'
                 )}

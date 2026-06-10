@@ -9,7 +9,7 @@ import { TProject } from './_project-mock'
 type ProjectItemProps = {} & TProject
 
 const linkClass =
-  '!p-0 h-full hover:!text-cyber-cyan !flex items-center gap-2 !text-sm !text-cyber-cyan/70 font-jetbrains transition-all duration-300'
+  '!p-0 h-full hover:!text-primary !flex items-center gap-2 !text-sm !text-foreground/70 font-sans font-medium transition-all duration-300'
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
   Icon,
@@ -23,9 +23,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => {
   return (
     <li role="listitem">
-      <div className="grid gap-4 group el-focus-styles rounded-md relative">
-        {/* Image with HUD overlay */}
-        <div className="aspect-video relative overflow-hidden rounded-md hud-corners">
+      <div className="grid gap-4 group el-focus-styles rounded-md relative border border-transparent hover:border-white/5 p-2 transition-all duration-300">
+        <div className="aspect-video relative overflow-hidden rounded-md">
           <Image
             alt={`${title} project cover`}
             priority
@@ -34,32 +33,21 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             className="size-full object-cover transition-all duration-700 group-hover:scale-105"
           />
 
-          {/* Cyberpunk overlay on hover */}
           <div className="absolute size-full group-hover:opacity-100 opacity-0 inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 transition-all duration-500 grid place-content-center">
             <div className="transform scale-90 group-hover:scale-100 transition-transform duration-500">
               <Icon />
             </div>
           </div>
 
-          {/* Scanline on hover */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-            style={{
-              background:
-                'repeating-linear-gradient(0deg, transparent, transparent 2px, hsla(180,100%,50%,0.05) 2px, hsla(180,100%,50%,0.05) 4px)',
-            }}
-          />
-
-          {/* Bottom gradient */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
         </div>
 
-        <hgroup className="space-y-2 sm:space-y-1">
-          <h2 className="font-orbitron font-medium text-base tracking-wide group-hover:text-cyber-cyan transition-colors duration-300">
+        <hgroup className="space-y-2 sm:space-y-1 px-1">
+          <h2 className="font-sans font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300 text-foreground">
             {title}
           </h2>
 
-          <p className="text-xs text-cyber-cyan/60 font-jetbrains" aria-label="project stacks">
+          <p className="text-xs text-primary/70 font-mono" aria-label="project stacks">
             {stacks.join(' · ')}
           </p>
 

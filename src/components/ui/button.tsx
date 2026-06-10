@@ -9,13 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-neon-sm',
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        outline: 'border border-cyber-cyan/30 bg-background hover:bg-cyber-cyan/10 hover:text-cyber-cyan hover:border-cyber-cyan/60 hover:shadow-neon-sm',
+        default: 'bg-primary text-primary-foreground hover:bg-primary/95 hover:shadow-[0_0_15px_hsl(var(--primary)/0.35)]',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/95',
+        outline: 'border border-primary/30 bg-background hover:bg-primary/10 hover:text-primary hover:border-primary/60 hover:shadow-[0_0_15px_hsl(var(--primary)/0.15)]',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-cyber-cyan/10 hover:text-cyber-cyan',
-        link: 'text-cyber-cyan underline-offset-4 hover:underline',
-        cyber: 'border border-cyber-cyan/50 bg-cyber-cyan/10 text-cyber-cyan font-orbitron uppercase tracking-widest hover:bg-cyber-cyan hover:text-black hover:shadow-neon-cyan transition-all duration-300',
+        ghost: 'hover:bg-primary/10 hover:text-primary',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-10 px-4 py-2',

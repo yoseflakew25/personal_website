@@ -26,7 +26,7 @@ const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undef
     .map(({ Icon, ...rest }) => rest)
 
   return (
-    <div className="space-y-0 relative overflow-y-hidden h-[calc(100dvh-10rem)]">
+    <div className="relative h-[calc(100dvh-8rem)] overflow-hidden w-full">
       <ProjectList projects={filteredProjects} metadata={false} />
     </div>
   )

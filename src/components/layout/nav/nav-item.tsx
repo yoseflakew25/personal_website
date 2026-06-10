@@ -5,6 +5,7 @@ import { NavType } from './_nav-mock'
 import { usePathname } from 'next/navigation'
 import { cn } from '~/lib/utils'
 import { motion } from 'framer-motion'
+import { useActiveSection } from './active-section-context'
 
 const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean>> }> = ({
   label,
@@ -12,48 +13,7 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
   setOpen,
 }) => {
   const pathname = usePathname()
-  const [activeSection, setActiveSection] = React.useState<string>('')
-
-  React.useEffect(() => {
-    if (pathname !== '/') {
-      setActiveSection('')
-      return
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0,
-    }
-
-    const sections = ['github', 'contact']
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
-    }, observerOptions)
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    // Special case for "Home" (top of the page)
-    const handleScroll = () => {
-      if (window.scrollY < 100) {
-        setActiveSection('home')
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [pathname])
+  const activeSection = useActiveSection()
 
   const isActive = React.useMemo(() => {
     if (path === '/') {
@@ -76,9 +36,9 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
     <li
       role="listitem"
       className={cn(
-        'relative h-7 px-2 flex items-center sm:px-0 font-medium rounded-md transition-all duration-300 font-jetbrains text-sm tracking-wide',
+        'relative h-7 px-2 flex items-center sm:px-0 font-medium rounded-md transition-all duration-300 font-sans text-sm tracking-wide',
         {
-          'text-cyber-cyan sm:text-cyber-cyan': isActive,
+          'text-foreground': isActive,
           'text-muted-foreground hover:text-foreground': !isActive,
         },
       )}
@@ -97,9 +57,9 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
         <motion.span
           layoutId="pill-tab"
           transition={{ type: 'spring', duration: 0.4, bounce: 0, delay: 0.1 }}
-          className="hidden sm:flex absolute left-0 top-1 size-full h-full w-full items-end justify-center"
+          className="hidden sm:flex absolute left-0 -bottom-1 h-full w-full items-end justify-center"
         >
-          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-cyber-cyan to-cyber-cyan/30 shadow-neon-cyan" />
+          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-primary to-primary/30" />
         </motion.span>
       )}
     </li>

@@ -1,20 +1,21 @@
 'use client'
 import { ReactNode } from 'react'
 
+import { ThemeProvider } from '~/components/ui/theme-provider'
 import { TooltipProvider } from '~/components/ui/tooltip'
 import ReactQueryProvider from './react-query'
 import { Toaster } from '~/components/ui/sonner'
-import CyberCursor from '~/components/ui/cyber-cursor'
 
 const RootProviders = ({ children }: { children: ReactNode }) => {
   return (
-    <ReactQueryProvider>
-      <TooltipProvider>
-        <CyberCursor />
-        {children}
-        <Toaster />
-      </TooltipProvider>
-    </ReactQueryProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ReactQueryProvider>
+        <TooltipProvider>
+          {children}
+          <Toaster />
+        </TooltipProvider>
+      </ReactQueryProvider>
+    </ThemeProvider>
   )
 }
 

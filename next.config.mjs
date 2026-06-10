@@ -1,21 +1,10 @@
-import { fileURLToPath } from 'node:url'
-import createJiti from 'jiti'
-const jiti = createJiti(fileURLToPath(import.meta.url))
-
-jiti('./src/constants/env')
-
-const isDev = process.argv.indexOf('dev') !== -1
-const isBuild = process.argv.indexOf('build') !== -1
-
-if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
-  process.env.VELITE_STARTED = '1'
-  const { build } = await import('velite')
-  await build({ watch: isDev, clean: !isDev })
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+  },
 
   // Remove source maps in production
   productionBrowserSourceMaps: false,
@@ -42,6 +31,28 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+  },
+
+  // Suppress watchpack EINVAL warnings on Windows when scanning drive-root system files
+  webpack: (config, { dev }) => {
+    if (dev && process.platform === 'win32') {
+      const windowsSystemRe =
+        /[\\/](?:pagefile|swapfile|hiberfil)\.sys$|[\\/]DumpStack\.log\.tmp$|[\\/]System Volume Information(?:[\\/]|$)/
+      const existingIgnored = config.watchOptions?.ignored
+
+      config.watchOptions = {
+        ...config.watchOptions,
+        ignored:
+          existingIgnored instanceof RegExp
+            ? new RegExp(
+                `(?:${existingIgnored.source})|(?:${windowsSystemRe.source})`,
+                existingIgnored.flags
+              )
+            : windowsSystemRe,
+      }
+    }
+
+    return config
   },
 
   // HTTP headers for better caching

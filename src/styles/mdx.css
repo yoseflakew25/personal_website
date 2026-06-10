@@ -39,11 +39,11 @@
 }
 
 .mdx-content p {
-  @apply text-base my-0 mt-3 text-muted-foreground font-ubuntu;
+  @apply text-base my-0 mt-3 text-muted-foreground;
 }
 
 .mdx-content p code {
-  @apply font-ubuntu;
+  @apply font-dank;
 }
 
 .mdx-content p a {

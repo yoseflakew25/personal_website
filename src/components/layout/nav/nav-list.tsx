@@ -19,7 +19,7 @@ const NavList: React.FC<NavProps> = ({ setOpen }) => {
         <a
           href="/Yosef Lakew Resume.pdf"
           download
-          className="px-4 py-1.5 border border-cyber-cyan/50 text-cyber-cyan font-jetbrains font-medium rounded-sm hover:bg-cyber-cyan/10 hover:border-cyber-cyan hover:shadow-neon-sm transition-all duration-300 text-sm el-focus-styles uppercase tracking-wider"
+          className="px-4 py-1.5 border border-primary/50 text-primary font-sans font-medium rounded-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm el-focus-styles"
         >
           Resume
         </a>

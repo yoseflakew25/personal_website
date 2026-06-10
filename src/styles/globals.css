@@ -6,11 +6,6 @@
   html {
     scroll-behavior: smooth;
   }
-
-  :root {
-    --cyber-cyan: 180 100% 50%;
-    --cyber-cyan-darker: 180 100% 40%;
-  }
 }
 
 @layer components {
@@ -19,8 +14,8 @@
   }
 
   ::selection {
-    background: hsl(180 100% 50% / 0.4);
-    color: #fff;
+    background: hsl(var(--primary) / 0.35);
+    color: hsl(var(--primary-foreground));
   }
 
   /* ===== Custom Scrollbar ===== */
@@ -30,347 +25,25 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(240 15% 5%);
+    background: hsl(var(--muted));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(180 100% 50% / 0.6), hsl(180 100% 40% / 0.4));
+    background: hsl(var(--primary) / 0.15);
     border-radius: 10px;
+    border: 1px solid transparent;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, hsl(180 100% 50% / 0.9), hsl(180 100% 40% / 0.7));
+    background: hsl(var(--primary) / 0.45);
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.3);
   }
 
-  /* ===== Neon Glow Utilities ===== */
-  .neon-glow-cyan {
-    box-shadow:
-      0 0 5px hsl(180 100% 50% / 0.3),
-      0 0 20px hsl(180 100% 50% / 0.15),
-      0 0 40px hsl(180 100% 50% / 0.05);
-  }
-
-  .neon-text-cyan {
-    text-shadow:
-      0 0 7px hsl(180 100% 50% / 0.6),
-      0 0 20px hsl(180 100% 50% / 0.3),
-      0 0 40px hsl(180 100% 50% / 0.1);
-  }
-
-  /* ===== Scanline Overlay ===== */
-  .scanline-overlay {
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    width: 100vw;
-    height: 200vh;
-    pointer-events: none;
-    z-index: 9999;
-    background: repeating-linear-gradient(0deg,
-        transparent,
-        transparent 2px,
-        hsl(180 100% 50% / 0.015) 2px,
-        hsl(180 100% 50% / 0.015) 4px);
-    animation: scanline-scroll 8s linear infinite;
-    will-change: transform;
-    transform: translateZ(0);
-  }
-
-  @keyframes scanline-scroll {
-    0% {
-      transform: translateY(0);
-    }
-
-    100% {
-      transform: translateY(100vh);
-    }
-  }
-
-  @keyframes binary-loop {
-    0% {
-      transform: translateY(-50%);
-    }
-
-    100% {
-      transform: translateY(0%);
-    }
-  }
-
-
-
-
-
-  /* ===== Glitch Text ===== */
-  .glitch-text {
-    position: relative;
-    display: inline-block;
-  }
-
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-  }
-
-  .glitch-text:hover::before {
-    opacity: 0.8;
-    color: hsl(180 100% 50%);
-    animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  }
-
-  .glitch-text:hover::after {
-    opacity: 0.8;
-    color: hsl(180 100% 40%);
-    animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-  }
-
-  @keyframes glitch-1 {
-    0% {
-      transform: translate(0);
-    }
-
-    20% {
-      transform: translate(-3px, 2px);
-    }
-
-    40% {
-      transform: translate(3px, -2px);
-    }
-
-    60% {
-      transform: translate(-2px, 1px);
-    }
-
-    80% {
-      transform: translate(2px, -1px);
-    }
-
-    100% {
-      transform: translate(0);
-    }
-  }
-
-  @keyframes glitch-2 {
-    0% {
-      transform: translate(0);
-    }
-
-    20% {
-      transform: translate(3px, -2px);
-    }
-
-    40% {
-      transform: translate(-3px, 2px);
-    }
-
-    60% {
-      transform: translate(2px, -1px);
-    }
-
-    80% {
-      transform: translate(-2px, 1px);
-    }
-
-    100% {
-      transform: translate(0);
-    }
-  }
-
-  /* ===== Animated Neon Border ===== */
-  @keyframes border-pulse {
-
-    0%,
-    100% {
-      border-color: hsl(180 100% 50% / 0.3);
-      box-shadow: 0 0 5px hsl(180 100% 50% / 0.1);
-    }
-
-    50% {
-      border-color: hsl(180 100% 50% / 0.7);
-      box-shadow: 0 0 15px hsl(180 100% 50% / 0.2), 0 0 30px hsl(180 100% 50% / 0.05);
-    }
-  }
-
-  .border-neon-pulse {
-    animation: border-pulse 3s ease-in-out infinite;
-  }
-
-  /* ===== HUD Corner Brackets ===== */
-  .hud-corners {
-    position: relative;
-  }
-
-  .hud-corners::before,
-  .hud-corners::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: hsl(180 100% 50% / 0.6);
-    transition: all 0.3s ease;
-  }
-
-  .hud-corners::before {
-    top: -1px;
-    left: -1px;
-    border-top: 2px solid;
-    border-left: 2px solid;
-  }
-
-  .hud-corners::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 2px solid;
-    border-right: 2px solid;
-  }
-
-  .hud-corners:hover::before,
-  .hud-corners:hover::after {
-    width: 30px;
-    height: 30px;
-    border-color: hsl(180 100% 50% / 1);
-  }
-
-  /* ===== Gradient Border Card ===== */
-  @property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-
-  .gradient-border-card {
-    position: relative;
-    background: hsl(240 12% 8%);
-    border-radius: 0.75rem;
-  }
-
-  .gradient-border-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(from var(--angle),
-        transparent 40%,
-        hsl(180 100% 50% / 0.5),
-        hsl(180 100% 40% / 0.5),
-        transparent 60%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: spin-border 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .gradient-border-card:hover::before {
-    opacity: 1;
-  }
-
-  @keyframes spin-border {
-    from {
-      --angle: 0deg;
-    }
-
-    to {
-      --angle: 360deg;
-    }
-  }
-
-  /* ===== Section Divider ===== */
+  /* ===== Neon Divider ===== */
   .neon-divider {
     height: 1px;
-    background: linear-gradient(90deg,
-        transparent,
-        hsl(180 100% 50% / 0.4),
-        hsl(180 100% 40% / 0.3),
-        transparent);
-  }
-
-  /* ===== Typewriter Cursor ===== */
-  .typewriter-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1.1em;
-    background: hsl(180 100% 50%);
-    margin-left: 2px;
-    animation: blink 1s step-end infinite;
-    vertical-align: text-bottom;
-    box-shadow: 0 0 8px hsl(180 100% 50% / 0.6);
-  }
-
-  @keyframes blink {
-
-    0%,
-    50% {
-      opacity: 1;
-    }
-
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
-
-  /* ===== Float Animation ===== */
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-
-    33% {
-      transform: translateY(-8px) rotate(1deg);
-    }
-
-    66% {
-      transform: translateY(4px) rotate(-1deg);
-    }
-  }
-
-  @keyframes float-delayed {
-
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-
-    33% {
-      transform: translateY(6px) rotate(-1deg);
-    }
-
-    66% {
-      transform: translateY(-10px) rotate(1deg);
-    }
-  }
-
-  /* ===== Data Stream on Timeline ===== */
-  @keyframes data-stream {
-    0% {
-      top: 0;
-      opacity: 0;
-    }
-
-    10% {
-      opacity: 1;
-    }
-
-    90% {
-      opacity: 1;
-    }
-
-    100% {
-      top: 100%;
-      opacity: 0;
-    }
+    width: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.15) 15%, hsl(var(--primary) / 0.5) 50%, hsl(var(--primary) / 0.15) 85%, transparent);
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.15);
   }
 }
-

@@ -1,5 +1,4 @@
-import { Bai_Jamjuree, Ubuntu, Orbitron, JetBrains_Mono, Silkscreen } from 'next/font/google'
-
+import { Fira_Code, JetBrains_Mono, Pixelify_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
 export const dankMono = localFont({
@@ -8,40 +7,20 @@ export const dankMono = localFont({
   variable: '--font-dank',
 })
 
-export const fontSans = Bai_Jamjuree({
+export const fontSans = Fira_Code({
   subsets: ['latin'],
-  weight: ['400', '700'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-export const ubuntu = Ubuntu({
+export const fontPixel = Pixelify_Sans({
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-ubuntu',
+  variable: '--font-pixel',
   display: 'swap',
 })
-
-export const orbitron = Orbitron({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-orbitron',
-  display: 'swap',
-})
-
 
 export const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
   variable: '--font-jetbrains',
   display: 'swap',
 })
-
-export const silkscreen = Silkscreen({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-silkscreen',
-  display: 'swap',
-})
-
-

@@ -1,7 +1,6 @@
-import Image from 'next/image'
+import { CodeIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-import GlitchText from '~/components/ui/glitch-text'
 
 const Logo = () => {
   return (
@@ -9,12 +8,11 @@ const Logo = () => {
       href="/"
       role="link"
       aria-label="Home"
-      className="el-focus-styles rounded-md flex items-center gap-2.5 group"
+      className="el-focus-styles rounded-md flex items-center gap-2 group"
     >
-      <GlitchText
-        text="YL"
-        className="font-orbitron text-xl font-bold tracking-[0.2em] text-cyber-cyan group-hover:text-white transition-colors duration-300"
-      />
+      <span className="font-pixel text-xl font-bold tracking-widest text-foreground group-hover:text-primary transition-colors duration-300 ">
+       Yosef <span className="text-primary">Codes <CodeIcon     className="size-6 inline-block text-primary" /></span>
+      </span>
     </Link>
   )
 }

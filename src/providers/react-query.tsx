@@ -5,7 +5,7 @@ function ReactQueryProvider({children}: React.PropsWithChildren) {
   const [client] = React.useState(
     new QueryClient({
       defaultOptions: {
-        queries: {staleTime: 5000, refetchOnWindowFocus: false},
+        queries: { staleTime: 5 * 60 * 1000, gcTime: 10 * 60 * 1000, refetchOnWindowFocus: false },
       },
     }),
   )

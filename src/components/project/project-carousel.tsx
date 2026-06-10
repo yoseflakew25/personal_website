@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaExternalLinkAlt, FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { TProjectSerialized } from './_project-mock'
@@ -28,6 +28,10 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
         onSelect(emblaApi)
         emblaApi.on('select', onSelect)
         emblaApi.on('reInit', onSelect)
+        return () => {
+            emblaApi.off('select', onSelect)
+            emblaApi.off('reInit', onSelect)
+        }
     }, [emblaApi, onSelect])
 
     return (
@@ -43,8 +47,8 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         key={`num-${index}`}
-                                        className="block font-orbitron text-6xl md:text-8xl opacity-10 text-white stroke-text leading-none select-none"
-                                        style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)', color: 'transparent' }}
+                                        className="block font-sans font-bold text-6xl md:text-8xl leading-none select-none"
+                                        style={{ WebkitTextStroke: '2px hsl(var(--foreground) / 0.15)', color: 'transparent' }}
                                     >
                                         {String(index + 1).padStart(2, '0')}
                                     </motion.span>
@@ -54,7 +58,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 }}
                                         key={`title-${index}`}
-                                        className="text-4xl md:text-5xl font-orbitron font-bold text-cyber-cyan tracking-tight"
+                                        className="text-4xl md:text-5xl font-pixel font-bold text-foreground tracking-wider lowercase"
                                     >
                                         {project.title}
                                     </motion.h2>
@@ -64,7 +68,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 0.2 }}
                                         key={`subtitle-${index}`}
-                                        className="text-cyber-cyan/60 font-jetbrains text-sm uppercase tracking-widest"
+                                        className="text-primary/70 font-mono font-medium text-sm uppercase tracking-widest"
                                     >
                                         Fullstack Project
                                     </motion.p>
@@ -81,7 +85,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         <p className="line-clamp-4 md:line-clamp-none">{project.description}</p>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-cyber-cyan font-jetbrains font-semibold text-sm uppercase tracking-wider">
+                                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-primary font-mono font-medium text-sm uppercase tracking-wider">
                                         {project.stacks.slice(0, 4).map((stack) => (
                                             <span key={stack}>{stack}</span>
                                         ))}
@@ -99,7 +103,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                         href={project.deployedURL}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="size-12 grid place-content-center border border-white/10 rounded-lg hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-300 backdrop-blur-sm bg-white/5"
+                                        className="size-12 grid place-content-center border border-border/60 rounded-lg hover:border-primary hover:text-primary hover:shadow-[0_0_12px_hsl(var(--primary)/0.25)] hover:bg-primary/[0.04] transition-all duration-300 bg-transparent"
                                     >
                                         <FaExternalLinkAlt />
                                     </a>
@@ -108,7 +112,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                             href={project.repoUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="size-12 grid place-content-center border border-white/10 rounded-lg hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-300 backdrop-blur-sm bg-white/5"
+                                            className="size-12 grid place-content-center border border-border/60 rounded-lg hover:border-primary hover:text-primary hover:shadow-[0_0_12px_hsl(var(--primary)/0.25)] hover:bg-primary/[0.04] transition-all duration-300 bg-transparent"
                                         >
                                             <FaGithub size={20} />
                                         </a>
@@ -123,17 +127,17 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.2, duration: 0.5 }}
                                     key={`img-${index}`}
-                                    className="relative aspect-video rounded-xl overflow-hidden border-2 border-cyber-cyan/30 shadow-2xl group/img"
+                                    className="relative aspect-video rounded-xl overflow-hidden border border-border/40 shadow-2xl group/img"
                                 >
                                     <Image
                                         src={project.cover}
                                         alt={project.title}
                                         fill
+                                        loading={index === 0 ? 'eager' : 'lazy'}
                                         className="object-cover transition-transform duration-700 group-hover/img:scale-105"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
-                                    <div className="absolute inset-0 scanline-overlay opacity-20" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent dark:from-black/60 opacity-60 dark:opacity-70" />
                                 </motion.div>
                             </div>
                         </div>
@@ -145,14 +149,14 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
             <div className="absolute bottom-4 right-4 flex gap-4 z-10">
                 <button
                     onClick={scrollPrev}
-                    className="size-12 border border-white/10 rounded-lg grid place-content-center hover:bg-cyber-cyan hover:text-black hover:border-cyber-cyan transition-all duration-300 backdrop-blur-md"
+                    className="size-12 border border-border/60 rounded-lg grid place-content-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 bg-transparent"
                     aria-label="Previous Project"
                 >
                     <FaChevronLeft />
                 </button>
                 <button
                     onClick={scrollNext}
-                    className="size-12 border border-white/10 rounded-lg grid place-content-center hover:bg-cyber-cyan hover:text-black hover:border-cyber-cyan transition-all duration-300 backdrop-blur-md"
+                    className="size-12 border border-border/60 rounded-lg grid place-content-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 bg-transparent"
                     aria-label="Next Project"
                 >
                     <FaChevronRight />
@@ -166,7 +170,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                         key={i}
                         className={cn(
                             "h-1 transition-all duration-300 rounded-full",
-                            selectedIndex === i ? "w-8 bg-cyber-cyan shadow-neon-sm" : "w-4 bg-white/10"
+                            selectedIndex === i ? "w-8 bg-primary shadow-sm" : "w-4 bg-border"
                         )}
                     />
                 ))}

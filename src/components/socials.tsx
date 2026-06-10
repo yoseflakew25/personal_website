@@ -14,42 +14,42 @@ const socialsIcons = [
     label: 'Github',
     icon: <FiGithub className="size-[1.1rem]" />,
     href: config.social.github,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
   {
     id: 2,
     label: 'Linkedin',
     icon: <Linkedin className="size-[1.1rem]" />,
     href: config.social.linkedin,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
   {
     id: 3,
     label: 'Instagram',
     icon: <FaInstagram className="size-[1.1rem]" />,
     href: config.social.instagram,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
   {
     id: 4,
     label: 'X',
     icon: <TbBrandX className="size-[1.1rem]" />,
     href: config.social.x,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
   {
     id: 5,
     label: 'Telegram',
     icon: <TbBrandTelegram className="size-[1.1rem]" />,
     href: config.social.telegram,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
   {
     id: 6,
     label: 'Gmail',
     icon: <SiGmail className="size-[1.1rem]" />,
     href: `mailto:${config.social.email}`,
-    hoverClass: 'hover:border-cyber-cyan/50 hover:text-cyber-cyan hover:shadow-neon-sm' as ClassValue,
+    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
   },
 ]
 
@@ -63,7 +63,7 @@ const Socials = () => {
               <a
                 href={social.href}
                 className={cn(
-                  'border border-cyber-cyan/10 bg-card/30 backdrop-blur-sm text-muted-foreground size-9 flex items-center justify-center rounded-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                  'border border-border/60 bg-card/50 backdrop-blur-sm text-muted-foreground size-9 flex items-center justify-center rounded-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
                   social.hoverClass,
                 )}
                 aria-label={social.label}
@@ -73,7 +73,7 @@ const Socials = () => {
                 {social.icon}
               </a>
             </TooltipTrigger>
-            <TooltipContent side="bottom" className="bg-card border-cyber-cyan/20 text-cyber-cyan/80 text-xs font-jetbrains">
+            <TooltipContent side="bottom" className="bg-card border-border text-foreground/80 text-xs font-mono">
               <span>{social.label}</span>
             </TooltipContent>
           </Tooltip>
