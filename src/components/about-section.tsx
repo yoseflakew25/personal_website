@@ -22,7 +22,7 @@ const AboutSection = () => {
 
         <ScrollReveal variant="fadeUp" delay={0.2}>
           <h1 className="font-pixel font-bold text-4xl sm:text-6xl tracking-wider leading-tight text-foreground lowercase">
-            hello, i'm yosef lakew.
+            hello, i&apos;m yosef lakew.
           </h1>
         </ScrollReveal>
 
