@@ -6,7 +6,6 @@ import { SiGmail } from 'react-icons/si'
 import { TbBrandTelegram, TbBrandX } from 'react-icons/tb'
 import config from '~/config'
 import { cn } from '~/lib/utils'
-import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 
 const socialsIcons = [
   {
@@ -58,25 +57,19 @@ const Socials = () => {
     <ul className="flex items-center gap-2">
       {socialsIcons.map(social => (
         <li key={social.id}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <a
-                href={social.href}
-                className={cn(
-                  'border border-border/60 bg-card/50 backdrop-blur-sm text-muted-foreground size-9 flex items-center justify-center rounded-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                  social.hoverClass,
-                )}
-                aria-label={social.label}
-                target="_blank"
-                rel="external"
-              >
-                {social.icon}
-              </a>
-            </TooltipTrigger>
-            <TooltipContent side="bottom" className="bg-card border-border text-foreground/80 text-xs font-mono">
-              <span>{social.label}</span>
-            </TooltipContent>
-          </Tooltip>
+          <a
+            href={social.href}
+            title={social.label}
+            className={cn(
+              'border border-border/60 bg-card/50 backdrop-blur-sm text-muted-foreground size-9 flex items-center justify-center rounded-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+              social.hoverClass,
+            )}
+            aria-label={social.label}
+            target="_blank"
+            rel="external"
+          >
+            {social.icon}
+          </a>
         </li>
       ))}
     </ul>

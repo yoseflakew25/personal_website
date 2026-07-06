@@ -1,7 +1,3 @@
-import { createId } from '@paralleldrive/cuid2'
-import { ChainGpt, LumaIcon } from '~/assets/svg'
-import { Akil, Eskalate, Jotion, YubaNow, HomeFinder, Summizer, Photogram } from './project-icons'
-
 // Project cover images
 import eskalateCover from '~/assets/images/cover/eskalate.png'
 import akilCover from '~/assets/images/cover/akil.png'
@@ -10,10 +6,10 @@ import homeFinderCover from '~/assets/images/cover/homefinder.png'
 import notionCover from '~/assets/images/cover/jotion.png'
 import summerizerCover from '~/assets/images/cover/summerizer.png'
 import photogramCover from '~/assets/images/cover/photogram.png'
-const projects = [
+
+export const projects = [
   {
-    id: createId(),
-    Icon: YubaNow,
+    id: 'yuba',
     title: `Yuba`,
     description:
       'Yuba is an innovative platform designed for connecting users with various resources and services tailored to their needs. It focuses on enhancing the user experience through personalized recommendations and seamless interactions.',
@@ -24,8 +20,7 @@ const projects = [
     repoUrl: 'https://github.com/DossieScholar/Yuba',
   },
   {
-    id: createId(),
-    Icon: Eskalate,
+    id: 'eskalate',
     title: `Eskalate`,
     description:
       'Eskalate is a premium platform connecting businesses with top-tier offshore developers and dedicated teams. Specializing in talent outsourcing and end-to-end project delivery, Eskalate provides access to Google-level developers at competitive rates.',
@@ -36,8 +31,7 @@ const projects = [
     repoUrl: 'https://github.com/A2SV/Eskalate',
   },
   {
-    id: createId(),
-    Icon: Akil,
+    id: 'akil',
     title: `Akil`,
     description:
       'Akil is a platform designed to connect organizations with youth seeking opportunities. By simplifying the process of managing opportunities and enhancing communication, Akil helps organizations find the right talent while offering individuals tailored opportunities.',
@@ -47,10 +41,8 @@ const projects = [
     isRepo: true,
     repoUrl: 'https://github.com/A2SV/AKIL',
   },
-
   {
-    id: createId(),
-    Icon: HomeFinder,
+    id: 'homefinder',
     title: `HomeFinder`,
     description:
       'HomeFinder is a comprehensive website that allows you to list and find a variety of homes for rent and purchase. This project provides a seamless and user-friendly experience for both homebuyers and property owners.',
@@ -61,8 +53,7 @@ const projects = [
     repoUrl: 'https://github.com/yoseflakew25/HomeFinder',
   },
   {
-    id: createId(),
-    Icon: Jotion,
+    id: 'notion-clone',
     title: `Fullstack Notion Clone`,
     description:
       'This project is a clone of the note-taking app Notion, built with Next.js and TypeScript. Key features include a real-time database, a Notion-style editor, light and dark modes, infinite nested documents, authentication, and file recovery.',
@@ -81,8 +72,7 @@ const projects = [
     repoUrl: 'https://github.com/yoseflakew25/notion-clone',
   },
   {
-    id: createId(),
-    Icon: Summizer,
+    id: 'summize',
     title: `Summize - AI Article Summarizer`,
     description:
       'Summize is an open-source article summarizer that utilizes Natural Language Processing (NLP) techniques to generate a summary of a given article. It simplifies your reading by transforming lengthy articles into clear and concise summaries.',
@@ -93,8 +83,7 @@ const projects = [
     repoUrl: 'https://github.com/yoseflakew25/AI-article-summarizer',
   },
   {
-    id: createId(),
-    Icon: Photogram,
+    id: 'photogram',
     title: `Photogram`,
     description:
       'A photo gallery app using the Pixabay API with home, category, tag, and single photo pages. It features infinite scroll, a masonry layout, filters, image search, album listings, and dark/light mode.',
@@ -112,9 +101,6 @@ const projects = [
     isRepo: true,
     repoUrl: 'https://github.com/yoseflakew25/Photogram-app',
   },
-]
+] as const
 
-export default projects
-export type TProject = (typeof projects)[0]
-export const serializedProjects = projects.map(({ Icon, ...rest }) => ({ ...rest }))
-export type TProjectSerialized = (typeof serializedProjects)[0]
+export type TProjectSerialized = (typeof projects)[number]

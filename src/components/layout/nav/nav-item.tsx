@@ -4,7 +4,6 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { NavType } from './_nav-mock'
 import { usePathname } from 'next/navigation'
 import { cn } from '~/lib/utils'
-import { motion } from 'framer-motion'
 import { useActiveSection } from './active-section-context'
 
 const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean>> }> = ({
@@ -54,13 +53,9 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
       </Link>
 
       {isActive && (
-        <motion.span
-          layoutId="pill-tab"
-          transition={{ type: 'spring', duration: 0.4, bounce: 0, delay: 0.1 }}
-          className="hidden sm:flex absolute left-0 -bottom-1 h-full w-full items-end justify-center"
-        >
-          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-primary to-primary/30" />
-        </motion.span>
+        <span className="hidden sm:flex absolute left-0 -bottom-1 h-full w-full items-end justify-center">
+          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-primary to-primary/30 transition-all duration-300" />
+        </span>
       )}
     </li>
   )

@@ -79,6 +79,7 @@ const shadcnPlugin = plugin(
         },
         fontFamily: {
           sans: ['var(--font-sans)', ...fontFamily.sans],
+          mono: ['var(--font-jetbrains)', ...fontFamily.mono],
           dank: 'var(--font-dank)',
           jetbrains: 'var(--font-jetbrains)',
           pixel: ['var(--font-pixel)', 'monospace'],

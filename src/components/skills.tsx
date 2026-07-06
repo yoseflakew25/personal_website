@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import Marquee from 'react-fast-marquee'
 import { useTheme } from 'next-themes'
 import { BACKEND_STACKS, FRONTEND_STACKS, stacksProps } from '~/constants/stack'
@@ -17,12 +18,14 @@ const Skills = () => {
 
       <ScrollReveal variant="fadeUp" delay={0.2}>
         <div className="space-y-5 w-full">
-          <Marquee autoFill pauseOnHover speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
+          <Marquee pauseOnHover speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
             <SkillsList stacks={FRONTEND_STACKS} />
+            <SkillsList stacks={FRONTEND_STACKS} aria-hidden />
           </Marquee>
 
-          <Marquee autoFill pauseOnHover direction="right" speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
+          <Marquee pauseOnHover direction="right" speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
             <SkillsList stacks={BACKEND_STACKS} />
+            <SkillsList stacks={BACKEND_STACKS} aria-hidden />
           </Marquee>
         </div>
       </ScrollReveal>
@@ -32,9 +35,9 @@ const Skills = () => {
 
 export default Skills
 
-const SkillsList = ({ stacks }: { stacks: stacksProps }) => {
+const SkillsList = ({ stacks, ...props }: { stacks: stacksProps } & React.HTMLAttributes<HTMLUListElement>) => {
   return (
-    <ul className="flex items-center" role="list">
+    <ul className="flex items-center" role="list" {...props}>
       {Object.keys(stacks).map((stack, index) => {
         const Icon = stacks[stack].Icon
         const className = stacks[stack].className

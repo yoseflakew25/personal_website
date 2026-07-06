@@ -3,7 +3,14 @@ const nextConfig = {
   compress: true,
 
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'react-icons',
+      'embla-carousel-react',
+      '@radix-ui/react-tooltip',
+      '@radix-ui/react-dialog',
+    ],
   },
 
   // Remove source maps in production
@@ -69,6 +76,10 @@ const nextConfig = {
       {
         // Cache static assets aggressively
         source: '/static/(.*)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/designs/(.*)',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ]

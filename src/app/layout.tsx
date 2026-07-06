@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { dankMono, fontPixel, fontSans, jetbrainsMono } from '~/components/ui/fonts'
+import { fontPixel, fontSans, jetbrainsMono } from '~/components/ui/fonts'
 
 import { getSEOTags, renderSchemaTags } from '~/lib/seo'
 import { cn } from '~/lib/utils'
@@ -34,7 +34,6 @@ export default function RootLayout({
           'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
           fontPixel.variable,
-          dankMono.variable,
           jetbrainsMono.variable
         )}>
 

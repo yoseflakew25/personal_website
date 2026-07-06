@@ -1,19 +1,30 @@
 'use client'
+
+import dynamic from 'next/dynamic'
 import SectionHeader from '../ui/section-header'
 import ScrollReveal from '../ui/scroll-reveal'
 import { TProjectSerialized } from './_project-mock'
 import ContentNotFound from '../ui/content-not-found'
-import ProjectCarousel from './project-carousel'
-import mockProjects from './_project-mock'
+import { projects as defaultProjects } from './_project-mock'
+
+const ProjectCarousel = dynamic(() => import('./project-carousel'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[550px] flex items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+    </div>
+  ),
+})
 
 const ProjectList = ({
   metadata,
   projects,
 }: {
   metadata?: boolean
-  projects?: TProjectSerialized[]
+  projects?: readonly TProjectSerialized[]
 }) => {
-  const displayProjects = projects || mockProjects
+  const displayProjects = projects || defaultProjects
+
   return (
     <section aria-label="projects" className="space-y-6 pt-0 relative" id="main-content">
       {metadata && (

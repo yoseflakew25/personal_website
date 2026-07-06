@@ -1,7 +1,8 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSendContactData } from '~/actions/mutations'
+import { toast } from 'sonner'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '~/components/ui/form'
 import config from '~/config'
 import { ContactSchema, contactSchemaType } from '~/schema'
@@ -14,7 +15,7 @@ import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
 
 const ContactUs = () => {
-  const { mutate, isPending } = useSendContactData()
+  const [isPending, setIsPending] = useState(false)
   const form = useForm<contactSchemaType>({
     resolver: zodResolver(ContactSchema),
     defaultValues: {
@@ -25,10 +26,26 @@ const ContactUs = () => {
     },
   })
 
-  function onSubmit(data: contactSchemaType) {
-    mutate(data, {
-      onSuccess: () => form.reset(),
-    })
+  async function onSubmit(data: contactSchemaType) {
+    setIsPending(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      toast.success("I'll be in touch shortly.")
+      form.reset()
+    } catch {
+      toast.error('Something went wrong. Please try again.')
+    } finally {
+      setIsPending(false)
+    }
   }
 
   return (

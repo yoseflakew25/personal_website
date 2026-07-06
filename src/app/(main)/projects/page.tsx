@@ -1,5 +1,4 @@
 import { ProjectList, projects } from '~/components/project'
-import SearchInput from '~/components/search-input'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
 
@@ -19,11 +18,9 @@ export const metadata: ReturnType<typeof getSEOTags> = getSEOTags({
 })
 
 const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undefined } }) => {
-  const filteredProjects = projects
-    .filter(project =>
-      project.title.toLowerCase().includes(decodeURIComponent(searchParams.search || '')),
-    )
-    .map(({ Icon, ...rest }) => rest)
+  const filteredProjects = projects.filter(project =>
+    project.title.toLowerCase().includes(decodeURIComponent(searchParams.search || '')),
+  )
 
   return (
     <div className="relative h-[calc(100dvh-8rem)] overflow-hidden w-full">

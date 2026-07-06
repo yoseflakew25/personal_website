@@ -4,15 +4,14 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { cn } from '~/lib/utils'
 import { CustomLink } from '../mdx'
-import { TProject } from './_project-mock'
+import { TProjectSerialized } from './_project-mock'
 
-type ProjectItemProps = {} & TProject
+type ProjectItemProps = {} & TProjectSerialized
 
 const linkClass =
   '!p-0 h-full hover:!text-primary !flex items-center gap-2 !text-sm !text-foreground/70 font-sans font-medium transition-all duration-300'
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
-  Icon,
   title,
   description,
   deployedURL,
@@ -27,17 +26,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         <div className="aspect-video relative overflow-hidden rounded-md">
           <Image
             alt={`${title} project cover`}
-            priority
+            loading="lazy"
             placeholder="blur"
             src={cover}
             className="size-full object-cover transition-all duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
-
-          <div className="absolute size-full group-hover:opacity-100 opacity-0 inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 transition-all duration-500 grid place-content-center">
-            <div className="transform scale-90 group-hover:scale-100 transition-transform duration-500">
-              <Icon />
-            </div>
-          </div>
 
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
         </div>

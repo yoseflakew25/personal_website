@@ -13,6 +13,11 @@ export const navData = [
   },
   {
     id: createId(),
+    label: 'Designs',
+    path: '/designs',
+  },
+  {
+    id: createId(),
     label: 'Experience',
     path: '/experience',
   },

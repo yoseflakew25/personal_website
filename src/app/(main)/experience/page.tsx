@@ -1,7 +1,10 @@
 import dynamic from 'next/dynamic'
-import Skills from '~/components/skills'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
+
+const Skills = dynamic(() => import('~/components/skills'), {
+  loading: () => <div className="h-32 animate-pulse bg-card/30 rounded-xl" />,
+})
 
 const Experience = dynamic(() => import('~/components/experience'), {
     loading: () => <div className="h-96 animate-pulse bg-white/5 rounded-xl" />
