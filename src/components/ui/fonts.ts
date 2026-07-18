@@ -1,29 +1,15 @@
-import { Inter, JetBrains_Mono, Pixelify_Sans } from 'next/font/google'
-import localFont from 'next/font/local'
+import { JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 
-export const dankMono = localFont({
-  src: './dank-mono.otf',
+export const fontMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
   display: 'swap',
-  variable: '--font-dank',
+  weight: ['300', '400', '500', '600', '700', '800'],
 })
 
-export const fontSans = Inter({
+export const fontDisplay = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-display',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
-})
-
-export const fontPixel = Pixelify_Sans({
-  subsets: ['latin'],
-  variable: '--font-pixel',
-  display: 'swap',
-  weight: ['400', '700'],
-})
-
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-  weight: ['400', '500'],
 })

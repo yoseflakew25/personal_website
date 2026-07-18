@@ -1,32 +1,54 @@
 'use client'
 import React from 'react'
-import Marquee from 'react-fast-marquee'
-import { useTheme } from 'next-themes'
 import { BACKEND_STACKS, FRONTEND_STACKS, stacksProps } from '~/constants/stack'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
 
 const Skills = () => {
-  const { resolvedTheme } = useTheme()
-  const gradientColor = resolvedTheme === 'dark' ? '#0a0a0f' : '#ffffff'
-
   return (
-    <section aria-label="skills" className="my-4 space-y-8 bg-transparent">
+    <section aria-label="skills" className="space-y-8 bg-transparent">
       <ScrollReveal variant="fadeUp">
-        <SectionHeader title="Tools & Technologies" titleClassName="text-primary" />
+        <SectionHeader title="Tools & Technologies" sectionNumber="02" />
       </ScrollReveal>
 
       <ScrollReveal variant="fadeUp" delay={0.2}>
-        <div className="space-y-5 w-full">
-          <Marquee pauseOnHover speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
-            <SkillsList stacks={FRONTEND_STACKS} />
-            <SkillsList stacks={FRONTEND_STACKS} aria-hidden />
-          </Marquee>
-
-          <Marquee pauseOnHover direction="right" speed={20} gradient gradientColor={gradientColor} gradientWidth={80}>
-            <SkillsList stacks={BACKEND_STACKS} />
-            <SkillsList stacks={BACKEND_STACKS} aria-hidden />
-          </Marquee>
+        <div className="border border-[hsl(var(--border))] divide-y divide-[hsl(var(--border))] bg-card">
+          <div className="p-3">
+            <p className="text-blueprint-meta mb-3">FRONTEND / UI</p>
+            <div className="flex flex-wrap gap-2">
+              {Object.keys(FRONTEND_STACKS).map((stack, index) => {
+                const Icon = FRONTEND_STACKS[stack].Icon
+                const className = FRONTEND_STACKS[stack].className
+                return (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase border border-[hsl(var(--border))] px-2 py-1 text-foreground/80 hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200"
+                  >
+                    <Icon className={className} aria-label={stack} />
+                    <span>{stack}</span>
+                  </span>
+                )
+              })}
+            </div>
+          </div>
+          <div className="p-3">
+            <p className="text-blueprint-meta mb-3">BACKEND / INFRA</p>
+            <div className="flex flex-wrap gap-2">
+              {Object.keys(BACKEND_STACKS).map((stack, index) => {
+                const Icon = BACKEND_STACKS[stack].Icon
+                const className = BACKEND_STACKS[stack].className
+                return (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase border border-[hsl(var(--border))] px-2 py-1 text-foreground/80 hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200"
+                  >
+                    <Icon className={className} aria-label={stack} />
+                    <span>{stack}</span>
+                  </span>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </ScrollReveal>
     </section>
@@ -34,24 +56,3 @@ const Skills = () => {
 }
 
 export default Skills
-
-const SkillsList = ({ stacks, ...props }: { stacks: stacksProps } & React.HTMLAttributes<HTMLUListElement>) => {
-  return (
-    <ul className="flex items-center" role="list" {...props}>
-      {Object.keys(stacks).map((stack, index) => {
-        const Icon = stacks[stack].Icon
-        const className = stacks[stack].className
-        return (
-          <li
-            role="listitem"
-            key={index}
-            className="mr-2.5 flex w-max items-center gap-2 rounded-md border px-3 py-2 text-[14px] shadow-sm border-border/40 bg-card/50 text-foreground/80 backdrop-blur-sm hover:border-border hover:text-primary transition-all duration-300 font-sans font-medium"
-          >
-            {<Icon className={className} aria-label={stack} />}
-            <span className="whitespace-nowrap">{stack}</span>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}

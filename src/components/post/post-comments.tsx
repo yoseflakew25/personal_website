@@ -5,7 +5,7 @@ import {env} from '~/constants/env'
 
 const PostComments = () => {
   return (
-    <div className="w-full mt-4">
+    <div className="w-full mt-4 bg-card border border-[hsl(var(--border))] p-4">
       <Giscus
         id="comments"
         repo="BinarySenseiii/personal-website"

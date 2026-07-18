@@ -14,7 +14,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col h-full rounded-xl border border-border/40 bg-transparent overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--primary)/0.08)]"
+      className="group flex flex-col h-full border border-[hsl(var(--border))] bg-card overflow-hidden transition-all duration-200 hover:border-[hsl(var(--blueprint-line)/0.5)]"
     >
       <div className="aspect-video relative overflow-hidden">
         <DesignImage
@@ -25,7 +25,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border/40 text-[11px] font-mono text-primary">
+          <span className="flex items-center gap-1.5 px-2 py-0.5 border border-[hsl(var(--border))] text-[10px] font-mono text-[hsl(var(--blueprint-line))]">
             <SiFigma className="size-3.5" />
             View in Figma
           </span>
@@ -33,11 +33,11 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
       </div>
 
       <div className="flex flex-col flex-1 p-5">
-        <h3 className="text-foreground font-sans font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300 line-clamp-2">
+        <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 line-clamp-2">
           {project.title}
         </h3>
 
-        <p className="text-muted-foreground/80 text-[13px] leading-relaxed font-sans line-clamp-3 mt-2 flex-1">
+        <p className="font-mono text-xs text-muted-foreground/80 leading-relaxed line-clamp-3 mt-2 flex-1">
           {project.des}
         </p>
 
@@ -49,7 +49,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
                 'px-2 py-0.5 rounded-full text-[10px] font-mono font-medium border transition-all duration-300',
                 tag === 'Figma'
                   ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
-                  : 'bg-primary/5 text-primary border-primary/20',
+                  : 'text-muted-foreground border-[hsl(var(--border))]',
               )}
             >
               {tag}

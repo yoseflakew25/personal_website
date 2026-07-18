@@ -2,14 +2,12 @@ import Image from 'next/image'
 import React from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
-import { cn } from '~/lib/utils'
-import { CustomLink } from '../mdx'
 import { TProjectSerialized } from './_project-mock'
 
-type ProjectItemProps = {} & TProjectSerialized
-
-const linkClass =
-  '!p-0 h-full hover:!text-primary !flex items-center gap-2 !text-sm !text-foreground/70 font-sans font-medium transition-all duration-300'
+type ProjectItemProps = TProjectSerialized & {
+  index: number
+  total: number
+}
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
   title,
@@ -19,60 +17,112 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   stacks,
   isRepo,
   repoUrl,
+  index,
+  total,
 }) => {
-  return (
-    <li role="listitem">
-      <div className="grid gap-4 group el-focus-styles rounded-md relative border border-transparent hover:border-white/5 p-2 transition-all duration-300">
-        <div className="aspect-video relative overflow-hidden rounded-md">
-          <Image
-            alt={`${title} project cover`}
-            loading="lazy"
-            placeholder="blur"
-            src={cover}
-            className="size-full object-cover transition-all duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+  const id = String(index + 1).padStart(2, '0')
 
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
+  return (
+    <div className="group relative border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
+      <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
+
+      {/* Spec header */}
+      <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex items-center justify-between">
+        <p className="text-blueprint-meta">PROJECT SPEC · {id}</p>
+        <p className="text-blueprint-meta">{stacks[0]?.toUpperCase() ?? 'N/A'}</p>
+      </div>
+
+      {/* Image */}
+      <div className="aspect-video relative overflow-hidden border-b border-[hsl(var(--border))]">
+        <Image
+          alt={`${title} project cover`}
+          loading="lazy"
+          placeholder="blur"
+          src={cover}
+          className="size-full object-cover transition-all duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+
+        {/* Number overlay */}
+        <span
+          className="absolute bottom-2 right-2 font-mono font-bold text-4xl md:text-5xl leading-none select-none pointer-events-none"
+          style={{
+            WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.12)',
+            color: 'transparent',
+          }}
+        >
+          {id}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-3 sm:p-4 space-y-3">
+        <div>
+          <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
+            {title}
+          </h3>
+          <p className="text-[10px] text-[hsl(var(--blueprint-line)/0.6)] font-mono uppercase tracking-widest mt-0.5">
+            Fullstack Project
+          </p>
         </div>
 
-        <hgroup className="space-y-2 sm:space-y-1 px-1">
-          <h2 className="font-sans font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300 text-foreground">
-            {title}
-          </h2>
+        <p className="text-muted-foreground text-xs font-mono leading-relaxed line-clamp-3">
+          {description}
+        </p>
 
-          <p className="text-xs text-primary/70 font-mono" aria-label="project stacks">
-            {stacks.join(' · ')}
-          </p>
-
-          <p className="text-muted-foreground text-sm line-clamp-2 !mt-3 font-sans leading-relaxed">
-            {description}
-          </p>
-
-          <div className="flex items-center gap-4 !mt-3">
-            <CustomLink
-              aria-label={`visit ${title} live URL`}
-              href={deployedURL}
-              className={linkClass}
+        {/* Tech stack badges */}
+        <div className="flex flex-wrap gap-1.5">
+          {stacks.map(stack => (
+            <span
+              key={stack}
+              className="px-2 py-0.5 border border-[hsl(var(--border))] text-[9px] font-mono text-muted-foreground uppercase tracking-wider transition-colors duration-200 hover:border-[hsl(var(--blueprint-line)/0.4)] hover:text-[hsl(var(--blueprint-line))]"
             >
-              <FaExternalLinkAlt size={12} />
-              <span>Live Preview</span>
-            </CustomLink>
+              {stack}
+            </span>
+          ))}
+        </div>
 
-            {isRepo && (
-              <CustomLink
-                aria-label={`visit ${title} Github Repo`}
-                href={repoUrl as string}
-                className={linkClass}
-              >
-                <FaGithub />
-                <span>Source</span>
-              </CustomLink>
-            )}
-          </div>
-        </hgroup>
+        {/* Links */}
+        <div className="flex items-center gap-4 pt-1 border-t border-[hsl(var(--border)/0.4)]">
+          <a
+            href={deployedURL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/link inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 uppercase"
+          >
+            <FaExternalLinkAlt size={10} />
+            <span>Live Preview</span>
+            <span className="text-[8px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">↗</span>
+          </a>
+
+          {isRepo && (
+            <a
+              href={repoUrl as string}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 uppercase"
+            >
+              <FaGithub size={10} />
+              <span>Source</span>
+              <span className="text-[8px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
+            </a>
+          )}
+        </div>
       </div>
-    </li>
+
+      {/* Spec footer */}
+      <div className="border-t border-dashed border-[hsl(var(--border)/0.6)] px-3 py-1 flex items-center justify-between">
+        <span className="text-blueprint-note text-[8px]">REV A</span>
+        <span className="text-blueprint-note text-[8px]">SHEET {id}/{String(total).padStart(2, '0')}</span>
+        <span className="text-blueprint-note text-[8px]">NOT TO SCALE</span>
+      </div>
+    </div>
   )
 }
+
 export default ProjectItem

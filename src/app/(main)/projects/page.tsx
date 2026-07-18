@@ -1,4 +1,5 @@
-import { ProjectList, projects } from '~/components/project'
+import { projects } from '~/components/project'
+import { ProjectList } from '~/components/project'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
 
@@ -23,7 +24,7 @@ const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undef
   )
 
   return (
-    <div className="relative h-[calc(100dvh-8rem)] overflow-hidden w-full">
+    <div className="h-full overflow-hidden">
       <ProjectList projects={filteredProjects} metadata={false} />
     </div>
   )

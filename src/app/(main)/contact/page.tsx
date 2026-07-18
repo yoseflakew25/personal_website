@@ -11,7 +11,7 @@ export const metadata = getSEOTags({
 const ContactPage = () => {
     return (
         <div className="!mt-8 space-y-0 relative">
-            <section className="py-12">
+            <section className="pb-12">
                 <ContactUs />
             </section>
         </div>

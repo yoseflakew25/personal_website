@@ -1,4 +1,3 @@
-import { CodeIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -8,10 +7,26 @@ const Logo = () => {
       href="/"
       role="link"
       aria-label="Home"
-      className="el-focus-styles rounded-md flex items-center gap-2 group"
+      className="group flex items-center gap-3 el-focus-styles"
     >
-      <span className="font-pixel text-xl font-bold tracking-widest text-foreground group-hover:text-primary transition-colors duration-300 ">
-       Yosef <span className="text-primary">Codes <CodeIcon     className="size-6 inline-block text-primary" /></span>
+      {/* Small spec bracket */}
+      <span className="hidden sm:flex flex-col leading-tight">
+        <span className="text-[8px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">PORTFOLIO</span>
+        <span className="text-[8px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">V1.0</span>
+      </span>
+
+      {/* Logo mark */}
+      <span className="font-mono text-sm sm:text-base tracking-[0.15em] text-foreground uppercase group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 font-bold">
+        <span className="text-[hsl(var(--blueprint-line)/0.5)]">{'<'}</span>
+        YL
+        <span className="text-[hsl(var(--blueprint-line)/0.5)]">{'/>'}</span>
+      </span>
+
+      {/* Small vertical divider */}
+      <span className="hidden sm:block h-4 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
+
+      <span className="hidden sm:block font-mono text-[9px] tracking-[0.2em] text-muted-foreground uppercase">
+        Yosef Lakew
       </span>
     </Link>
   )

@@ -18,20 +18,20 @@ const EducationItem: React.FC<EducationItemProps> = ({
 }) => {
     return (
         <li role="listitem" className="last:!border-b-0 border-b border-white/5 pb-6">
-            <div className="p-4 rounded-lg border border-transparent hover:border-primary/20 hover:bg-card/40 hover:shadow-[0_0_15px_hsl(var(--primary)/0.08)] transition-all duration-500 space-y-2">
+            <div className="p-4 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] transition-all duration-200 space-y-2 bg-card">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <h3 className="font-sans text-base font-semibold text-foreground tracking-tight group-hover:text-primary transition-colors">
+                    <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
                         {degree}
                     </h3>
-                    <div className="flex items-center gap-1 text-xs text-primary font-mono font-medium bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-full w-fit">
+                    <div className="flex items-center gap-1 font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] px-2 py-0.5 w-fit">
                         <Calendar size={12} />
                         <span>{date}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm font-medium text-foreground/80 font-sans">
+                <div className="font-mono text-xs text-foreground/80">
                     <div className="flex items-center gap-1.5">
-                        <GraduationCap size={14} className="text-primary/60" />
+                        <GraduationCap size={12} className="text-[hsl(var(--blueprint-line)/0.6)]" />
                         <span>{school}</span>
                     </div>
                     {location && (
@@ -39,7 +39,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
                     )}
                 </div>
 
-                <div className="text-muted-foreground text-sm leading-relaxed font-sans mt-2">
+                <div className="font-mono text-xs text-muted-foreground leading-relaxed mt-2">
                     {description}
                 </div>
             </div>

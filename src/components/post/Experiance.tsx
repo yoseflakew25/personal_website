@@ -1,7 +1,6 @@
 import {Post} from '#site/content'
 import React from 'react'
 import ContentNotFound from '../ui/content-not-found'
-import {typo} from '../ui/typograpghy'
 import PostItem from './post-item'
 
 type ExperianceProps = {
@@ -12,7 +11,7 @@ type ExperianceProps = {
 const Experiance: React.FC<ExperianceProps> = ({posts, showRss}) => {
   return (
     <section aria-label="articles" className="space-y-6 mt-5">
-      {showRss && <h2 className={typo({variant: 'h2'})}>Most recent posts</h2>}
+      {showRss && <h2 className="font-mono text-sm tracking-wider uppercase text-foreground">Most recent posts</h2>}
       <ol className="space-y-3" role="list">
         {posts.length > 0 ? (
           posts.map(post => <PostItem key={post.slug} {...post} />)

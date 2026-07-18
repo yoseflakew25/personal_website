@@ -41,7 +41,6 @@ const RouteProgress = () => {
         }, 400)
     }, [clearTimers])
 
-    // Start progress on link click
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
             const anchor = (e.target as HTMLElement).closest('a')
@@ -55,43 +54,33 @@ const RouteProgress = () => {
         return () => document.removeEventListener('click', handleClick, true)
     }, [startProgress])
 
-    // Complete when pathname actually changes — this is the reliable signal
     const isFirstMount = useRef(true)
     useEffect(() => {
         if (isFirstMount.current) { isFirstMount.current = false; return }
         completeProgress()
-    }, [pathname]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [pathname])
 
-    // Cleanup on unmount
     useEffect(() => () => clearTimers(), [clearTimers])
 
     return (
         <AnimatePresence>
             {isNavigating && (
                 <motion.div
-                    className="fixed top-0 left-0 right-0 z-[9999] h-[3px]"
+                    className="fixed top-0 left-0 right-0 z-[9999] h-[2px]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.15 }}
                 >
-                    {/* Background track */}
-                    <div className="absolute inset-0 bg-primary/10" />
-
-                    {/* Progress bar */}
                     <motion.div
-                        className="h-full bg-gradient-to-r from-primary via-primary to-primary/60 relative"
+                        className="h-full bg-foreground"
                         initial={{ width: '0%' }}
                         animate={{ width: `${progress}%` }}
                         transition={{
-                            duration: 0.3,
-                            ease: [0.22, 1, 0.36, 1],
+                            duration: 0.25,
+                            ease: 'linear',
                         }}
-                    >
-                        {/* Glow effect at the tip */}
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-8 bg-primary/30 blur-xl rounded-full" />
-                        <div className="absolute right-0 top-0 w-2 h-full bg-white/80 rounded-full shadow-[0_0_12px_hsl(var(--primary))]" />
-                    </motion.div>
+                    />
                 </motion.div>
             )}
         </AnimatePresence>

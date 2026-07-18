@@ -49,124 +49,165 @@ const ContactUs = () => {
   }
 
   return (
-    <section id="contact" aria-label="contact" className="!mt-8 scroll-mt-24">
+    <section id="contact" aria-label="contact" className="scroll-mt-24">
       <ScrollReveal variant="fadeUp">
-        <SectionHeader title="Get in Touch" titleClassName="text-primary" />
+        <SectionHeader title="Get in Touch" sectionNumber="06" />
       </ScrollReveal>
 
       <ScrollReveal variant="fadeUp" delay={0.2}>
         <div className="flex items-start flex-col md:flex-row w-full gap-8 mt-8">
-          <div className="md:max-w-xs size-full space-y-5">
-            <p className="text-muted-foreground text-base font-sans leading-relaxed">
+          {/* Left Info Card */}
+          <div className="md:max-w-sm size-full relative border border-[hsl(var(--border))] bg-card p-5 space-y-5">
+            {/* Corner brackets */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+
+            {/* Header */}
+            <div className="border-b border-[hsl(var(--border))] pb-2">
+              <p className="text-blueprint-meta">CONTACT INFORMATION</p>
+              <p className="text-blueprint-meta">SHEET · 001</p>
+            </div>
+
+            <p className="font-mono text-xs text-muted-foreground leading-relaxed">
               If you have any inquiries, please feel free to reach out. You can contact me via email
               at{' '}
               <CustomLink href={`mailto:${config.social.email}`} aria-label={config.social.email}>
-                <span className="text-primary">{config.social.email}</span>
+                <span className="text-[hsl(var(--blueprint-line))]">{config.social.email}</span>
               </CustomLink>
             </p>
 
-            <div className="space-y-3">
-              <h3 className="font-sans font-medium text-sm tracking-wide text-foreground/80">
+            <div className="space-y-3 pt-1">
+              <h3 className="text-blueprint-meta">
                 Follow me
               </h3>
               <Socials />
             </div>
+
+            {/* Footer */}
+            <div className="border-t border-[hsl(var(--border))] pt-2 flex justify-between">
+              <span className="text-blueprint-meta">REV A</span>
+              <span className="text-blueprint-meta">OPEN</span>
+            </div>
           </div>
 
-          <Form {...form}>
-            <form
-              className="border border-border/40 bg-card/50 backdrop-blur-sm p-5 rounded-lg space-y-4 w-full hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--primary)/0.05)] transition-all duration-500"
-              onSubmit={form.handleSubmit(onSubmit)}
-            >
-              <h2 className="text-center text-sm font-sans block sm:hidden text-primary/70 tracking-wider font-semibold">
-                Send a Message
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="fullName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          placeholder="Full Name"
-                          {...field}
-                          className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {/* Right Form Card */}
+          <div className="flex-1 relative border border-[hsl(var(--border))] bg-card">
+            {/* Corner brackets */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
 
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          placeholder="Phone No"
-                          {...field}
-                          className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+            {/* Header */}
+            <div className="border-b border-[hsl(var(--border))] px-4 py-2">
+              <p className="text-blueprint-meta">TRANSMITTAL FORM</p>
+              <p className="text-blueprint-meta">MESSAGE · 001</p>
+            </div>
 
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                     <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="Email"
-                        {...field}
-                        className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Message"
-                        {...field}
-                        className="bg-transparent border-border focus:border-primary/50 placeholder:text-muted-foreground/50 font-sans transition-all duration-300 min-h-[120px]"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <Button
-                type="submit"
-                className="w-full text-primary-foreground font-sans font-medium tracking-wide text-sm transition-all duration-300 border-0"
-                disabled={isPending}
+            <Form {...form}>
+              <form
+                className="p-4 space-y-4"
+                onSubmit={form.handleSubmit(onSubmit)}
               >
-                {isPending ? (
-                  <span className="animate-pulse">Sending...</span>
-                ) : (
-                  'Send Message'
-                )}
-              </Button>
-            </form>
-          </Form>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="fullName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            placeholder="Full Name"
+                            {...field}
+                            className="bg-muted/30 font-mono text-xs focus:bg-muted/50"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            placeholder="Phone No"
+                            {...field}
+                            className="bg-muted/30 font-mono text-xs focus:bg-muted/50"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                       <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="Email"
+                          {...field}
+                          className="bg-muted/30 font-mono text-xs focus:bg-muted/50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Message"
+                          {...field}
+                          className="bg-muted/30 font-mono text-xs min-h-[100px] focus:bg-muted/50 resize-y"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  variant="outline"
+                  className="w-full group"
+                  disabled={isPending}
+                >
+                  {isPending ? (
+                    <span className="animate-pulse">Sending...</span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <span>Send Message</span>
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                  )}
+                </Button>
+
+                {/* Footer */}
+                <div className="border-t border-[hsl(var(--border))] pt-2 flex justify-between">
+                  <span className="text-blueprint-meta">REV A</span>
+                  <span className="text-blueprint-meta">ALL FIELDS REQUIRED</span>
+                </div>
+              </form>
+            </Form>
+          </div>
         </div>
       </ScrollReveal>
     </section>

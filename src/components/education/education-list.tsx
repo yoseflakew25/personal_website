@@ -33,10 +33,10 @@ const educationData = [
 
 const EducationList = () => {
     return (
-        <section aria-label="education" className="space-y-6 mt-5">
+        <section aria-label="education" className="space-y-6">
            
             <ScrollReveal variant="fadeUp">
-          <SectionHeader title="Education" titleClassName="text-primary" />
+          <SectionHeader title="Education" sectionNumber="05" />
         </ScrollReveal>
             <StaggerList className="space-y-6">
                 {educationData.map((item, index) => (

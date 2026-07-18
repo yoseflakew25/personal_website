@@ -36,17 +36,13 @@ const ExperiencePage = () => {
                 <Skills />
             </section>
 
-            <div className="neon-divider" aria-hidden="true" />
-
             {/* Experience */}
-            <section className="py-12">
+            <section className="pb-12">
                 <Experience />
             </section>
 
-            <div className="neon-divider" aria-hidden="true" />
-
             {/* Education */}
-            <section className="py-12">
+            <section className="pb-12">
                 <EducationList />
             </section>
         </div>

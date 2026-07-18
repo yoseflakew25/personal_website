@@ -26,11 +26,11 @@
     padding-left: 1.25rem;
     border-radius: 0.5rem;
     border: 1px solid transparent;
-    background: transparent;
+    background: hsl(var(--card));
 }
 
 .timeline-item:hover {
-    background: hsl(var(--card) / 0.7);
+    background: hsl(var(--border) / 0.4);
     border-color: hsl(var(--border));
 }
 

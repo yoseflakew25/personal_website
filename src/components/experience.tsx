@@ -34,24 +34,24 @@ const TimelineItem = ({
       >
         <div className="mb-1 flex flex-col sm:flex-row sm:items-baseline sm:justify-between pr-8 relative">
           <hgroup>
-            <h4 className="timeline-item-title font-sans font-semibold text-lg tracking-tight text-foreground group-hover/item:text-primary transition-colors">
+            <h4 className="timeline-item-title font-mono text-sm uppercase tracking-wider text-foreground group-hover/item:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
               {title}
             </h4>
             {organization && (
-              <p className="text-muted-foreground font-medium text-sm mb-2 font-sans">
+              <p className="text-muted-foreground font-medium text-xs mb-2 font-mono">
                 {organization}
               </p>
             )}
           </hgroup>
           <div className="flex items-center gap-3">
-            <span className="text-primary text-xs font-mono font-medium bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-full shrink-0">
+            <span className="font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] px-2 py-0.5 shrink-0">
               {date}
             </span>
             <ChevronDown
-              size={18}
+              size={14}
               className={cn(
                 'text-muted-foreground transition-transform duration-300 absolute right-0 top-1 sm:static',
-                isExpanded ? 'rotate-180 text-primary' : 'group-hover/item:text-primary',
+                isExpanded ? 'rotate-180 text-foreground' : '',
               )}
             />
           </div>
@@ -67,7 +67,7 @@ const TimelineItem = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="timeline-text text-muted-foreground text-sm leading-relaxed mt-2 pt-4 border-t border-border/40">
+            <div className="timeline-text text-muted-foreground text-xs leading-relaxed mt-2 pt-3 border-t border-[hsl(var(--border)/0.4)]">
               {description}
             </div>
           </motion.div>
@@ -79,10 +79,9 @@ const TimelineItem = ({
 
 const Experience = () => {
   return (
-    <article className="py-4 space-y-12" id="experience">
+    <article className="space-y-8" id="experience">
       <section className="timeline space-y-10">
-        <ScrollReveal variant="fadeUp">
-          <SectionHeader title="Professional Experience" titleClassName="text-primary" />
+        <ScrollReveal variant="fadeUp">            <SectionHeader title="Professional Experience" sectionNumber="03" />
         </ScrollReveal>
 
         <ScrollReveal variant="fadeLeft" delay={0.2}>

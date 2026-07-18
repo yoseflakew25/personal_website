@@ -13,7 +13,7 @@ const DesignProjects = () => {
         <SectionHeader
           title="Featured Designs"
           subtitle="A selection of UI/UX work — from mobile apps to landing pages and dashboards."
-          titleClassName="text-primary"
+          sectionNumber="04"
         />
       </ScrollReveal>
 

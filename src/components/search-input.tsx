@@ -28,7 +28,7 @@ const SearchInput = () => {
       <Input
         type="search"
         placeholder="Search..."
-        className="w-full rounded-lg bg-background pl-8"
+        className="w-full bg-muted/30 border-[hsl(var(--border))] pl-8 font-mono text-xs focus:bg-muted/50"
         defaultValue={searchParams.get('search')?.toString()}
         onChange={onChangeHandle}
       />

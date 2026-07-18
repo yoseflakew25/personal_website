@@ -4,7 +4,6 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { NavType } from './_nav-mock'
 import { usePathname } from 'next/navigation'
 import { cn } from '~/lib/utils'
-import { useActiveSection } from './active-section-context'
 
 const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean>> }> = ({
   label,
@@ -12,18 +11,13 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
   setOpen,
 }) => {
   const pathname = usePathname()
-  const activeSection = useActiveSection()
 
   const isActive = React.useMemo(() => {
     if (path === '/') {
-      return pathname === '/' && (activeSection === 'home' || activeSection === '')
-    }
-    if (path.startsWith('/#')) {
-      const sectionId = path.split('#')[1]
-      return pathname === '/' && activeSection === sectionId
+      return pathname === '/'
     }
     return pathname.startsWith(path)
-  }, [pathname, path, activeSection])
+  }, [pathname, path])
 
   const onClickHandler = () => {
     if (typeof setOpen === 'function') {
@@ -34,28 +28,37 @@ const NavItem: React.FC<NavType[0] & { setOpen?: Dispatch<SetStateAction<boolean
   return (
     <li
       role="listitem"
-      className={cn(
-        'relative h-7 px-2 flex items-center sm:px-0 font-medium rounded-md transition-all duration-300 font-sans text-sm tracking-wide',
-        {
-          'text-foreground': isActive,
-          'text-muted-foreground hover:text-foreground': !isActive,
-        },
-      )}
+      className="relative"
       onClick={onClickHandler}
     >
       <Link
         href={path}
         role="link"
         aria-label={label}
-        className="relative z-10 el-focus-styles rounded-sm"
+        className={cn(
+          'group font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 transition-all duration-200 el-focus-styles inline-flex items-center gap-1.5',
+          isActive
+            ? 'text-foreground font-semibold'
+            : 'text-muted-foreground hover:text-foreground',
+        )}
       >
+        {/* Blueprint bracket indicator */}
+        <span
+          className={cn(
+            'transition-all duration-200 text-[10px]',
+            isActive
+              ? 'text-[hsl(var(--blueprint-line)/0.7)] opacity-100'
+              : 'opacity-0 group-hover:opacity-40',
+          )}
+        >
+          ▸
+        </span>
         {label}
       </Link>
 
+      {/* Active underline — dashed to match blueprint style */}
       {isActive && (
-        <span className="hidden sm:flex absolute left-0 -bottom-1 h-full w-full items-end justify-center">
-          <span className="z-0 h-[2px] w-full bg-gradient-to-r from-primary to-primary/30 transition-all duration-300" />
-        </span>
+        <span className="absolute bottom-0 left-3 right-3 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
       )}
     </li>
   )

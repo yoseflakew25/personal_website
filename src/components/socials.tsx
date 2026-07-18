@@ -13,42 +13,42 @@ const socialsIcons = [
     label: 'Github',
     icon: <FiGithub className="size-[1.1rem]" />,
     href: config.social.github,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
   {
     id: 2,
     label: 'Linkedin',
     icon: <Linkedin className="size-[1.1rem]" />,
     href: config.social.linkedin,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
   {
     id: 3,
     label: 'Instagram',
     icon: <FaInstagram className="size-[1.1rem]" />,
     href: config.social.instagram,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
   {
     id: 4,
     label: 'X',
     icon: <TbBrandX className="size-[1.1rem]" />,
     href: config.social.x,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
   {
     id: 5,
     label: 'Telegram',
     icon: <TbBrandTelegram className="size-[1.1rem]" />,
     href: config.social.telegram,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
   {
     id: 6,
     label: 'Gmail',
     icon: <SiGmail className="size-[1.1rem]" />,
     href: `mailto:${config.social.email}`,
-    hoverClass: 'hover:border-primary/50 hover:text-primary' as ClassValue,
+    hoverClass: 'hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))]' as ClassValue,
   },
 ]
 
@@ -61,7 +61,7 @@ const Socials = () => {
             href={social.href}
             title={social.label}
             className={cn(
-              'border border-border/60 bg-card/50 backdrop-blur-sm text-muted-foreground size-9 flex items-center justify-center rounded-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+              'border border-[hsl(var(--border))] text-muted-foreground size-9 flex items-center justify-center transition-all duration-200 el-focus-styles',
               social.hoverClass,
             )}
             aria-label={social.label}

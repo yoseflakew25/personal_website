@@ -3,51 +3,63 @@ import plugin from 'tailwindcss/plugin'
 import { fontFamily } from 'tailwindcss/defaultTheme'
 import type { Config } from 'tailwindcss'
 
-const shadcnPlugin = plugin(
+const blueprintPlugin = plugin(
   function ({ addBase }) {
     addBase({
       ':root': {
-        '--background': '0 0% 100%',
-        '--foreground': '222.2 84% 4.9%',
-        '--card': '0 0% 100%',
-        '--card-foreground': '222.2 84% 4.9%',
-        '--popover': '0 0% 100%',
-        '--popover-foreground': '222.2 84% 4.9%',
-        '--primary': '185 100% 35%',
-        '--primary-foreground': '0 0% 100%',
-        '--secondary': '210 40% 96.1%',
-        '--secondary-foreground': '222.2 47.4% 11.2%',
-        '--muted': '210 40% 96.1%',
-        '--muted-foreground': '215.4 16.3% 46.9%',
-        '--accent': '210 40% 96.1%',
-        '--accent-foreground': '222.2 47.4% 11.2%',
-        '--destructive': '0 62.8% 30.6%',
-        '--destructive-foreground': '0 0% 98%',
-        '--border': '214.3 31.8% 91.4%',
-        '--input': '214.3 31.8% 91.4%',
-        '--ring': '185 100% 35%',
-        '--radius': '0.5rem',
+        /* ===== Blueprint Light (paper) ===== */
+        '--background': '45 8% 95%',
+        '--foreground': '0 0% 10%',
+        '--card': '45 6% 92%',
+        '--card-foreground': '0 0% 10%',
+        '--popover': '45 6% 92%',
+        '--popover-foreground': '0 0% 10%',
+        '--primary': '0 0% 10%',
+        '--primary-foreground': '45 8% 95%',
+        '--secondary': '45 5% 88%',
+        '--secondary-foreground': '0 0% 10%',
+        '--muted': '45 5% 88%',
+        '--muted-foreground': '0 0% 40%',
+        '--accent': '210 20% 40%',
+        '--accent-foreground': '45 8% 95%',
+        '--destructive': '0 70% 40%',
+        '--destructive-foreground': '45 8% 95%',
+        '--border': '45 5% 80%',
+        '--input': '45 5% 80%',
+        '--ring': '0 0% 10%',
+        '--radius': '0rem',
+        /* Blueprint-specific tokens */
+        '--grid-color': '45 5% 85%',
+        '--grid-sub-color': '45 5% 88%',
+        '--blueprint-line': '210 25% 30%',
+        '--blueprint-accent': '210 25% 35%',
       },
       '.dark': {
-        '--background': '240 6% 7%',
-        '--foreground': '0 0% 93%',
-        '--card': '240 6% 9%',
-        '--card-foreground': '0 0% 93%',
-        '--popover': '240 6% 9%',
-        '--popover-foreground': '0 0% 93%',
-        '--primary': '185 100% 50%',
-        '--primary-foreground': '240 6% 7%',
-        '--secondary': '240 8% 12%',
-        '--secondary-foreground': '0 0% 93%',
-        '--muted': '240 8% 14%',
-        '--muted-foreground': '240 5% 50%',
-        '--accent': '240 8% 14%',
-        '--accent-foreground': '0 0% 93%',
-        '--destructive': '0 62.8% 30.6%',
-        '--destructive-foreground': '0 0% 98%',
-        '--border': '240 8% 14%',
-        '--input': '240 8% 14%',
-        '--ring': '185 100% 50%',
+        /* ===== Blueprint Dark (blueprint paper) ===== */
+        '--background': '220 30% 8%',
+        '--foreground': '210 10% 85%',
+        '--card': '220 28% 10%',
+        '--card-foreground': '210 10% 85%',
+        '--popover': '220 28% 10%',
+        '--popover-foreground': '210 10% 85%',
+        '--primary': '210 10% 85%',
+        '--primary-foreground': '220 30% 8%',
+        '--secondary': '220 25% 14%',
+        '--secondary-foreground': '210 10% 85%',
+        '--muted': '220 25% 14%',
+        '--muted-foreground': '215 15% 55%',
+        '--accent': '210 40% 55%',
+        '--accent-foreground': '220 30% 8%',
+        '--destructive': '0 60% 45%',
+        '--destructive-foreground': '220 30% 8%',
+        '--border': '220 25% 18%',
+        '--input': '220 25% 18%',
+        '--ring': '210 10% 85%',
+        /* Blueprint-specific tokens */
+        '--grid-color': '220 30% 16%',
+        '--grid-sub-color': '220 30% 13%',
+        '--blueprint-line': '210 40% 50%',
+        '--blueprint-accent': '210 50% 60%',
       },
     }),
       addBase({
@@ -55,7 +67,7 @@ const shadcnPlugin = plugin(
           '@apply border-border': {},
         },
         body: {
-          '@apply bg-background text-foreground': {},
+          '@apply bg-background text-foreground font-mono': {},
         },
       })
   },
@@ -64,29 +76,19 @@ const shadcnPlugin = plugin(
     theme: {
       container: {
         center: true,
-        padding: '1rem',
+        padding: '1.5rem',
         screens: {
-          xl: '72rem',
+          xl: '80rem',
         },
       },
       extend: {
-        typography: {
-          DEFAULT: {
-            css: {
-              maxWidth: '100ch',
-            },
-          },
-        },
         fontFamily: {
-          sans: ['var(--font-sans)', ...fontFamily.sans],
-          mono: ['var(--font-jetbrains)', ...fontFamily.mono],
-          dank: 'var(--font-dank)',
-          jetbrains: 'var(--font-jetbrains)',
-          pixel: ['var(--font-pixel)', 'monospace'],
+          mono: ['var(--font-mono)', ...fontFamily.mono],
+          sans: ['var(--font-mono)', ...fontFamily.mono],
+          display: ['var(--font-display)', ...fontFamily.sans],
         },
         screens: {
           xs: '380px',
-          sm: '500px',
         },
         colors: {
           border: 'hsl(var(--border))',
@@ -122,27 +124,44 @@ const shadcnPlugin = plugin(
             DEFAULT: 'hsl(var(--card))',
             foreground: 'hsl(var(--card-foreground))',
           },
+          blueprint: {
+            grid: 'hsl(var(--grid-color))',
+            'grid-sub': 'hsl(var(--grid-sub-color))',
+            line: 'hsl(var(--blueprint-line))',
+            accent: 'hsl(var(--blueprint-accent))',
+          },
         },
         borderRadius: {
-          lg: 'var(--radius)',
-          md: 'calc(var(--radius) - 2px)',
-          sm: 'calc(var(--radius) - 4px)',
+          none: '0',
+          sm: '0',
+          DEFAULT: '0',
+          md: '0',
+          lg: '0',
+          xl: '0',
+          '2xl': '0',
+          '3xl': '0',
         },
-        boxShadow: {
+        borderWidth: {
+          '1': '1px',
         },
         keyframes: {
-          'accordion-down': {
-            from: { height: '0' },
-            to: { height: 'var(--radix-accordion-content-height)' },
+          'draw-line': {
+            '0%': { width: '0%' },
+            '100%': { width: '100%' },
           },
-          'accordion-up': {
-            from: { height: 'var(--radix-accordion-content-height)' },
-            to: { height: '0' },
+          'fade-in': {
+            '0%': { opacity: '0' },
+            '100%': { opacity: '1' },
+          },
+          'blueprint-reveal': {
+            '0%': { opacity: '0', filter: 'invert(100%)' },
+            '100%': { opacity: '1', filter: 'invert(0%)' },
           },
         },
         animation: {
-          'accordion-down': 'accordion-down 0.2s ease-out',
-          'accordion-up': 'accordion-up 0.2s ease-out',
+          'draw-line': 'draw-line 0.8s ease-out forwards',
+          'fade-in': 'fade-in 0.5s ease-out forwards',
+          'blueprint-reveal': 'blueprint-reveal 0.6s ease-out forwards',
         },
       },
     },
@@ -153,5 +172,5 @@ export const shadcnPreset = {
   prefix: '',
   darkMode: ['selector'],
   content: [],
-  plugins: [animatePlugin, shadcnPlugin],
+  plugins: [animatePlugin, blueprintPlugin],
 } satisfies Config
