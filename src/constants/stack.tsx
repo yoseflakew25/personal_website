@@ -49,7 +49,7 @@ export const FRONTEND_STACKS: stacksProps = {
   CSS: { Icon: SiCss3, className: 'text-blue-300' },
 }
 
-export const BACKEND_STACKS = {
+export const BACKEND_STACKS: stacksProps = {
   postgreSql: { Icon: BiLogoPostgresql, className: 'text-blue-500' },
   SQL: { Icon: SiMysql, className: 'text-blue-500' },
   Python: { Icon: SiPython, className: 'text-blue-500' },

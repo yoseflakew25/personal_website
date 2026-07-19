@@ -97,8 +97,8 @@ const TagsPage = () => {
                   </div>
 
                   <ul role="list" className="space-y-1">
-                    {result[tag].map((post, index) => (
-                      <li key={index}>
+                    {result[tag].map((post) => (
+                      <li key={post.slug}>
                         <CustomLink href={`/blog/${post.slugAsParams}`}>
                           <span className="font-mono text-xs text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
                             {post.title}
@@ -126,8 +126,8 @@ const TagsPage = () => {
           </div>
 
           <ul role="list" className="flex flex-wrap gap-2">
-            {sortedTags.map((tag, index) => (
-              <Tag key={index} tag={tag} count={tags[tag]} />
+            {sortedTags.map((tag) => (
+              <Tag key={tag} tag={tag} count={tags[tag]} />
             ))}
           </ul>
 

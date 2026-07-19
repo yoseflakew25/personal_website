@@ -2,16 +2,12 @@ import dynamic from 'next/dynamic'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
 
+import { DesignsSkeleton } from '~/components/ui/blueprint-skeleton'
+
 const DesignProjects = dynamic(
   () => import('~/components/designs/design-projects'),
   {
-    loading: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-72 animate-pulse rounded-xl bg-card/40 border border-border/30" />
-        ))}
-      </div>
-    ),
+    loading: () => <DesignsSkeleton />,
   },
 )
 

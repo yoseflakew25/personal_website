@@ -9,6 +9,7 @@ const config = {
 
   colors: {
     theme: 'dark',
+    main: '#0f1722',
   },
 
   social: {
@@ -18,6 +19,7 @@ const config = {
     x: 'https://x.com/YOSEFLAKEW48676',
     telegram: 'https://t.me/Josscy',
     email: 'yoseflakewdev@gmail.com',
+    phone: '+251912345678',
   },
 
   auth: {

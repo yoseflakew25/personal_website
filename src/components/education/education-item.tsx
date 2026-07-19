@@ -17,7 +17,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
     description,
 }) => {
     return (
-        <li role="listitem" className="last:!border-b-0 border-b border-white/5 pb-6">
+        <li role="listitem" className="last:!border-b-0 border-b border-[hsl(var(--border)/0.3)] pb-6">
             <div className="p-4 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] transition-all duration-200 space-y-2 bg-card">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                     <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">

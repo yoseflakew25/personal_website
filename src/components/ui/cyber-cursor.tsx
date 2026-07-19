@@ -1,2 +1,2 @@
-// Removed — unused in blueprint redesign
+// File removed — unused in blueprint redesign
 export {};

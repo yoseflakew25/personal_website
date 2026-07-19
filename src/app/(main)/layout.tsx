@@ -9,35 +9,11 @@ const RouteProgress = dynamic(() => import('~/components/ui/route-progress'), { 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex flex-col min-h-dvh blueprint-bg relative">
-      {/* Blueprint grid overlay — subtle crosshair marks at intersections */}
+      {/* Blueprint grid overlay — crosshair marks at intersections, CSS-only for perf */}
       <div
         aria-hidden="true"
-        className="fixed inset-0 pointer-events-none z-0 select-none opacity-30 dark:opacity-20"
-      >
-        {/* Crosshair marks on major grid intersections */}
-        {Array.from({ length: 10 }).map((_, row) =>
-          Array.from({ length: 16 }).map((__, col) => (
-            <div
-              key={`${row}-${col}`}
-              className="absolute"
-              style={{
-                left: `${col * 12.5}%`,
-                top: `${row * 10}%`,
-                width: 8,
-                height: 8,
-                transform: 'translate(-50%, -50%)',
-              }}
-            >
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: `radial-gradient(circle, hsl(var(--blueprint-line) / 0.15) 1px, transparent 1px)`,
-                }}
-              />
-            </div>
-          )),
-        )}
-      </div>
+        className="blueprint-crosshair-grid fixed inset-0 pointer-events-none z-0 select-none opacity-30 dark:opacity-20"
+      />
 
       <RouteProgress />
       <div className="relative z-10 flex-1 flex flex-col container py-4 max-w-7xl">

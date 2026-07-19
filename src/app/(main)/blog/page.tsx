@@ -18,9 +18,10 @@ export const metadata = getSEOTags({
 
 const BlogPage = ({ searchParams }: { searchParams: { search: string | undefined } }) => {
   const allPosts = sortPosts(posts)
-  const filteredPosts = searchParams?.search
+  const search = searchParams?.search
+  const filteredPosts = search
     ? allPosts.filter(post =>
-        post.title.toLowerCase().includes(decodeURIComponent(searchParams.search).toLowerCase())
+        post.title.toLowerCase().includes(decodeURIComponent(search).toLowerCase())
       )
     : allPosts
   const tags = getAllTags(posts)

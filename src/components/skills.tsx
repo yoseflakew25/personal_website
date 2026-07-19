@@ -16,12 +16,12 @@ const Skills = () => {
           <div className="p-3">
             <p className="text-blueprint-meta mb-3">FRONTEND / UI</p>
             <div className="flex flex-wrap gap-2">
-              {Object.keys(FRONTEND_STACKS).map((stack, index) => {
+              {Object.keys(FRONTEND_STACKS).map((stack) => {
                 const Icon = FRONTEND_STACKS[stack].Icon
                 const className = FRONTEND_STACKS[stack].className
                 return (
                   <span
-                    key={index}
+                    key={stack}
                     className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase border border-[hsl(var(--border))] px-2 py-1 text-foreground/80 hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200"
                   >
                     <Icon className={className} aria-label={stack} />
@@ -34,12 +34,12 @@ const Skills = () => {
           <div className="p-3">
             <p className="text-blueprint-meta mb-3">BACKEND / INFRA</p>
             <div className="flex flex-wrap gap-2">
-              {Object.keys(BACKEND_STACKS).map((stack, index) => {
+              {Object.keys(BACKEND_STACKS).map((stack) => {
                 const Icon = BACKEND_STACKS[stack].Icon
                 const className = BACKEND_STACKS[stack].className
                 return (
                   <span
-                    key={index}
+                    key={stack}
                     className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase border border-[hsl(var(--border))] px-2 py-1 text-foreground/80 hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200"
                   >
                     <Icon className={className} aria-label={stack} />

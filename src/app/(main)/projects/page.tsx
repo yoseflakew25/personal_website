@@ -25,7 +25,7 @@ const ProjectsPage = ({ searchParams }: { searchParams: { search: string | undef
 
   return (
     <div className="h-full overflow-hidden">
-      <ProjectList projects={filteredProjects} metadata={false} />
+      <ProjectList projects={filteredProjects} />
     </div>
   )
 }

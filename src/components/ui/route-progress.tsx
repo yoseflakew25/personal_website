@@ -58,7 +58,7 @@ const RouteProgress = () => {
     useEffect(() => {
         if (isFirstMount.current) { isFirstMount.current = false; return }
         completeProgress()
-    }, [pathname])
+    }, [pathname, completeProgress])
 
     useEffect(() => () => clearTimers(), [clearTimers])
 

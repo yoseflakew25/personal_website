@@ -4,8 +4,8 @@ import Link from 'next/link'
 const Tags = ({tags}: {tags: string[]}) => {
   return (
     <ul className="flex flex-wrap gap-1.5" role="list">
-      {tags.map((tag, index) => (
-        <Tag key={index} tag={tag} />
+      {tags.map((tag) => (
+        <Tag key={tag} tag={tag} />
       ))}
     </ul>
   )

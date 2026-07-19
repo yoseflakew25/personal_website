@@ -175,6 +175,14 @@
     @apply ring-offset-background focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1;
   }
 
+  /* ===== CSS-Only Crosshair Grid (replaces 160 DOM elements) ===== */
+  .blueprint-crosshair-grid {
+    background-image:
+      radial-gradient(circle, hsl(var(--blueprint-line) / 0.15) 1px, transparent 1px);
+    background-size:
+      12.5% 10%;
+  }
+
   /* ===== Custom Scrollbar ===== */
   ::-webkit-scrollbar {
     width: 4px;

@@ -22,7 +22,7 @@ export async function GET() {
   posts.forEach(post => {
     feed.item({
       title: post.title,
-      url: BasePath(`/blog/${post.slugAsParams.split('/')}`),
+      url: BasePath(`/blog/${post.slugAsParams}`),
       date: post.date,
       description: post.description,
       author: 'Yosef Lakew',

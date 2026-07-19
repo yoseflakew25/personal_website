@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: `https://${config.domainName}/sitemap.xml`,
+    // domainName already includes protocol, strip trailing slash for clean URL
+    sitemap: `${config.domainName.replace(/\/+$/, '')}/sitemap.xml`,
   }
 }

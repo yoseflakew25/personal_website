@@ -19,14 +19,19 @@ export function formatDate(input: string | number): string {
 }
 
 export function sortPosts(posts: Array<Post>) {
-  return posts.sort((a, b) => {
+  return [...posts].sort((a, b) => {
     if (a.date > b.date) return -1
     if (a.date < b.date) return 1
     return 0
   })
 }
 
-export const BasePath = (path: string) => `https://${config.domainName}${path}`
+// domainName already includes protocol (https://...) so just concatenate
+export const BasePath = (path: string) => {
+  const base = config.domainName.replace(/\/+$/, '')
+  const cleanPath = path.startsWith('/') ? path : `/${path}`
+  return `${base}${cleanPath}`
+}
 
 export const getAllTags = (posts: Array<Post>) => {
   const tags: Record<string, number> = {}

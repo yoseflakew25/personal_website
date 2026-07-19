@@ -1,9 +1,15 @@
 'use client'
+'use client'
+
+import { useTheme } from 'next-themes'
 import React from 'react'
 import Giscus from '@giscus/react'
 import {env} from '~/constants/env'
 
 const PostComments = () => {
+  const { resolvedTheme } = useTheme()
+  const giscusTheme = resolvedTheme === 'dark' ? 'dark' : 'light'
+
   return (
     <div className="w-full mt-4 bg-card border border-[hsl(var(--border))] p-4">
       <Giscus
@@ -17,9 +23,8 @@ const PostComments = () => {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="dark"
+        theme={giscusTheme}
         lang="en"
-        // loading="lazy"
       />
     </div>
   )

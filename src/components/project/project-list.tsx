@@ -5,13 +5,11 @@ import ContentNotFound from '../ui/content-not-found'
 import { projects as defaultProjects } from './_project-mock'
 import type { TProjectSerialized } from './_project-mock'
 
+import { ProjectCarouselSkeleton } from '~/components/ui/blueprint-skeleton'
+
 const ProjectCarousel = dynamic(() => import('./project-carousel'), {
   ssr: false,
-  loading: () => (
-    <div className="h-full flex items-center justify-center border border-[hsl(var(--border))]">
-      <div className="h-6 w-6 animate-spin border border-[hsl(var(--border))] border-t-[hsl(var(--foreground))]" />
-    </div>
-  ),
+  loading: () => <ProjectCarouselSkeleton />,
 })
 
 type ProjectListProps = {

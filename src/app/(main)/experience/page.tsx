@@ -2,15 +2,18 @@ import dynamic from 'next/dynamic'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
 
+import { SkillsSkeleton, ExperienceSkeleton, EducationSkeleton } from '~/components/ui/blueprint-skeleton'
+
 const Skills = dynamic(() => import('~/components/skills'), {
-  loading: () => <div className="h-32 animate-pulse bg-card/30 rounded-xl" />,
+  loading: () => <SkillsSkeleton />,
 })
 
 const Experience = dynamic(() => import('~/components/experience'), {
-    loading: () => <div className="h-96 animate-pulse bg-white/5 rounded-xl" />
+  loading: () => <ExperienceSkeleton />,
 })
+
 const EducationList = dynamic(() => import('~/components/education').then(mod => mod.EducationList), {
-    loading: () => <div className="h-64 animate-pulse bg-white/5 rounded-xl" />
+  loading: () => <EducationSkeleton />,
 })
 
 export const metadata: ReturnType<typeof getSEOTags> = getSEOTags({
