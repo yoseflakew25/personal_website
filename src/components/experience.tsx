@@ -27,33 +27,39 @@ const TimelineItem = ({
 
   return (
     <li className="timeline-item">
+      {/* BR corner accent */}
+      <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[hsl(var(--blueprint-line)/0)] group-hover/item:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-300 pointer-events-none" />
+
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full text-left group/item"
         aria-expanded={isExpanded}
       >
-        <div className="mb-1 flex flex-col sm:flex-row sm:items-baseline sm:justify-between pr-8 relative">
-          <hgroup>
-            <h4 className="timeline-item-title font-mono text-sm uppercase tracking-wider text-foreground group-hover/item:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
-              {title}
-            </h4>
+        <div className="flex items-start gap-3 pr-6 relative">
+          {/* Chevron toggle */}
+          <ChevronDown
+            size={13}
+            className={cn(
+              'absolute right-0 top-0.5 text-muted-foreground transition-transform duration-300 shrink-0',
+              isExpanded ? 'rotate-180 text-[hsl(var(--blueprint-line))]' : 'group-hover/item:text-foreground',
+            )}
+          />
+
+          <div className="flex-1 space-y-0.5">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h4 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover/item:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
+                {title}
+              </h4>
+              {/* Date badge */}
+              <span className="font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line)/0.8)] border border-[hsl(var(--blueprint-line)/0.25)] px-2 py-0.5 shrink-0 self-start">
+                {date}
+              </span>
+            </div>
             {organization && (
-              <p className="text-muted-foreground font-medium text-xs mb-2 font-mono">
+              <p className="font-mono text-[11px] text-muted-foreground tracking-wide">
                 {organization}
               </p>
             )}
-          </hgroup>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] px-2 py-0.5 shrink-0">
-              {date}
-            </span>
-            <ChevronDown
-              size={14}
-              className={cn(
-                'text-muted-foreground transition-transform duration-300 absolute right-0 top-1 sm:static',
-                isExpanded ? 'rotate-180 text-foreground' : '',
-              )}
-            />
           </div>
         </div>
       </button>
@@ -67,7 +73,13 @@ const TimelineItem = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="timeline-text text-muted-foreground text-xs leading-relaxed mt-2 pt-3 border-t border-[hsl(var(--border)/0.4)]">
+            {/* Dashed separator — blueprint spec divider */}
+            <div className="mt-3 mb-2 flex items-center gap-2">
+              <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--blueprint-line)/0.2)]" />
+              <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.4)] uppercase">DETAILS</span>
+              <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--blueprint-line)/0.2)]" />
+            </div>
+            <div className="timeline-text text-muted-foreground text-xs leading-relaxed">
               {description}
             </div>
           </motion.div>

@@ -1,97 +1,128 @@
 /**
- * Timeline styling - Professional Version
+ * Timeline — Blueprint Engineering Aesthetic
  */
 
+/* ── Vertical spine ── */
 .timeline-list {
     position: relative;
     padding-left: 2rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
-/* Neutral subtle line */
+/* Dashed blueprint trace line */
 .timeline-list::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: hsl(var(--border));
+    width: 1px;
+    background: repeating-linear-gradient(
+        to bottom,
+        hsl(var(--blueprint-line) / 0.35) 0px,
+        hsl(var(--blueprint-line) / 0.35) 5px,
+        transparent 5px,
+        transparent 10px
+    );
 }
 
+/* ── Timeline entry ── */
 .timeline-item {
     position: relative;
-    transition: all 0.3s ease;
-    padding: 1rem;
-    padding-left: 1.25rem;
-    border-radius: 0.5rem;
+    padding: 1rem 1rem 1rem 1.25rem;
     border: 1px solid transparent;
     background: hsl(var(--card));
+    transition: border-color 0.25s ease;
 }
 
 .timeline-item:hover {
-    background: hsl(var(--border) / 0.4);
-    border-color: hsl(var(--border));
+    border-color: hsl(var(--blueprint-line) / 0.25);
 }
 
-.timeline-item::after {
-    content: "";
+/* TL corner accent on hover */
+.timeline-item::before {
+    content: '';
     position: absolute;
-    top: 1.75rem;
-    left: -2rem;
-    margin-left: 1px;
-    height: 10px;
-    width: 10px;
-    background-color: hsl(var(--background));
-    border: 2px solid hsl(var(--primary));
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid hsl(var(--blueprint-line) / 0.6);
+    border-left: 1px solid hsl(var(--blueprint-line) / 0.6);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.timeline-item:hover::before {
+    opacity: 1;
+}
+
+/* Spine node — small filled circle, clean */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 1.45rem;
+    left: -2.15rem;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
+    background-color: hsl(var(--blueprint-line) / 0.4);
+    border: none;
     z-index: 2;
-    transition: all 0.3s ease;
-    transform: translate(-50%, -50%);
+    transition: all 0.25s ease;
 }
 
 .timeline-item:hover::after {
-    transform: translate(-50%, -50%) scale(1.3);
-    background-color: hsl(var(--primary));
+    background-color: hsl(var(--blueprint-line));
+    box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.12);
 }
 
-/* Current position highlight effect */
-.timeline-item:first-child::before {
-    content: "";
-    position: absolute;
-    top: 1.75rem;
-    left: -2rem;
-    margin-left: 1px;
-    height: 18px;
-    width: 18px;
-    background-color: hsl(var(--primary) / 0.15);
-    border-radius: 50%;
-    z-index: 1;
-    transform: translate(-50%, -50%);
+/* Active role — brighter dot */
+.timeline-list li:first-child .timeline-item::after {
+    background-color: hsl(var(--blueprint-line));
+    box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.15);
 }
 
-/* Ensure the line doesn't extend past the last item */
-.timeline-list li:last-child {
-    padding-bottom: 0;
-}
-
-/* Custom list bullet styles for the description */
-.timeline-text ul {
+/* ── Description list — left-border strip style ── */
+.timeline-text ul,
+.education-text ul {
     list-style: none;
     padding-left: 0;
+    margin-top: 0.25rem;
 }
 
-.timeline-text li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-text li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
+.timeline-text li,
+.education-text li {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
     color: hsl(var(--muted-foreground));
-    font-size: 1rem;
-    line-height: 1.25;
+    line-height: 1.65;
+    padding: 0.3rem 0 0.3rem 0.875rem;
+    border-left: 1.5px solid hsl(var(--blueprint-line) / 0.25);
+    margin-bottom: 0.35rem;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.timeline-text li:last-child,
+.education-text li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-text li:hover,
+.education-text li:hover {
+    border-left-color: hsl(var(--blueprint-line) / 0.6);
+    color: hsl(var(--foreground) / 0.8);
+}
+
+/* No pseudo-elements — border is the bullet */
+.timeline-text li::before,
+.education-text li::before {
+    content: none;
+}
+
+.education-text p {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.65;
+    margin-bottom: 0.5rem;
 }

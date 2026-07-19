@@ -3,7 +3,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
-import { FaExternalLinkAlt, FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { TProjectSerialized } from './_project-mock'
 import { cn } from '~/lib/utils'
 
@@ -43,41 +44,25 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     }
   }, [emblaApi, onSelect])
 
-  // ── Keyboard navigation (also resets auto-play timer) ──
+  // ── Keyboard navigation ──
   useEffect(() => {
     if (!emblaApi) return
-
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault()
-        emblaApi.scrollPrev()
-        setInteracted(n => n + 1)
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault()
-        emblaApi.scrollNext()
-        setInteracted(n => n + 1)
-      }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); emblaApi.scrollPrev(); setInteracted(n => n + 1) }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); emblaApi.scrollNext(); setInteracted(n => n + 1) }
     }
-
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [emblaApi])
 
-  // ── Auto-play (pauses on hover, resets on manual interaction) ──
+  // ── Auto-play ──
   const [isHovered, setIsHovered] = useState(false)
   const [interacted, setInteracted] = useState(0)
-
-  const handleManualInteraction = useCallback(() => {
-    setInteracted(n => n + 1)
-  }, [])
+  const handleManualInteraction = useCallback(() => setInteracted(n => n + 1), [])
 
   useEffect(() => {
     if (!emblaApi || isHovered || projects.length <= 1) return
-
-    const interval = setInterval(() => {
-      emblaApi.scrollNext()
-    }, 5000)
-
+    const interval = setInterval(() => emblaApi.scrollNext(), 5000)
     return () => clearInterval(interval)
   }, [emblaApi, isHovered, interacted, projects.length])
 
@@ -90,13 +75,13 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Outer corner accents */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-20 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-20 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-20 pointer-events-none" />
+      {/* Outer corner accents — larger for more presence */}
+      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
 
-      {/* ── Carousel Viewport (flex-1 to fill remaining space) ── */}
+      {/* ── Carousel Viewport ── */}
       <div className="flex-1 overflow-hidden min-h-0" ref={emblaRef}>
         <div className="flex h-full">
           {projects.map((project, index) => {
@@ -109,30 +94,43 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                 key={project.id}
                 className={cn(
                   'flex-[0_0_100%] min-w-0 h-full relative flex flex-col transition-opacity duration-500',
-                  isActive ? 'opacity-100' : 'opacity-30',
+                  isActive ? 'opacity-100' : 'opacity-20',
                 )}
               >
                 {/* ── Spec Header ── */}
-                <div className="border-b border-[hsl(var(--border))] px-4 sm:px-6 py-2 flex items-center justify-between">
+                <div className="border-b border-[hsl(var(--border))] px-4 sm:px-6 py-2 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">
-                    <span className="text-blueprint-meta">PROJECT SPEC · {id}</span>
+                    <span className="text-blueprint-meta">PROJECT_SPEC · {id}</span>
                     <span className="h-3 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
-                    <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
+                    {/* Primary stack as a styled badge */}
+                    <span className="font-mono text-[9px] px-1.5 py-0.5 border border-[hsl(var(--blueprint-line)/0.3)] text-[hsl(var(--blueprint-line))] uppercase tracking-wider">
                       {project.stacks[0] ?? 'N/A'}
                     </span>
+                    {/* Pulsing live status dot */}
+                    <span className="flex items-center gap-1 font-mono text-[9px] text-emerald-500/80 uppercase tracking-wider">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                      </span>
+                      PRODUCTION
+                    </span>
                   </div>
-                  <span className="text-blueprint-meta">{index + 1}/{projects.length}</span>
+                  <span className="text-blueprint-meta tabular-nums">
+                    {String(index + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}
+                  </span>
                 </div>
 
-                {/* ── Main Content (two columns) ── */}
-                <div className="flex-1 flex flex-col md:flex-row gap-4 sm:gap-6 items-center px-4 sm:px-8 py-4 sm:py-6">
+                {/* ── Main Content ── */}
+                <div className="flex-1 flex flex-col md:flex-row gap-4 sm:gap-6 items-center px-4 sm:px-8 py-4 sm:py-6 min-h-0">
+
                   {/* Left: Text */}
                   <div className="flex-[0.95] space-y-3 sm:space-y-4 w-full">
-                    {/* Large outlined number */}
+
+                    {/* Large outlined watermark number */}
                     <span
                       className="font-mono font-bold text-4xl sm:text-6xl md:text-7xl leading-none select-none block"
                       style={{
-                        WebkitTextStroke: '2px hsl(var(--foreground) / 0.12)',
+                        WebkitTextStroke: '1.5px hsl(var(--blueprint-line) / 0.2)',
                         color: 'transparent',
                       }}
                     >
@@ -140,36 +138,38 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     </span>
 
                     <div className="space-y-1">
-                      <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-wider uppercase">
+                      <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-wider uppercase leading-tight">
                         {project.title}
                       </h2>
-                      <p className="text-[10px] sm:text-xs text-[hsl(var(--blueprint-line)/0.65)] font-mono uppercase tracking-widest">
-                        Fullstack Project
-                      </p>
+                      {/* Blueprint classification tag line */}
+                      <div className="flex items-center gap-2">
+                        <span className="h-px w-4 bg-[hsl(var(--blueprint-line)/0.4)]" />
+                        <p className="text-[9px] text-[hsl(var(--blueprint-line)/0.7)] font-mono uppercase tracking-[0.2em]">
+                          Fullstack · Web Application
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="font-mono text-xs sm:text-sm text-foreground/75 font-medium leading-relaxed max-w-xl">
+                    <div className="font-mono text-xs sm:text-sm text-foreground/70 leading-relaxed max-w-xl">
                       <p className="line-clamp-4 md:line-clamp-none">{project.description}</p>
                     </div>
 
-                    {/* Blueprint metadata grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-0.5 py-1.5 border-t border-dashed border-[hsl(var(--border)/0.5)]">
-                      <div>
-                        <span className="text-blueprint-meta text-[8px]">CLASSIFICATION</span>
-                        <p className="font-mono text-[10px] sm:text-xs text-foreground">Fullstack Web App</p>
-                      </div>
-                      <div>
-                        <span className="text-blueprint-meta text-[8px]">STATUS</span>
-                        <p className="font-mono text-[10px] sm:text-xs text-foreground">Production</p>
-                      </div>
-                      <div>
-                        <span className="text-blueprint-meta text-[8px]">REVISION</span>
-                        <p className="font-mono text-[10px] sm:text-xs text-foreground">A</p>
-                      </div>
+                    {/* Blueprint metadata — bordered spec table cells */}
+                    <div className="grid grid-cols-3 border border-[hsl(var(--border)/0.6)] divide-x divide-[hsl(var(--border)/0.6)]">
+                      {[
+                        { label: 'CLASSIFICATION', value: 'Fullstack' },
+                        { label: 'STATUS', value: 'Production' },
+                        { label: 'REVISION', value: 'REV A' },
+                      ].map(({ label, value }) => (
+                        <div key={label} className="px-2 py-1.5">
+                          <span className="font-mono text-[8px] tracking-widest text-muted-foreground uppercase block">{label}</span>
+                          <span className="font-mono text-[10px] sm:text-xs text-foreground block">{value}</span>
+                        </div>
+                      ))}
                     </div>
 
                     {/* Tech stack badges */}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.stacks.map(stack => (
                         <span
                           key={stack}
@@ -186,11 +186,11 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                         href={project.deployedURL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] transition-all duration-200"
+                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] hover:bg-[hsl(var(--blueprint-line)/0.04)] transition-all duration-200"
                       >
-                        <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-                        <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-                        <FaExternalLinkAlt size={11} />
+                        <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                        <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                        <FaExternalLinkAlt size={10} />
                         <span>Live Preview</span>
                       </a>
                       {project.isRepo && (
@@ -198,18 +198,18 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                           href={project.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] transition-all duration-200"
+                          className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] hover:bg-[hsl(var(--blueprint-line)/0.04)] transition-all duration-200"
                         >
-                          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-                          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-                          <FaGithub size={14} />
+                          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                          <FaGithub size={13} />
                           <span>Source</span>
                         </a>
                       )}
                     </div>
                   </div>
 
-                  {/* Right: Image */}
+                  {/* Right: Image panel */}
                   <div className="flex-[1.1] w-full">
                     <div className="relative aspect-video overflow-hidden border border-[hsl(var(--border))] group/img">
                       {shouldLoadImage ? (
@@ -223,74 +223,130 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
                         />
                       ) : null}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent dark:from-black/60 opacity-60 dark:opacity-70" />
 
-                      {/* Image overlay crosshair */}
-                      <div className="absolute top-2 left-2 size-4 pointer-events-none">
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-[hsl(var(--blueprint-line)/0.15)]" />
-                        <div className="absolute left-1/2 top-0 h-full w-px bg-[hsl(var(--blueprint-line)/0.15)]" />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent dark:from-black/60 opacity-60 dark:opacity-70" />
+
+                      {/* Scan-line overlay for blueprint depth */}
+                      <div
+                        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+                        style={{
+                          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 3px)',
+                        }}
+                      />
+
+                      {/* Four corner dimension lines */}
+                      {/* TL */}
+                      <div className="absolute top-3 left-3 pointer-events-none">
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      </div>
+                      {/* TR */}
+                      <div className="absolute top-3 right-3 pointer-events-none flex flex-col items-end">
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      </div>
+                      {/* BL */}
+                      <div className="absolute bottom-3 left-3 pointer-events-none flex flex-col justify-end">
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      </div>
+                      {/* BR */}
+                      <div className="absolute bottom-3 right-3 pointer-events-none flex flex-col items-end justify-end">
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
                       </div>
 
-                      {/* Number badge on image */}
+                      {/* DRAFT VIEW label — top left */}
+                      <div className="absolute top-3 left-10 pointer-events-none">
+                        <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase">
+                          VISUAL · REF
+                        </span>
+                      </div>
+
+                      {/* Large watermark number — bottom right */}
                       <span
-                        className="absolute bottom-2 right-2 font-mono font-bold text-3xl sm:text-4xl md:text-5xl leading-none select-none pointer-events-none"
+                        className="absolute bottom-2 right-3 font-mono font-bold text-4xl sm:text-5xl leading-none select-none pointer-events-none"
                         style={{
-                          WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.15)',
+                          WebkitTextStroke: '1px rgba(255,255,255,0.12)',
                           color: 'transparent',
                         }}
                       >
                         {id}
                       </span>
                     </div>
+
+                    {/* Dimension annotation below image */}
+                    <div className="flex items-center gap-0 mt-1">
+                      <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
+                      <span className="font-mono text-[8px] tracking-widest text-[hsl(var(--blueprint-line)/0.45)] uppercase px-2">
+                        SCALE 1:1
+                      </span>
+                      <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
+                    </div>
                   </div>
                 </div>
-
-
               </div>
             )
           })}
         </div>
       </div>
 
-      {/* ── Navigation Buttons (repositioned) ── */}
-      <div className="absolute top-2 right-4 sm:right-6 flex gap-2 z-20">
+      {/* ── Footer bar: ruler ticks + nav buttons ── */}
+      <div className="border-t border-[hsl(var(--border))] px-4 sm:px-6 py-0 flex items-stretch shrink-0">
+
+        {/* Prev button */}
         <button
-          onClick={() => { scrollPrev(); handleManualInteraction(); }}
-          className="group/btn relative size-8 border border-[hsl(var(--border))] grid place-content-center hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))] transition-all duration-200 bg-card/80 backdrop-blur-sm"
+          onClick={() => { scrollPrev(); handleManualInteraction() }}
+          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-r border-[hsl(var(--border))] font-mono text-[9px] tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 shrink-0"
           aria-label="Previous Project"
         >
-          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-          <FaChevronLeft size={12} />
+          <ChevronLeft size={11} className="transition-transform duration-200 group-hover/btn:-translate-x-0.5" />
+          PREV
         </button>
+
+        {/* Tick-mark ruler progress */}
+        <div className="flex-1 flex items-center justify-center gap-1 px-4">
+          {/* Ruler baseline */}
+          <div className="flex items-end gap-1">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { emblaApi?.scrollTo(i); setInteracted(n => n + 1) }}
+                aria-label={`Go to project ${i + 1}`}
+                className="flex flex-col items-center gap-0.5 group/tick"
+              >
+                {/* Tick mark — taller when active */}
+                <div className={cn(
+                  'w-px transition-all duration-300',
+                  selectedIndex === i
+                    ? 'h-3 bg-[hsl(var(--blueprint-line))]'
+                    : 'h-1.5 bg-[hsl(var(--border))] group-hover/tick:bg-[hsl(var(--blueprint-line)/0.4)]',
+                )} />
+                {/* Dot at base */}
+                <div className={cn(
+                  'w-1 h-1 transition-all duration-300',
+                  selectedIndex === i
+                    ? 'bg-[hsl(var(--blueprint-line))]'
+                    : 'bg-[hsl(var(--border))] group-hover/tick:bg-[hsl(var(--blueprint-line)/0.4)]',
+                )} />
+              </button>
+            ))}
+          </div>
+          <span className="font-mono text-[8px] tracking-wider text-muted-foreground ml-2 tabular-nums">
+            {String(selectedIndex + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}
+          </span>
+        </div>
+
+        {/* Next button */}
         <button
-          onClick={() => { scrollNext(); handleManualInteraction(); }}
-          className="group/btn relative size-8 border border-[hsl(var(--border))] grid place-content-center hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))] transition-all duration-200 bg-card/80 backdrop-blur-sm"
+          onClick={() => { scrollNext(); handleManualInteraction() }}
+          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-l border-[hsl(var(--border))] font-mono text-[9px] tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 shrink-0"
           aria-label="Next Project"
         >
-          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
-          <FaChevronRight size={12} />
+          NEXT
+          <ChevronRight size={11} className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
         </button>
-      </div>
-
-      {/* ── Progress Indicator (dimension tick marks) ── */}
-      <div className="border-t border-[hsl(var(--border))] px-4 sm:px-6 py-2 flex items-center justify-center gap-2 shrink-0">
-        {projects.map((_, i) => (
-          <div
-            key={i}
-            className={cn(
-              'h-0.5 transition-all duration-300',
-              selectedIndex === i
-                ? 'w-8 bg-foreground'
-                : 'w-4 bg-[hsl(var(--border))] hover:bg-[hsl(var(--blueprint-line)/0.3)] cursor-pointer',
-            )}
-            onClick={() => { emblaApi?.scrollTo(i); setInteracted(n => n + 1); }}
-          />
-        ))}
-        <span className="font-mono text-[8px] tracking-wider text-muted-foreground ml-2 uppercase">
-          {selectedIndex + 1}/{projects.length}
-        </span>
       </div>
     </div>
   )

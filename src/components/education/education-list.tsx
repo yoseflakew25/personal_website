@@ -23,7 +23,7 @@ const educationData = [
         date: "October 2022 – August 2023",
         location: "Addis Ababa, Ethiopia",
         description: (
-            <ul className="space-y-1 list-disc list-inside">
+            <ul className="space-y-1">
                 <li>Solved 400+ problems on platforms like LeetCode and Codeforces, strengthening skills in data structures & algorithms.</li>
                 <li>Gained practical experience in full-cycle web development by implementing 20+ UI components from design mockups.</li>
             </ul>
