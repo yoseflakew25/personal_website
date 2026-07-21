@@ -154,20 +154,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                       <p className="line-clamp-4 md:line-clamp-none">{project.description}</p>
                     </div>
 
-                    {/* Blueprint metadata — bordered spec table cells */}
-                    <div className="grid grid-cols-3 border border-[hsl(var(--border)/0.6)] divide-x divide-[hsl(var(--border)/0.6)]">
-                      {[
-                        { label: 'CLASSIFICATION', value: 'Fullstack' },
-                        { label: 'STATUS', value: 'Production' },
-                        { label: 'REVISION', value: 'REV A' },
-                      ].map(({ label, value }) => (
-                        <div key={label} className="px-2 py-1.5">
-                          <span className="font-mono text-[8px] tracking-widest text-muted-foreground uppercase block">{label}</span>
-                          <span className="font-mono text-[10px] sm:text-xs text-foreground block">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-
                     {/* Tech stack badges */}
                     <div className="flex flex-wrap gap-1.5">
                       {project.stacks.map(stack => (
@@ -211,69 +197,46 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
 
                   {/* Right: Image panel */}
                   <div className="flex-[1.1] w-full">
-                    <div className="relative aspect-video overflow-hidden border border-[hsl(var(--border))] group/img">
-                      {shouldLoadImage ? (
-                        <Image
-                          src={project.cover}
-                          alt={project.title}
-                          fill
-                          loading={index === 0 ? 'eager' : 'lazy'}
-                          priority={index === 0}
-                          className="object-cover transition-transform duration-700 group-hover/img:scale-105"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
-                        />
-                      ) : null}
-
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent dark:from-black/60 opacity-60 dark:opacity-70" />
-
-                      {/* Scan-line overlay for blueprint depth */}
-                      <div
-                        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-                        style={{
-                          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 3px)',
-                        }}
-                      />
-
-                      {/* Four corner dimension lines */}
-                      {/* TL */}
-                      <div className="absolute top-3 left-3 pointer-events-none">
-                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
-                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                    <div className="relative group/img">
+                      {/* Blueprint corner accents */}
+                      <div className="absolute top-0 left-0 pointer-events-none z-10">
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.4)]" />
                       </div>
-                      {/* TR */}
-                      <div className="absolute top-3 right-3 pointer-events-none flex flex-col items-end">
-                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
-                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      <div className="absolute top-0 right-0 pointer-events-none flex flex-col items-end z-10">
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.4)]" />
                       </div>
-                      {/* BL */}
-                      <div className="absolute bottom-3 left-3 pointer-events-none flex flex-col justify-end">
-                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
-                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      <div className="absolute bottom-0 left-0 pointer-events-none flex flex-col justify-end z-10">
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.4)]" />
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
                       </div>
-                      {/* BR */}
-                      <div className="absolute bottom-3 right-3 pointer-events-none flex flex-col items-end justify-end">
-                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.5)]" />
-                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.5)]" />
+                      <div className="absolute bottom-0 right-0 pointer-events-none flex flex-col items-end justify-end z-10">
+                        <div className="w-px h-5 bg-[hsl(var(--blueprint-line)/0.4)]" />
+                        <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
                       </div>
 
-                      {/* DRAFT VIEW label — top left */}
-                      <div className="absolute top-3 left-10 pointer-events-none">
-                        <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase">
+                      {/* VISUAL REF label */}
+                      <div className="absolute top-0 left-6 pointer-events-none z-10">
+                        <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.5)] uppercase">
                           VISUAL · REF
                         </span>
                       </div>
 
-                      {/* Large watermark number — bottom right */}
-                      <span
-                        className="absolute bottom-2 right-3 font-mono font-bold text-4xl sm:text-5xl leading-none select-none pointer-events-none"
-                        style={{
-                          WebkitTextStroke: '1px rgba(255,255,255,0.12)',
-                          color: 'transparent',
-                        }}
-                      >
-                        {id}
-                      </span>
+                      {shouldLoadImage ? (
+                        <Image
+                          src={project.cover}
+                          alt={project.title}
+                          width={1200}
+                          height={900}
+                          quality={90}
+                          placeholder="blur"
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          priority={index === 0}
+                          className="w-full h-auto object-contain transition-transform duration-700 group-hover/img:scale-[1.02]"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
+                        />
+                      ) : null}
                     </div>
 
                     {/* Dimension annotation below image */}
