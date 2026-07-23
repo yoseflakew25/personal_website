@@ -101,19 +101,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Stats title block */}
         <div className="border-t border-dashed border-[hsl(var(--border)/0.5)] mx-5 py-2 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1">
           <div>
-            <span className="text-blueprint-meta text-[8px]">SECTION</span>
+            <span className="text-blueprint-meta text-[9px]">SECTION</span>
             <p className="font-mono text-[10px] text-foreground">Blog Article</p>
           </div>
           <div>
-            <span className="text-blueprint-meta text-[8px]">STATUS</span>
+            <span className="text-blueprint-meta text-[9px]">STATUS</span>
             <p className="font-mono text-[10px] text-foreground">Published</p>
           </div>
           <div>
-            <span className="text-blueprint-meta text-[8px]">REVISION</span>
+            <span className="text-blueprint-meta text-[9px]">REVISION</span>
             <p className="font-mono text-[10px] text-foreground">A</p>
           </div>
           <div>
-            <span className="text-blueprint-meta text-[8px]">READ TIME</span>
+            <span className="text-blueprint-meta text-[9px]">READ TIME</span>
             <p className="font-mono text-[10px] text-foreground">{post.metadata.readingTime} min</p>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Content header */}
           <div className="border-b border-dashed border-[hsl(var(--border)/0.5)] pb-2 mb-6 -mx-5 md:-mx-8 px-5 md:px-8">
-            <span className="text-blueprint-meta text-[8px] tracking-[0.2em]">ARTICLE BODY</span>
+            <span className="text-blueprint-meta text-[9px] tracking-[0.2em]">ARTICLE BODY</span>
           </div>
 
           <div className="mdx-content max-w-none">
@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* End of article mark */}
           <div className="mt-8 pt-4 border-t border-dashed border-[hsl(var(--border)/0.5)] flex justify-center">
-            <span className="text-blueprint-note text-[8px] tracking-[0.3em]">— END OF ARTICLE —</span>
+            <span className="text-blueprint-note text-[9px] tracking-[0.3em]">— END OF ARTICLE —</span>
           </div>
 
           {/* Tags */}

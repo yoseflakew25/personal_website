@@ -51,12 +51,12 @@ const TimelineItem = ({
                 {title}
               </h4>
               {/* Date badge */}
-              <span className="font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line)/0.8)] border border-[hsl(var(--blueprint-line)/0.25)] px-2 py-0.5 shrink-0 self-start">
+              <span className="font-mono text-[9px] xs:text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 shrink-0 self-start">
                 {date}
               </span>
             </div>
             {organization && (
-              <p className="font-mono text-[11px] text-muted-foreground tracking-wide">
+              <p className="font-mono text-[10px] xs:text-[11px] text-muted-foreground tracking-wide">
                 {organization}
               </p>
             )}
@@ -76,7 +76,7 @@ const TimelineItem = ({
             {/* Dashed separator — blueprint spec divider */}
             <div className="mt-3 mb-2 flex items-center gap-2">
               <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--blueprint-line)/0.2)]" />
-              <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.4)] uppercase">DETAILS</span>
+              <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.4)] uppercase">DETAILS</span>
               <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--blueprint-line)/0.2)]" />
             </div>
             <div className="timeline-text text-muted-foreground text-xs leading-relaxed">
@@ -93,10 +93,11 @@ const Experience = () => {
   return (
     <article className="space-y-8" id="experience">
       <section className="timeline space-y-10">
-        <ScrollReveal variant="fadeUp">            <SectionHeader title="Professional Experience" sectionNumber="03" />
+        <ScrollReveal variant="blueprintReveal">
+          <SectionHeader title="Professional Experience" />
         </ScrollReveal>
 
-        <ScrollReveal variant="fadeLeft" delay={0.2}>
+        <ScrollReveal variant="blueprintReveal" delay={0.15}>
           <ol className="timeline-list space-y-8">
             <TimelineItem
               title="Full-Stack Developer"

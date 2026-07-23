@@ -43,17 +43,51 @@
   }
 
   .text-blueprint-meta {
-    @apply font-mono text-[10px] tracking-wider text-muted-foreground uppercase;
+    @apply font-mono text-[9px] xs:text-[10px] sm:text-[11px] tracking-wider text-muted-foreground uppercase;
   }
 
   /* ===== Selection ===== */
   ::selection {
-    background: hsl(var(--primary) / 0.25);
-    color: hsl(var(--primary-foreground));
+    background: hsl(var(--blueprint-line) / 0.25);
+    color: hsl(var(--foreground));
   }
 
   * {
     scroll-behavior: smooth;
+  }
+
+  /* ===== Global Keyboard Focus Indicators ===== */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--blueprint-line) / 0.7);
+    outline-offset: 2px;
+  }
+
+  /* Restore a slightly thicker ring for interactive controls */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:focus-visible {
+    outline-width: 2.5px;
+    outline-offset: 3px;
+  }
+
+  /* ===== Reduced Motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -113,7 +147,7 @@
   .blueprint-dimension::before,
   .blueprint-dimension::after {
     content: '▸';
-    @apply absolute top-1/2 -translate-y-1/2 text-[8px] text-[hsl(var(--blueprint-line)/0.6)];
+    @apply absolute top-1/2 -translate-y-1/2 text-[9px] text-[hsl(var(--blueprint-line)/0.6)];
   }
   .blueprint-dimension::before {
     @apply -left-2;
@@ -145,7 +179,7 @@
 
   /* ===== "Not to Scale" Stamp ===== */
   .blueprint-note {
-    @apply font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase rotate-0 inline-block;
+    @apply font-mono text-[9px] xs:text-[10px] sm:text-[11px] tracking-[0.25em] text-muted-foreground uppercase rotate-0 inline-block;
   }
 
   /* ===== Technical Data Row ===== */
@@ -154,7 +188,7 @@
   }
 
   .blueprint-data-label {
-    @apply font-mono text-[10px] tracking-wider text-muted-foreground uppercase min-w-[100px] shrink-0;
+    @apply font-mono text-[9px] xs:text-[10px] tracking-wider text-muted-foreground uppercase min-w-[80px] xs:min-w-[100px] shrink-0;
   }
 
   .blueprint-data-value {
@@ -167,10 +201,29 @@
   }
   .blueprint-hover:hover {
     @apply border-[hsl(var(--blueprint-line)/0.5)];
-    box-shadow: 0 0 0 1px hsl(var(--blueprint-line) / 0.1);
+    box-shadow: 0 0 12px 1px hsl(var(--blueprint-line) / 0.15), 0 0 0 1px hsl(var(--blueprint-line) / 0.25);
+  }
+
+  /* ===== Orange CTA Button ===== */
+  .blueprint-cta {
+    @apply relative inline-flex items-center gap-3 px-5 py-3 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase font-medium transition-all duration-300;
+    background: hsl(var(--blueprint-line));
+    color: hsl(0 0% 100%);
+    border: 1.5px solid hsl(var(--blueprint-line));
+  }
+  .blueprint-cta:hover {
+    background: hsl(var(--blueprint-line) / 0.85);
+    box-shadow: 0 0 0 2px hsl(var(--blueprint-line) / 0.15), 0 4px 12px hsl(var(--blueprint-line) / 0.2);
+  }
+  .blueprint-cta:active {
+    transform: translateY(1px);
   }
 
   /* ===== Focus Styles ===== */
+  /* Global *:focus-visible rules at the top handle keyboard focus for everything.
+     This class exists for backward compatibility — it suppresses the global outline
+     for components that need custom focus treatment (no double-ring).
+     New components should rely on the global rule alone. */
   .el-focus-styles {
     @apply ring-offset-background focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1;
   }
@@ -178,10 +231,11 @@
   /* ===== CSS-Only Crosshair Grid (replaces 160 DOM elements) ===== */
   .blueprint-crosshair-grid {
     background-image:
-      radial-gradient(circle, hsl(var(--blueprint-line) / 0.15) 1px, transparent 1px);
+      radial-gradient(circle, hsl(var(--blueprint-line) / 0.12) 1px, transparent 1px);
     background-size:
       12.5% 10%;
   }
+
 
   /* ===== Custom Scrollbar ===== */
   ::-webkit-scrollbar {
@@ -194,11 +248,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: hsl(var(--blueprint-line) / 0.35);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
+    background: hsl(var(--blueprint-line) / 0.65);
   }
 
   /* ===== Page Enter Animation ===== */

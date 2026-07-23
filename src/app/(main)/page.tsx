@@ -1,42 +1,62 @@
 import dynamic from 'next/dynamic'
 import AboutSection from '~/components/about-section'
+import { SectionSequencer } from '~/components/ui/scroll-reveal'
+import Skills from '~/components/skills'
+import Experience from '~/components/experience'
+import { EducationList } from '~/components/education'
+import { ContactSkeleton, ProjectCarouselSkeleton } from '~/components/ui/blueprint-skeleton'
+import ExploreSection from '~/components/explore-section'
 import CTASection from '~/components/cta-section'
-import { SkillsSkeleton, ExperienceSkeleton, EducationSkeleton } from '~/components/ui/blueprint-skeleton'
+import { projects } from '~/components/project/_project-mock'
 
-const Skills = dynamic(() => import('~/components/skills'), {
-  loading: () => <SkillsSkeleton />,
-})
+const ProjectCarousel = dynamic(
+  () => import('~/components/project/project-carousel'),
+  {
+    loading: () => <ProjectCarouselSkeleton />,
+  },
+)
 
-const Experience = dynamic(() => import('~/components/experience'), {
-  loading: () => <ExperienceSkeleton />,
-})
-
-const EducationList = dynamic(() => import('~/components/education').then(mod => mod.EducationList), {
-  loading: () => <EducationSkeleton />,
-})
+const ContactUs = dynamic(
+  () => import('~/components/contact-us'),
+  {
+    loading: () => <ContactSkeleton />,
+  },
+)
 
 const HomePage = () => {
   return (
     <div className="space-y-0 relative pb-12">
       <AboutSection />
 
-      {/* Skills */}
-      <section id="skills" className="pb-12 pt-8">
-        <Skills />
-      </section>
+      {/* Sequenced section reveals with staggered blueprint entrance */}
+      <SectionSequencer
+        sectionInterval={0.15}
+        initialDelay={0.1}
+      >
+        <section id="skills" className="pb-12 pt-8">
+          <Skills />
+        </section>
 
-      {/* Experience */}
-      <section id="experience" className="pb-12">
-        <Experience />
-      </section>
+        <section id="experience" className="pb-12">
+          <Experience />
+        </section>
 
-      {/* Education */}
-      <section id="education" className="pb-12">
-        <EducationList />
-      </section>
+        <section id="education" className="pb-12">
+          <EducationList />
+        </section>
 
-      {/* CTA */}
-      <CTASection />
+
+
+        <section id="projects" className="pb-12">
+          <ProjectCarousel projects={projects} />
+        </section>
+
+
+
+        <div id="contact" className="pb-12">
+          <ContactUs />
+        </div>
+      </SectionSequencer>
     </div>
   )
 }

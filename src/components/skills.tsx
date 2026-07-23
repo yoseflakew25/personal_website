@@ -3,6 +3,7 @@ import React from 'react'
 import { BACKEND_STACKS, FRONTEND_STACKS } from '~/constants/stack'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
+import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 const SkillSector = ({
   label,
@@ -16,7 +17,7 @@ const SkillSector = ({
   <div className="relative p-4">
     {/* Sector header row */}
     <div className="flex items-center gap-3 mb-4">
-      <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.5)] uppercase shrink-0">
+      <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.7)] uppercase shrink-0">
         [{code}]
       </span>
       <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--border)/0.6)]" />
@@ -48,20 +49,23 @@ const SkillSector = ({
 const Skills = () => {
   return (
     <section aria-label="skills" className="space-y-8 bg-transparent">
-      <ScrollReveal variant="fadeUp">
-        <SectionHeader title="Tools & Technologies" sectionNumber="02" />
+      <ScrollReveal variant="blueprintReveal">
+        <SectionHeader title="Tools & Technologies" />
       </ScrollReveal>
 
-      <ScrollReveal variant="fadeUp" delay={0.2}>
-        {/* Outer container with corner accents */}
+      <ScrollReveal variant="blueprintReveal" delay={0.15}>
+        {/* Outer container with interactive dimensions on hover */}
+        <BlueprintMeasure
+          widthLabel="SCHEMA W"
+          heightLabel="SCHEMA H"
+          specTag="TECH DIM"
+          offset={6}
+        >
         <div className="relative border border-[hsl(var(--border))] bg-card divide-y divide-[hsl(var(--border))]">
-          {/* TL corner */}
+          {/* Always-visible blueprint corner brackets */}
           <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          {/* TR corner */}
           <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          {/* BL corner */}
           <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          {/* BR corner */}
           <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
 
           {/* Spec sheet top bar */}
@@ -95,6 +99,7 @@ const Skills = () => {
             </span>
           </div>
         </div>
+        </BlueprintMeasure>
       </ScrollReveal>
     </section>
   )

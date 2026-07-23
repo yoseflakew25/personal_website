@@ -50,11 +50,11 @@ const ContactUs = () => {
 
   return (
     <section id="contact" aria-label="contact" className="scroll-mt-24">
-      <ScrollReveal variant="fadeUp">
-        <SectionHeader title="Get in Touch" sectionNumber="06" />
+      <ScrollReveal variant="blueprintReveal">
+        <SectionHeader title="Get in Touch" />
       </ScrollReveal>
 
-      <ScrollReveal variant="fadeUp" delay={0.2}>
+      <ScrollReveal variant="blueprintReveal" delay={0.15}>
         <div className="flex items-start flex-col md:flex-row w-full gap-8 mt-8">
           {/* Left Info Card */}
           <div className="md:max-w-sm size-full relative border border-[hsl(var(--border))] bg-card p-5 space-y-5">
@@ -74,7 +74,7 @@ const ContactUs = () => {
               If you have any inquiries, please feel free to reach out. You can contact me via email
               at{' '}
               <CustomLink href={`mailto:${config.social.email}`} aria-label={config.social.email}>
-                <span className="text-[hsl(var(--blueprint-line))]">{config.social.email}</span>
+                <span className="text-[hsl(var(--blueprint-line))] font-medium">{config.social.email}</span>
               </CustomLink>
             </p>
 
@@ -186,8 +186,7 @@ const ContactUs = () => {
 
                 <Button
                   type="submit"
-                  variant="outline"
-                  className="w-full group"
+                  className="w-full blueprint-cta justify-center group"
                   disabled={isPending}
                 >
                   {isPending ? (

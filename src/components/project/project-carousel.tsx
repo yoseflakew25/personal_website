@@ -7,6 +7,7 @@ import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { TProjectSerialized } from './_project-mock'
 import { cn } from '~/lib/utils'
+import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 interface ProjectCarouselProps {
   projects: readonly TProjectSerialized[]
@@ -103,11 +104,11 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     <span className="text-blueprint-meta">PROJECT_SPEC · {id}</span>
                     <span className="h-3 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
                     {/* Primary stack as a styled badge */}
-                    <span className="font-mono text-[9px] px-1.5 py-0.5 border border-[hsl(var(--blueprint-line)/0.3)] text-[hsl(var(--blueprint-line))] uppercase tracking-wider">
+                    <span className="font-mono text-[8px] xs:text-[9px] px-1.5 py-0.5 border border-[hsl(var(--blueprint-line)/0.3)] text-[hsl(var(--blueprint-line))] uppercase tracking-wider">
                       {project.stacks[0] ?? 'N/A'}
                     </span>
                     {/* Pulsing live status dot */}
-                    <span className="flex items-center gap-1 font-mono text-[9px] text-emerald-500/80 uppercase tracking-wider">
+                    <span className="hidden sm:flex items-center gap-1 font-mono text-[9px] text-emerald-500/80 uppercase tracking-wider">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
                         <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
@@ -130,8 +131,8 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     <span
                       className="font-mono font-bold text-4xl sm:text-6xl md:text-7xl leading-none select-none block"
                       style={{
-                        WebkitTextStroke: '1.5px hsl(var(--blueprint-line) / 0.2)',
-                        color: 'transparent',
+                        WebkitTextStroke: '3px hsl(var(--blueprint-line))',
+                        WebkitTextFillColor: 'transparent',
                       }}
                     >
                       {id}
@@ -144,7 +145,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                       {/* Blueprint classification tag line */}
                       <div className="flex items-center gap-2">
                         <span className="h-px w-4 bg-[hsl(var(--blueprint-line)/0.4)]" />
-                        <p className="text-[9px] text-[hsl(var(--blueprint-line)/0.7)] font-mono uppercase tracking-[0.2em]">
+                        <p className="text-[8px] xs:text-[9px] text-[hsl(var(--blueprint-line)/0.7)] font-mono uppercase tracking-[0.2em]">
                           Fullstack · Web Application
                         </p>
                       </div>
@@ -195,9 +196,15 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     </div>
                   </div>
 
-                  {/* Right: Image panel */}
+                  {/* Right: Image panel — with interactive dimensions on hover */}
                   <div className="flex-[1.1] w-full">
-                    <div className="relative group/img">
+                    <BlueprintMeasure
+                      widthLabel="IMG W"
+                      heightLabel="IMG H"
+                      specTag="VISUAL DIM"
+                      offset={4}
+                    >
+                      <div className="relative group/img">
                       {/* Blueprint corner accents */}
                       <div className="absolute top-0 left-0 pointer-events-none z-10">
                         <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
@@ -218,7 +225,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
 
                       {/* VISUAL REF label */}
                       <div className="absolute top-0 left-6 pointer-events-none z-10">
-                        <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.5)] uppercase">
+                        <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.5)] uppercase">
                           VISUAL · REF
                         </span>
                       </div>
@@ -242,11 +249,12 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     {/* Dimension annotation below image */}
                     <div className="flex items-center gap-0 mt-1">
                       <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
-                      <span className="font-mono text-[8px] tracking-widest text-[hsl(var(--blueprint-line)/0.45)] uppercase px-2">
+                      <span className="font-mono text-[9px] tracking-widest text-[hsl(var(--blueprint-line)/0.45)] uppercase px-2">
                         SCALE 1:1
                       </span>
                       <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
                     </div>
+                    </BlueprintMeasure>
                   </div>
                 </div>
               </div>
@@ -270,8 +278,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
 
         {/* Tick-mark ruler progress */}
         <div className="flex-1 flex items-center justify-center gap-1 px-4">
-          {/* Ruler baseline */}
-          <div className="flex items-end gap-1">
+          {/* Ruler baseline */}                  <div className="flex items-end gap-1">
             {projects.map((_, i) => (
               <button
                 key={i}
@@ -286,17 +293,17 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     ? 'h-3 bg-[hsl(var(--blueprint-line))]'
                     : 'h-1.5 bg-[hsl(var(--border))] group-hover/tick:bg-[hsl(var(--blueprint-line)/0.4)]',
                 )} />
-                {/* Dot at base */}
+                {/* Dot at base — warm glow on active */}
                 <div className={cn(
                   'w-1 h-1 transition-all duration-300',
                   selectedIndex === i
-                    ? 'bg-[hsl(var(--blueprint-line))]'
+                    ? 'bg-[hsl(var(--blueprint-line))] shadow-[0_0_4px_1px_hsl(var(--blueprint-line)/0.4),0_0_8px_2px_hsl(var(--blueprint-line)/0.2)]'
                     : 'bg-[hsl(var(--border))] group-hover/tick:bg-[hsl(var(--blueprint-line)/0.4)]',
                 )} />
               </button>
             ))}
           </div>
-          <span className="font-mono text-[8px] tracking-wider text-muted-foreground ml-2 tabular-nums">
+          <span className="font-mono text-[9px] tracking-wider text-muted-foreground ml-2 tabular-nums">
             {String(selectedIndex + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}
           </span>
         </div>

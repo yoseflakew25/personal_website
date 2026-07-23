@@ -81,8 +81,8 @@ const PostItem: React.FC<PostItemProps> = ({
 
         {/* ── Spec footer ── */}
         <div className="border-t border-dashed border-[hsl(var(--border)/0.5)] px-4 py-1 flex items-center justify-between">
-          <span className="text-blueprint-note text-[8px]">ARTICLE</span>
-          <span className="text-blueprint-note text-[8px]">{metadata.readingTime} MIN READ</span>
+          <span className="text-blueprint-note text-[9px]">ARTICLE</span>
+          <span className="text-blueprint-note text-[9px]">{metadata.readingTime} MIN READ</span>
         </div>
       </Link>
     </li>

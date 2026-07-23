@@ -1,16 +1,9 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import ContentNotFound from '../ui/content-not-found'
 import { projects as defaultProjects } from './_project-mock'
 import type { TProjectSerialized } from './_project-mock'
-
-import { ProjectCarouselSkeleton } from '~/components/ui/blueprint-skeleton'
-
-const ProjectCarousel = dynamic(() => import('./project-carousel'), {
-  ssr: false,
-  loading: () => <ProjectCarouselSkeleton />,
-})
+import ProjectCarousel from './project-carousel'
 
 type ProjectListProps = {
   projects?: readonly TProjectSerialized[]

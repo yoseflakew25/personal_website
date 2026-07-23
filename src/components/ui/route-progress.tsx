@@ -45,9 +45,32 @@ const RouteProgress = () => {
         const handleClick = (e: MouseEvent) => {
             const anchor = (e.target as HTMLElement).closest('a')
             if (!anchor) return
+            
+            // Check for standard left click without modifiers
+            if (e.button !== 0 || e.ctrlKey || e.shiftKey || e.metaKey || e.altKey) return
+            
             const href = anchor.getAttribute('href')
-            if (href && href.startsWith('/') && !anchor.hasAttribute('download') && anchor.target !== '_blank') {
-                startProgress()
+            if (!href) return
+
+            // Ignore downloads, external targets, and protocol-specific links
+            if (
+                anchor.hasAttribute('download') ||
+                anchor.target === '_blank' ||
+                href.startsWith('mailto:') ||
+                href.startsWith('tel:') ||
+                href.startsWith('javascript:')
+            ) {
+                return
+            }
+
+            try {
+                const targetUrl = new URL(href, window.location.origin)
+                // Only show progress for internal navigations that actually change the pathname
+                if (targetUrl.origin === window.location.origin && targetUrl.pathname !== window.location.pathname) {
+                    startProgress()
+                }
+            } catch (err) {
+                // Safely ignore invalid URLs
             }
         }
         document.addEventListener('click', handleClick, true)
@@ -73,7 +96,7 @@ const RouteProgress = () => {
                     transition={{ duration: 0.15 }}
                 >
                     <motion.div
-                        className="h-full bg-foreground"
+                        className="h-full bg-[hsl(var(--blueprint-line))]"
                         initial={{ width: '0%' }}
                         animate={{ width: `${progress}%` }}
                         transition={{

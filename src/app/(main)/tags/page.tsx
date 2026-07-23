@@ -49,7 +49,7 @@ const TagsPage = () => {
     <div className="!mt-8 relative pb-12">
       {/* Header with search + RSS */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-        <SectionHeader title="All Posts" sectionNumber="01" />
+        <SectionHeader title="All Posts" />
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <SearchInput />
           <Link

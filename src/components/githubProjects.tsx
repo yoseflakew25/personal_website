@@ -6,6 +6,7 @@ import { ExternalLink } from 'lucide-react'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
 import { StaggerList, StaggerItem } from './ui/scroll-reveal'
+import { BlueprintMeasure } from './ui/blueprint-measure'
 import { notableProjects } from '~/constants/github-projects'
 
 const GithubProjects = ({
@@ -17,8 +18,8 @@ const GithubProjects = ({
 }) => {
   return (
     <section id="github" className="space-y-8 bg-transparent scroll-mt-24">
-      <ScrollReveal variant="fadeUp">
-        <SectionHeader title={title} titleClassName={titleClassName} sectionNumber="07" />
+      <ScrollReveal variant="blueprintReveal">
+        <SectionHeader title={title} titleClassName={titleClassName} />
       </ScrollReveal>
 
       <StaggerList className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.06}>
@@ -28,6 +29,13 @@ const GithubProjects = ({
 
           return (
             <StaggerItem key={index}>
+              <BlueprintMeasure
+                widthLabel="PROJ W"
+                heightLabel="PROJ H"
+                specTag="GITHUB"
+                offset={6}
+                className="h-full"
+              >
               <div className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.4)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.06)]">
 
                 {/* Blueprint corner accents */}
@@ -39,7 +47,7 @@ const GithubProjects = ({
                 {/* Spec-sheet header bar */}
                 <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase">
+                    <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.7)] uppercase">
                       PROJ · {id}
                     </span>
                     <span className="h-px w-3 bg-[hsl(var(--blueprint-line)/0.25)]" />
@@ -69,7 +77,7 @@ const GithubProjects = ({
                     <span
                       className="font-mono font-bold text-2xl leading-none select-none shrink-0 mt-0.5"
                       style={{
-                        WebkitTextStroke: '1px hsl(var(--foreground) / 0.1)',
+                        WebkitTextStroke: '1px hsl(var(--blueprint-line) / 0.15)',
                         color: 'transparent',
                       }}
                     >
@@ -77,7 +85,7 @@ const GithubProjects = ({
                     </span>
                   </div>
 
-                  <p className="font-mono text-[11px] text-muted-foreground/75 leading-relaxed line-clamp-3 flex-1">
+                  <p className="font-mono text-[10px] xs:text-[11px] text-muted-foreground/75 leading-relaxed line-clamp-3 flex-1">
                     {project.description}
                   </p>
 
@@ -126,6 +134,7 @@ const GithubProjects = ({
                   </div>
                 </div>
               </div>
+              </BlueprintMeasure>
             </StaggerItem>
           )
         })}

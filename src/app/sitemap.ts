@@ -1,21 +1,11 @@
-import { posts } from '#site/content'
 import { MetadataRoute } from 'next'
 import { BasePath } from '~/lib/utils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = posts.map(post => ({
-    url: BasePath(`/blog/${post.slugAsParams}`),
-    lastModified: post.date,
-  }))
 
   return [
     {
       url: BasePath(''),
-      lastModified: new Date(),
-    },
-
-    {
-      url: BasePath('/blog'),
       lastModified: new Date(),
     },
     {
@@ -30,7 +20,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: BasePath('/about'),
       lastModified: new Date(),
     },
-
-    ...blogPosts,
   ]
 }

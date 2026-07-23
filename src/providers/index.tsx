@@ -6,7 +6,7 @@ import { Toaster } from '~/components/ui/sonner'
 
 const RootProviders = ({ children }: { children: ReactNode }) => {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       {children}
       <Toaster />
     </ThemeProvider>

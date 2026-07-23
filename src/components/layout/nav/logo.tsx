@@ -11,8 +11,8 @@ const Logo = () => {
     >
       {/* Small spec bracket */}
       <span className="hidden sm:flex flex-col leading-tight">
-        <span className="text-[8px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">PORTFOLIO</span>
-        <span className="text-[8px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">V1.0</span>
+        <span className="text-[9px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">PORTFOLIO</span>
+        <span className="text-[9px] tracking-[0.2em] text-muted-foreground font-mono uppercase leading-none">V1.0</span>
       </span>
 
       {/* Logo mark */}

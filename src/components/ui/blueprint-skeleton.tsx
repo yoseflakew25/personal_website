@@ -212,6 +212,61 @@ export const DesignsSkeleton = () => {
 }
 
 // 5. Project Carousel Skeleton (Main Projects page loading)
+// 6. Contact Section Skeleton
+export const ContactSkeleton = () => {
+  return (
+    <div className="space-y-8 bg-transparent">
+      {/* Section Header */}
+      <div className="flex items-center gap-3 animate-pulse">
+        <span className="font-mono text-[10px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.3)] uppercase">
+          06
+        </span>
+        <h2 className="font-mono text-sm tracking-wider text-muted-foreground/50 uppercase font-medium">
+          [CONTACT_TRANSMITTAL.dwg]
+        </h2>
+        <span className="flex-1 h-px bg-[hsl(var(--border)/0.5)]" />
+      </div>
+
+      <BlueprintSkeletonContainer className="flex flex-col md:flex-row w-full gap-0 min-h-[300px]">
+        {/* Left info card skeleton */}
+        <div className="md:max-w-sm w-full border-b md:border-b-0 md:border-r border-[hsl(var(--border))] p-5 space-y-5">
+          <div className="border-b border-[hsl(var(--border))] pb-2 space-y-1">
+            <BlueprintSkeletonLine className="w-32" />
+            <BlueprintSkeletonLine className="w-20" />
+          </div>
+          <div className="space-y-2">
+            <BlueprintSkeletonLine className="w-full" />
+            <BlueprintSkeletonLine className="w-[85%]" />
+          </div>
+          <div className="space-y-2">
+            <BlueprintSkeletonLine className="w-20" />
+            <div className="flex gap-2">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="w-8 h-8 border border-[hsl(var(--border)/0.5)]" />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right form skeleton */}
+        <div className="flex-1 p-5 space-y-4">
+          <div className="border-b border-[hsl(var(--border))] pb-2 space-y-1">
+            <BlueprintSkeletonLine className="w-28" />
+            <BlueprintSkeletonLine className="w-20" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <BlueprintSkeletonLine className="h-9 w-full" />
+            <BlueprintSkeletonLine className="h-9 w-full" />
+          </div>
+          <BlueprintSkeletonLine className="h-9 w-full" />
+          <BlueprintSkeletonLine className="h-[100px] w-full" />
+          <BlueprintSkeletonLine className="h-10 w-full" />
+        </div>
+      </BlueprintSkeletonContainer>
+    </div>
+  )
+}
+
 export const ProjectCarouselSkeleton = () => {
   return (
     <BlueprintSkeletonContainer className="h-[600px] flex flex-col bg-card">
@@ -273,7 +328,7 @@ export const ProjectCarouselSkeleton = () => {
           </svg>
           <div className="font-mono text-[9px] tracking-widest text-[hsl(var(--blueprint-line)/0.4)] uppercase text-center space-y-1">
             <p>[DRAFT_IMAGE_LOAD_PENDING]</p>
-            <p className="text-[8px] opacity-75">SCALE: 1:1 · DIM: SVG_CANVAS</p>
+            <p className="text-[9px] opacity-75">SCALE: 1:1 · DIM: SVG_CANVAS</p>
           </div>
         </div>
       </div>

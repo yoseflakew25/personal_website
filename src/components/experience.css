@@ -76,10 +76,28 @@
     box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.12);
 }
 
-/* Active role — brighter dot */
+/* Active role — warm accent dot with glow */
 .timeline-list li:first-child .timeline-item::after {
     background-color: hsl(var(--blueprint-line));
-    box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.15);
+    box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.15), 0 0 8px 2px hsl(var(--blueprint-line) / 0.2);
+    animation: warm-pulse 2.5s ease-in-out infinite;
+}
+
+/* Warm glow pulse animation */
+@keyframes warm-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px hsl(var(--blueprint-line) / 0.15), 0 0 8px 2px hsl(var(--blueprint-line) / 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 5px hsl(var(--blueprint-line) / 0.1), 0 0 14px 4px hsl(var(--blueprint-line) / 0.15);
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-list li:first-child .timeline-item::after {
+        animation: none;
+    }
 }
 
 /* ── Description list — left-border strip style ── */

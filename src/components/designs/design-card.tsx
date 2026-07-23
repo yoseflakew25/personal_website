@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { DesignProject } from '~/constants/ui-designs'
 import { cn } from '~/lib/utils'
 import DesignImage from './design-image'
+import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 type DesignCardProps = {
   project: DesignProject
@@ -13,24 +14,26 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
   const id = String(project.id).padStart(2, '0')
 
   return (
+    <BlueprintMeasure
+      widthLabel="CARD W"
+      heightLabel="CARD H"
+      specTag="UI DIM"
+      offset={6}
+      className="h-full"
+    >
     <a
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card overflow-hidden transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.45)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]"
     >
-      {/* Blueprint corner accents */}
-      <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
 
       {/* Spec-sheet header bar */}
       <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex items-center justify-between shrink-0">
-        <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase">
+        <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.7)] uppercase">
           DESIGN · {id}
         </span>
-        <span className="font-mono text-[8px] tracking-[0.2em] text-muted-foreground uppercase">
+        <span className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground uppercase">
           UI/UX
         </span>
       </div>
@@ -111,6 +114,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
         </div>
       </div>
     </a>
+    </BlueprintMeasure>
   )
 }
 

@@ -66,12 +66,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
             {title}
           </h3>
-          <p className="text-[10px] text-[hsl(var(--blueprint-line)/0.6)] font-mono uppercase tracking-widest mt-0.5">
+          <p className="text-[9px] xs:text-[10px] text-[hsl(var(--blueprint-line)/0.6)] font-mono uppercase tracking-widest mt-0.5">
             Fullstack Project
           </p>
         </div>
 
-        <p className="text-muted-foreground text-xs font-mono leading-relaxed line-clamp-3">
+        <p className="text-muted-foreground text-[11px] xs:text-xs font-mono leading-relaxed line-clamp-3">
           {description}
         </p>
 
@@ -97,7 +97,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           >
             <FaExternalLinkAlt size={10} />
             <span>Live Preview</span>
-            <span className="text-[8px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">↗</span>
+            <span className="text-[9px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">↗</span>
           </a>
 
           {isRepo && (
@@ -109,7 +109,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             >
               <FaGithub size={10} />
               <span>Source</span>
-              <span className="text-[8px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
+              <span className="text-[9px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
             </a>
           )}
         </div>
@@ -117,9 +117,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
       {/* Spec footer */}
       <div className="border-t border-dashed border-[hsl(var(--border)/0.6)] px-3 py-1 flex items-center justify-between">
-        <span className="text-blueprint-note text-[8px]">REV A</span>
-        <span className="text-blueprint-note text-[8px]">SHEET {id}/{String(total).padStart(2, '0')}</span>
-        <span className="text-blueprint-note text-[8px]">NOT TO SCALE</span>
+        <span className="text-blueprint-note text-[9px]">REV A</span>
+        <span className="text-blueprint-note text-[9px]">SHEET {id}/{String(total).padStart(2, '0')}</span>
+        <span className="text-blueprint-note text-[9px]">NOT TO SCALE</span>
       </div>
     </div>
   )

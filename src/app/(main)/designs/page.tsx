@@ -1,15 +1,6 @@
-import dynamic from 'next/dynamic'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
-
-import { DesignsSkeleton } from '~/components/ui/blueprint-skeleton'
-
-const DesignProjects = dynamic(
-  () => import('~/components/designs/design-projects'),
-  {
-    loading: () => <DesignsSkeleton />,
-  },
-)
+import DesignProjects from '~/components/designs/design-projects'
 
 export const metadata = getSEOTags({
   title: `UI / UX Designs - ${config.appName}`,

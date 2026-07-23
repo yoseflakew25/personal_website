@@ -1,5 +1,6 @@
 import React from 'react'
 import { GraduationCap, Calendar } from 'lucide-react'
+import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 export interface EducationItemProps {
     degree: string
@@ -18,26 +19,28 @@ const EducationItem: React.FC<EducationItemProps> = ({
 }) => {
     return (
         <li role="listitem" className="relative border border-[hsl(var(--border))] bg-card group transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.4)]">
-            {/* Blueprint corner accents */}
-            <span className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-300 z-10 pointer-events-none" />
-            <span className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-300 z-10 pointer-events-none" />
-            <span className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-300 z-10 pointer-events-none" />
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-300 z-10 pointer-events-none" />
+      <BlueprintMeasure
+        widthLabel="WIDTH"
+        heightLabel="HEIGHT"
+        specTag="ACADEMIC RECORD"
+        offset={10}
+        className="w-full"
+      >
 
             {/* Spec-sheet header bar */}
             <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shrink-0 bg-muted/20">
                 <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase">
+                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.7)] uppercase">
                         EDU · RECORD
                     </span>
                     <span className="h-px w-3 bg-[hsl(var(--blueprint-line)/0.3)]" />
-                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-muted-foreground uppercase flex items-center gap-1.5">
+                    <span className="font-mono text-[9px] xs:text-[10px] sm:text-xs tracking-[0.2em] text-muted-foreground uppercase flex items-center gap-1.5">
                         <GraduationCap size={14} />
                         {school}
                     </span>
                 </div>
                 
-                <div className="flex items-center gap-1.5 font-mono text-[10px] sm:text-xs tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.25)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit uppercase">
+                <div className="flex items-center gap-1.5 font-mono text-[10px] sm:text-xs tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit uppercase">
                     <Calendar size={12} />
                     <span>{date}</span>
                 </div>
@@ -50,7 +53,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
                     </h3>
                     {location && (
                         <div className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-[hsl(var(--blueprint-line)/0.4)] rotate-45" />
+                            <span className="w-1 h-1 bg-[hsl(var(--blueprint-line)/0.6)] rotate-45" />
                             <span className="text-[hsl(var(--blueprint-line)/0.6)] text-[10px] sm:text-xs font-mono tracking-widest uppercase">{location}</span>
                         </div>
                     )}
@@ -62,11 +65,12 @@ const EducationItem: React.FC<EducationItemProps> = ({
                         <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.4)] uppercase">ACADEMIC DETAILS</span>
                         <span className="h-px flex-1 border-t border-dashed border-[hsl(var(--blueprint-line)/0.2)]" />
                     </div>
-                    <div className="education-text font-mono text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                    <div className="education-text font-mono text-[10px] xs:text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                         {description}
                     </div>
                 </div>
             </div>
+            </BlueprintMeasure>
         </li>
     )
 }

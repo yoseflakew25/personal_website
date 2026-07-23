@@ -29,9 +29,9 @@ const MobileNav = () => {
         {/* Spec header */}
         <div className="border-b border-dashed border-[hsl(var(--border)/0.5)] pb-2 mb-4 -mx-6 px-6">
           <div className="flex items-center gap-2">
-            <span className="text-blueprint-meta text-[8px] tracking-[0.2em]">NAV</span>
+            <span className="text-blueprint-meta text-[9px] tracking-[0.2em]">NAV</span>
             <span className="h-2 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
-            <span className="text-blueprint-meta text-[8px] tracking-[0.2em]">MOBILE</span>
+            <span className="text-blueprint-meta text-[9px] tracking-[0.2em]">MOBILE</span>
           </div>
         </div>
 
@@ -47,7 +47,7 @@ const MobileNav = () => {
 
         {/* Sheet footer */}
         <div className="absolute bottom-4 left-6 right-6 border-t border-dashed border-[hsl(var(--border)/0.5)] pt-2">
-          <span className="text-blueprint-note text-[8px]">SITE NAV</span>
+          <span className="text-blueprint-note text-[9px]">SITE NAV</span>
         </div>
       </SheetContent>
     </Sheet>

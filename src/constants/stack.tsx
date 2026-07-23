@@ -34,11 +34,11 @@ export type stacksProps = Record<
 >
 
 export const FRONTEND_STACKS: stacksProps = {
-  JavaScript: { Icon: SiJavascript, className: 'text-cyan-400' },
+  JavaScript: { Icon: SiJavascript, className: 'text-amber-500' },
   TypeScript: { Icon: SiTypescript, className: 'text-blue-400' },
   'Next.js': { Icon: SiNextdotjs, className: '' },
   'React.js': { Icon: SiReact, className: 'text-sky-500' },
-  TailwindCSS: { Icon: SiTailwindcss, className: 'text-cyan-300' },
+  TailwindCSS: { Icon: SiTailwindcss, className: 'text-sky-400' },
   Bootstrap: { Icon: BsFillBootstrapFill, className: 'text-purple-500' },
   'Material UI': { Icon: SiMui, className: 'text-sky-400' },
   ShadcnUI: { Icon: SiShadcnui, className: 'text-zinc-950 dark:text-zinc-50' },

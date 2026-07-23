@@ -18,11 +18,6 @@ export const navData = [
   },
   {
     id: createId(),
-    label: 'Experience',
-    path: '/#experience',
-  },
-  {
-    id: createId(),
     label: 'GitHub',
     path: '/github',
   },

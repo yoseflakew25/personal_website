@@ -9,11 +9,10 @@ import DesignCard from './design-card'
 const DesignProjects = () => {
   return (
     <section className="space-y-8">
-      <ScrollReveal variant="fadeUp">
+      <ScrollReveal variant="blueprintReveal">
         <SectionHeader
           title="Featured Designs"
           subtitle="A selection of UI/UX work — from mobile apps to landing pages and dashboards."
-          sectionNumber="04"
         />
       </ScrollReveal>
 
