@@ -15,12 +15,18 @@ const NavItem: React.FC<NavItemType & { setOpen?: Dispatch<SetStateAction<boolea
   const pathname = usePathname()
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
+  const isActive = React.useMemo(() => {
+    if (path === '/') {
+      return pathname === '/'
+    }
+    return pathname.startsWith(path!)
+  }, [pathname, path])
+
   // If the item has children, render as dropdown trigger
   if (children && children.length > 0) {
     return (
       <NavDropdown
         label={label}
-        children={children}
         isOpen={dropdownOpen}
         onMouseEnter={() => setDropdownOpen(true)}
         onMouseLeave={() => setDropdownOpen(false)}
@@ -31,17 +37,11 @@ const NavItem: React.FC<NavItemType & { setOpen?: Dispatch<SetStateAction<boolea
           }
           setDropdownOpen(false)
         }}
-      />
+      >
+        {children}
+      </NavDropdown>
     )
   }
-
-  // Regular nav item (no children)
-  const isActive = React.useMemo(() => {
-    if (path === '/') {
-      return pathname === '/'
-    }
-    return pathname.startsWith(path!)
-  }, [pathname, path])
 
   const onClickHandler = () => {
     if (typeof setOpen === 'function') {
