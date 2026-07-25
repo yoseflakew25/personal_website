@@ -6,7 +6,7 @@
     "dev:next": "next dev",
     "build:next": "next build",
     "dev": "npm run dev:next",
-    "build": "npm run build:next",
+    "build": "velite --clean && npm run build:next",
     "start": "next start",
     "upgrade:latest": "yarn upgrade-interactive --latest"
   },
@@ -55,6 +55,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "npm-run-all": "^4.1.5",
+    "velite": "^0.1.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"

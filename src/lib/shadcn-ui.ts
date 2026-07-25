@@ -20,22 +20,22 @@ const blueprintPlugin = plugin(
         '--secondary-foreground': '0 0% 10%',
         '--muted': '45 5% 88%',
         '--muted-foreground': '0 0% 27%',
-        '--accent': '28 90% 50%',
+        '--accent': '190 70% 40%',
         '--accent-foreground': '45 8% 95%',
         '--destructive': '0 70% 40%',
         '--destructive-foreground': '45 8% 95%',
         '--border': '45 5% 55%',
         '--input': '45 5% 55%',
-        '--ring': '28 90% 48%',
+        '--ring': '190 65% 36%',
         '--radius': '0rem',
-        /* Orange-specific tokens */
+        /* Teal-specific tokens */
         '--grid-color': '45 5% 75%',
         '--grid-sub-color': '45 5% 82%',
-        '--blueprint-line': '28 90% 50%',
-        '--blueprint-accent': '28 90% 55%',
+        '--blueprint-line': '190 65% 42%',
+        '--blueprint-accent': '190 65% 48%',
       },
       '.dark': {
-        /* ===== Dark (true black with warm accents) ===== */
+        /* ===== Dark (true black with teal accents) ===== */
         '--background': '0 0% 4%',
         '--foreground': '0 0% 87%',
         '--card': '0 0% 6%',
@@ -48,18 +48,18 @@ const blueprintPlugin = plugin(
         '--secondary-foreground': '0 0% 87%',
         '--muted': '0 0% 10%',
         '--muted-foreground': '0 0% 52%',
-        '--accent': '28 95% 60%',
+        '--accent': '190 85% 58%',
         '--accent-foreground': '0 0% 4%',
         '--destructive': '0 60% 45%',
         '--destructive-foreground': '0 0% 4%',
         '--border': '0 0% 22%',
         '--input': '0 0% 22%',
-        '--ring': '28 95% 60%',
-        /* Orange-specific tokens */
+        '--ring': '190 80% 55%',
+        /* Teal-specific tokens */
         '--grid-color': '0 0% 12%',
         '--grid-sub-color': '0 0% 9%',
-        '--blueprint-line': '28 95% 62%',
-        '--blueprint-accent': '28 95% 65%',
+        '--blueprint-line': '190 80% 55%',
+        '--blueprint-accent': '190 80% 62%',
       },
     }),
       addBase({
