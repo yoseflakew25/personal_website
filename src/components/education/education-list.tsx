@@ -18,14 +18,14 @@ const educationData = [
         )
     },
     {
-        degree: "Coding Academy",
+        degree: "Data Structures and Algorithms",
         school: "Africa To Silicon Valley (A2SV) - Backed by Google",
         date: "October 2022 – August 2023",
         location: "Addis Ababa, Ethiopia",
         description: (
             <ul className="space-y-1">
-                <li>Solved 400+ problems on platforms like LeetCode and Codeforces, strengthening skills in data structures & algorithms.</li>
-                <li>Gained practical experience in full-cycle web development by implementing 20+ UI components from design mockups.</li>
+                <li>Completed an intensive two-year program: the first year focused on data structures and algorithms through solving complex problems, and the second year emphasized software engineering and system design.</li>
+                <li>Solved 700+ problems on LeetCode and Codeforces.</li>
             </ul>
         )
     }

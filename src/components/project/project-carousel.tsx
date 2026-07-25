@@ -173,7 +173,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                         href={project.deployedURL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] hover:bg-[hsl(var(--blueprint-line)/0.04)] transition-all duration-200"
+                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] sm:text-xs tracking-wider uppercase bg-foreground text-background border border-foreground hover:bg-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line))] hover:text-[hsl(var(--accent-foreground))] transition-all duration-200"
                       >
                         <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
                         <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
@@ -231,18 +231,32 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                       </div>
 
                       {shouldLoadImage ? (
-                        <Image
-                          src={project.cover}
-                          alt={project.title}
-                          width={1200}
-                          height={900}
-                          quality={90}
-                          placeholder="blur"
-                          loading={index === 0 ? 'eager' : 'lazy'}
-                          priority={index === 0}
-                          className="w-full h-auto object-contain transition-transform duration-700 group-hover/img:scale-[1.02]"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
-                        />
+                        <a
+                          href={project.deployedURL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block cursor-pointer group/img-link"
+                          aria-label={`View ${project.title} live preview`}
+                        >
+                          <Image
+                            src={project.cover}
+                            alt={project.title}
+                            width={1200}
+                            height={900}
+                            quality={90}
+                            placeholder="blur"
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                            priority={index === 0}
+                            className="w-full h-auto object-contain transition-transform duration-700 group-hover/img-link:scale-[1.04]"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
+                          />
+                          {/* Click overlay hint */}
+                          <div className="absolute inset-0 bg-[hsl(var(--blueprint-line)/0.04)] opacity-0 group-hover/img-link:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          <div className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-background/80 backdrop-blur-sm border border-[hsl(var(--blueprint-line)/0.3)] opacity-0 group-hover/img-link:opacity-100 translate-y-1 group-hover/img-link:translate-y-0 transition-all duration-300 pointer-events-none">
+                            <FaExternalLinkAlt size={9} className="text-[hsl(var(--blueprint-line))]" />
+                            <span className="font-mono text-[8px] tracking-[0.2em] text-[hsl(var(--blueprint-line))] uppercase">Open Live</span>
+                          </div>
+                        </a>
                       ) : null}
                     </div>
 

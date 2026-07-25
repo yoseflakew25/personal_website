@@ -11,12 +11,12 @@
   .blueprint-bg {
     background-color: hsl(var(--background));
     background-image:
-      /* Major grid lines — bold, solid */
-      linear-gradient(to right, hsl(var(--grid-color)) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--grid-color)) 1px, transparent 1px),
-      /* Minor grid lines — subtle, thin texture */
-      linear-gradient(to right, hsl(var(--grid-sub-color) / 0.45) 0.5px, transparent 0.5px),
-      linear-gradient(to bottom, hsl(var(--grid-sub-color) / 0.45) 0.5px, transparent 0.5px);
+      /* Major grid lines — structural guides */
+      linear-gradient(to right, hsl(var(--grid-color) / 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-color) / 0.45) 1px, transparent 1px),
+      /* Minor grid lines — thin texture */
+      linear-gradient(to right, hsl(var(--grid-sub-color) / 0.35) 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, hsl(var(--grid-sub-color) / 0.35) 0.5px, transparent 0.5px);
     background-size:
       80px 80px,
       80px 80px,

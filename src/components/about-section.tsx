@@ -23,7 +23,7 @@ const AboutSection = () => {
       aria-label="About"
     >
       {/* Hero — two column: left text, right card */}
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10 min-h-[calc(100dvh-10rem)] py-12">
+      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10 min-h-[calc(100dvh-10rem)] py-6">
         {/* Left: Text */}
         <div className="flex-1 space-y-8 w-full">
           <span className="font-mono text-[10px] sm:text-xs tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit uppercase">
@@ -51,6 +51,9 @@ const AboutSection = () => {
             </span>
           </div>
 
+          <p className="font-mono text-xs sm:text-sm text-muted-foreground/90 leading-relaxed max-w-[42rem] border-l-2 border-[hsl(var(--blueprint-line)/0.3)] pl-4">
+            Full-stack engineer building production systems world wide. I <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">ship fast</span>, <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">optimize relentlessly</span>, and thrive in cross-functional teams.
+          </p>
 
         </div>
 
