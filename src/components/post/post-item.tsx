@@ -75,7 +75,7 @@ const PostItem: React.FC<PostItemProps> = ({
           </p>
 
           <div className="mt-3 pt-3 border-t border-dashed border-[hsl(var(--border)/0.4)]">
-            <Tags tags={tags} />
+            <Tags tags={tags} asLink={false} />
           </div>
         </div>
 

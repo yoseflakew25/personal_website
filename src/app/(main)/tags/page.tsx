@@ -1,5 +1,5 @@
 import {Post, posts} from '#site/content'
-import {Rss} from 'lucide-react'
+import {ArrowLeft, Rss} from 'lucide-react'
 import Link from 'next/link'
 import {CustomLink} from '~/components/mdx'
 import {PostList} from '~/components/post'
@@ -47,6 +47,15 @@ const TagsPage = () => {
 
   return (
     <div className="!mt-8 relative pb-12">
+      {/* Back to Blog */}
+      <Link
+        href="/blog"
+        className="group/back inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 mb-5 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] px-2 py-1"
+      >
+        <ArrowLeft size={12} className="text-[hsl(var(--blueprint-line)/0.5)] group-hover/back:text-[hsl(var(--blueprint-line))] transition-colors duration-200" />
+        Back to Blog
+      </Link>
+
       {/* Header with search + RSS */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <SectionHeader title="All Posts" />
