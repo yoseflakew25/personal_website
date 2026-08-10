@@ -1,42 +1,143 @@
-'use client'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, FolderGit2, Palette, FileText } from 'lucide-react'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 /* ─────────────────────────────────────────
-   Minimal CTA — short wide card with two buttons
+   Dark CTA — spec-sheet style card.
+   Two-column grid: content on the left,
+   action buttons stacked vertically on the right.
 ───────────────────────────────────────── */
 const CTASection = () => {
   return (
-    <section className="relative">
-      <div className="relative border border-white/[0.08] bg-[#09090b]">
+    <section className="relative" aria-label="Explore the portfolio">
+      <div className="relative overflow-hidden border border-white/12 bg-[#09090b]">
         {/* Corner accents */}
-        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/[0.15] z-10" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/[0.15] z-10" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/[0.15] z-10" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/[0.15] z-10" />
+        <CornerBrackets colorClass="border-white/[0.15]" />
 
-        <div className="px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-3">
-          {/* Projects button */}
-          <Link
-            href="/projects"
-            className="group relative flex-1 w-full flex items-center justify-center gap-2.5 border border-white/20 bg-white/5 px-5 py-3 font-mono text-xs tracking-[0.15em] uppercase text-white/80 transition-all duration-300 hover:bg-white hover:text-[#09090b] hover:border-white active:scale-[0.98]"
-          >
-            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-transparent group-hover:border-[#09090b]/30 transition-colors" />
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-transparent group-hover:border-[#09090b]/30 transition-colors" />
-            <span>View Projects</span>
-            <ArrowUpRight size={13} className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+        {/* Grid pattern overlay — major + minor lines, mirrors the site's blueprint-bg on the dark panel */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px)',
+            backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px',
+          }}
+        />
 
-          {/* Designs button */}
-          <Link
-            href="/designs"
-            className="group relative flex-1 w-full flex items-center justify-center gap-2.5 border border-white/15 px-5 py-3 font-mono text-xs tracking-[0.15em] uppercase text-white/50 transition-all duration-300 hover:text-white hover:border-white/40 hover:bg-white/[0.04] active:scale-[0.98]"
-          >
-            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-transparent group-hover:border-white/20 transition-colors" />
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-transparent group-hover:border-white/20 transition-colors" />
-            <span>View Designs</span>
-            <ArrowUpRight size={13} className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+        {/* Teal glow — subtle radial light from top */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--blueprint-line) / 0.08), transparent 70%)',
+          }}
+        />
+
+        <div className="relative px-6 sm:px-8 py-10 sm:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-0 items-center">
+            {/* ── Left: Copy ── */}
+            <div className="flex flex-col">
+              {/* Spec header */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-mono text-[9px] tracking-[0.25em] text-white/50 uppercase">
+                  NEXT STEP
+                </span>
+                <span className="h-px flex-1 border-t border-white/10" />
+                <span className="font-mono text-[9px] tracking-[0.2em] text-white/50 uppercase">
+                  DIRECTORY
+                </span>
+              </div>
+
+              {/* Title */}
+              <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-tight mb-2">
+                Explore MY Portfolio
+              </h2>
+              <p className="font-mono text-xs sm:text-sm text-white/50 max-w-xl leading-relaxed">
+                Dive into production-grade projects, UI/UX case studies, and engineering
+                write-ups, each documented with design rationale and technical decisions.
+              </p>
+
+              {/* Bottom annotation */}
+              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                  SELECT &nbsp;→&nbsp; EXPLORE
+                </span>
+                <span className="font-mono text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                  NOT TO SCALE
+                </span>
+              </div>
+            </div>
+
+            {/* Vertical divider between columns */}
+            <div
+              aria-hidden="true"
+              className="hidden lg:block w-px self-stretch border-l border-white/10 mx-6"
+            />
+
+            {/* ── Right: Buttons stacked top to bottom ── */}
+            <div className="grid grid-cols-1 auto-rows-fr border border-white/20 divide-y divide-white/10">
+              {/* Projects — primary CTA */}
+              <Link
+                href="/projects"
+                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-[#09090b] font-medium transition-all duration-300 bg-white hover:bg-white/90 active:scale-[0.98]"
+              >
+                <CornerBrackets
+                  size="0.5rem"
+                  colorClass="border-transparent"
+                  hoverColorClass="group-hover:border-[#09090b]/40"
+                  transitionClass="transition-colors"
+                  renderTopRight={false}
+                  renderBottomLeft={false}
+                />
+                <span className="flex items-center gap-2.5">
+                  <FolderGit2 size={15} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span>Projects</span>
+                </span>
+                <ArrowUpRight size={13} className="shrink-0" />
+              </Link>
+
+              {/* Designs — white filled */}
+              <Link
+                href="/designs"
+                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-white/70 transition-all duration-300 hover:bg-white/[0.04] hover:text-white active:scale-[0.98]"
+              >
+                <CornerBrackets
+                  size="0.5rem"
+                  colorClass="border-transparent"
+                  hoverColorClass="group-hover:border-white/30"
+                  transitionClass="transition-colors"
+                  renderTopRight={false}
+                  renderBottomLeft={false}
+                />
+                <span className="flex items-center gap-2.5">
+                  <Palette size={15} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span>Designs</span>
+                </span>
+                <ArrowUpRight size={13} className="shrink-0" />
+              </Link>
+
+              {/* Blog — outlined */}
+              <Link
+                href="/blog"
+                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-white/70 transition-all duration-300 hover:bg-white/[0.04] hover:text-white active:scale-[0.98]"
+              >
+                <CornerBrackets
+                  size="0.5rem"
+                  colorClass="border-transparent"
+                  hoverColorClass="group-hover:border-white/30"
+                  transitionClass="transition-colors"
+                  renderTopRight={false}
+                  renderBottomLeft={false}
+                />
+                <span className="flex items-center gap-2.5">
+                  <FileText size={15} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span>Blog</span>
+                </span>
+                <ArrowUpRight size={13} className="shrink-0" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

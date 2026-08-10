@@ -5,8 +5,12 @@ import { Linkedin } from 'lucide-react'
 import { FaInstagram } from 'react-icons/fa6'
 import { TbBrandX, TbBrandTelegram } from 'react-icons/tb'
 import { SiGmail } from 'react-icons/si'
+import { motion, useReducedMotion } from 'framer-motion'
+import { ReactNode } from 'react'
 import heroImg from '~/assets/images/hero.jpg'
-import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
+import CountUp from '~/components/ui/count-up'
+
 const socialLinks = [
   { icon: <FiGithub size={18} />, label: 'GITHUB', href: 'https://github.com/yoseflakew25' },
   { icon: <Linkedin size={18} />, label: 'LINKEDIN', href: 'https://www.linkedin.com/in/yosef-lakeww/' },
@@ -16,61 +20,111 @@ const socialLinks = [
   { icon: <SiGmail size={18} />, label: 'EMAIL', href: 'mailto:yoseflakewdev@gmail.com' },
 ]
 
+const stats = [
+  { label: 'COMPANIES', value: 5, suffix: '+' },
+  { label: 'USERS', value: 2, suffix: 'K+' },
+  { label: 'PROJECTS', value: 6, suffix: '+' },
+]
+
+/* ===== Staggered load-in helper — fade-slide reveal =====
+   Note: a clip-path variant was tried but framer-motion leaves the SSR'd
+   initial clipPath in place after hydration (element stuck invisible), so
+   all hero elements use opacity + transform, which animate reliably. */
+const HeroFade = ({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode
+  delay?: number
+  className?: string
+}) => {
+  const prefersReducedMotion = useReducedMotion()
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        delay,
+        ease: [0.25, 0.4, 0.25, 1],
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 const AboutSection = () => {
   return (
     <section
       className="relative"
       aria-label="About"
     >
+      {/* Cover sheet tag — hero is sheet 00 */}
+      <HeroFade delay={0.05}>
+        <span className="hidden md:inline absolute top-0 right-0 font-mono text-[9px] tracking-[0.25em] text-muted-foreground/60 uppercase">
+          SHEET 00/06 · COVER
+        </span>
+      </HeroFade>
+
       {/* Hero — two column: left text, right card */}
       <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10 min-h-[calc(100dvh-10rem)] py-6">
         {/* Left: Text */}
         <div className="flex-1 space-y-8 w-full">
-          <span className="font-mono text-[10px] sm:text-xs tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit uppercase">
-            HELLO THERE, MY NAME IS
-          </span>
+          <HeroFade delay={0.2}>
+            <span className="font-mono text-[10px] sm:text-xs tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit uppercase">
+              HELLO THERE, MY NAME IS
+            </span>
+          </HeroFade>
 
           <div className="space-y-0">
-            <h1 className="font-display block text-[14vw] xs:text-[13vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-bold text-foreground leading-[0.95] uppercase">
-              YOSEF
-            </h1>
-            <h1 className="font-display block text-[14vw] xs:text-[13vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-bold text-foreground leading-[0.95] uppercase">
-              LAKEW
-            </h1>
+            <HeroFade delay={0.3}>
+              <h1 className="font-display block text-[14vw] xs:text-[13vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-bold text-foreground leading-[0.95] uppercase">
+                YOSEF
+              </h1>
+            </HeroFade>
+            <HeroFade delay={0.4}>
+              <h1 className="font-display block text-[14vw] xs:text-[13vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-bold text-foreground leading-[0.95] uppercase">
+                LAKEW
+              </h1>
+            </HeroFade>
           </div>
 
-          <div className="pt-1">
-            <span
-              className="font-display block text-[5.5vw] xs:text-[6vw] sm:text-[4.5vw] md:text-[1.8rem] lg:text-[2.25rem] xl:text-[2.5rem] font-bold leading-[1.1] select-none uppercase"
-              style={{
-                WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.78)',
-                color: 'transparent',
-              }}
-            >
-              FULLSTACK ENGINEER & UI/UX DESIGNER
-            </span>
-          </div>
+          <HeroFade delay={0.5}>
+            <div className="pt-1">
+              <span
+                className="font-display block text-[5.5vw] xs:text-[6vw] sm:text-[4.5vw] md:text-[1.8rem] lg:text-[2.25rem] xl:text-[2.5rem] font-bold leading-[1.1] select-none uppercase"
+                style={{
+                  WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.78)',
+                  color: 'transparent',
+                }}
+              >
+                FULLSTACK ENGINEER & UI/UX DESIGNER
+              </span>
+            </div>
+          </HeroFade>
 
-          <p className="font-mono text-xs sm:text-sm text-muted-foreground/90 leading-relaxed max-w-[42rem] border-l-2 border-[hsl(var(--blueprint-line)/0.3)] pl-4">
-            Full-stack engineer building production systems world wide. I <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">ship fast</span>, <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">optimize relentlessly</span>, and thrive in cross-functional teams.
-          </p>
+          <HeroFade delay={0.6}>
+            <p className="font-mono text-xs sm:text-sm text-muted-foreground/90 leading-relaxed max-w-[42rem] border-l-2 border-[hsl(var(--blueprint-line)/0.3)] pl-4">
+              Full-stack engineer building production systems world wide. I <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">ship fast</span>, <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">optimize relentlessly</span>, and thrive in cross-functional teams.
+            </p>
+          </HeroFade>
 
         </div>
 
-        {/* Right: Blueprint Spec Card — with interactive dimensions on hover */}
-        <BlueprintMeasure
-          widthLabel="SPEC W"
-          heightLabel="SPEC H"
-          specTag="DIMENSION SHEET"
-          className="w-full max-w-md lg:max-w-[540px]"
-        >
-          <div className="border border-[hsl(var(--border))] bg-card">
+        {/* Right: Blueprint Spec Card */}
+        <HeroFade delay={0.35} className="w-full max-w-md lg:max-w-[540px]">
+          <div className="border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
             <div className="relative">
               {/* Always-visible blueprint corner brackets */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+              <CornerBrackets />
 
               {/* Card header */}
               <div className="border-b border-[hsl(var(--border))] px-3 py-1.5">
@@ -81,10 +135,12 @@ const AboutSection = () => {
               {/* Image + Social Grid — bigger */}
               <div className="grid grid-cols-1 xs:grid-cols-2 border-b border-[hsl(var(--border))]">
                 {/* Image */}
-                <div className="xs:border-r border-b xs:border-b-0 border-[hsl(var(--border))] p-2 xs:p-1.5 flex items-center justify-center group">
-                  <div className="aspect-square w-full max-w-[200px] xs:max-w-[240px] relative overflow-hidden">
-                    <Image alt="Yosef Lakew" src={heroImg} placeholder="blur" className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" priority sizes="240px" />
-                  </div>
+                <div className="xs:border-r border-b xs:border-b-0 border-[hsl(var(--border))] p-2 xs:p-1.5 flex items-center justify-center group">                    <div className="aspect-square w-full max-w-[200px] xs:max-w-[240px] relative overflow-hidden">
+                      <Image alt="Yosef Lakew" src={heroImg} placeholder="blur" className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" priority sizes="240px" />
+                      {/* Blueprint centerline through the portrait */}
+                      <span aria-hidden="true" className="blueprint-centerline" />
+                      <span aria-hidden="true" className="blueprint-centerline-dot" />
+                    </div>
                 </div>
 
                 {/* Social Links */}
@@ -100,8 +156,7 @@ const AboutSection = () => {
                       aria-label={social.label}
                     >
                       {/* Corner accent */}
-                      <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-300" />
-                      <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-300" />
+                      <CornerBrackets size="0.5rem" colorClass="border-transparent" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.4)]" transitionClass="transition-colors duration-300" renderTopRight={false} renderBottomLeft={false} />
                       {/* Icon */}
                       <span className="shrink-0 transition-transform duration-300 group-hover:scale-110">{social.icon}</span>
                       {/* Label */}
@@ -123,13 +178,11 @@ const AboutSection = () => {
             <div className="px-3 py-1.5">
               <span className="font-mono text-[9px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 w-fit mb-1.5 block uppercase">STATISTICS</span>
               <div className="grid grid-cols-3 gap-1.5">
-                {[
-                  { label: 'COMPANIES', value: '5+' },
-                  { label: 'USERS', value: '2K+' },
-                  { label: 'PROJECTS', value: '6+' },
-                ].map((stat) => (
+                {stats.map((stat) => (
                   <div key={stat.label} className="border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] p-1.5 xs:p-1.5 text-center hover:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-300">
-                    <p className="font-mono text-xs font-bold text-[hsl(var(--blueprint-line))]">{stat.value}</p>
+                    <p className="font-mono text-xs font-bold text-[hsl(var(--blueprint-line))] tabular-nums">
+                      <CountUp value={stat.value} suffix={stat.suffix} />
+                    </p>
                     <p className="font-mono text-[9px] tracking-wider text-[hsl(var(--blueprint-line)/0.7)] uppercase">{stat.label}</p>
                   </div>
                 ))}
@@ -143,7 +196,7 @@ const AboutSection = () => {
               </div>
             </div>
           </div>
-        </BlueprintMeasure>
+        </HeroFade>
       </div>
 
 

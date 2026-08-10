@@ -36,7 +36,7 @@ const EducationList = () => {
         <section aria-label="education" className="space-y-6">
            
             <ScrollReveal variant="blueprintReveal">
-          <SectionHeader title="Education" />
+          <SectionHeader title="Education" sheet="SHEET 03/06" />
         </ScrollReveal>
             <StaggerList className="space-y-6">
                 {educationData.map((item, index) => (

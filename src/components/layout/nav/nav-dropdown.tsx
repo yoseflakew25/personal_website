@@ -5,6 +5,7 @@ import { NavChildItem } from './_nav-mock'
 import { cn } from '~/lib/utils'
 import { FiGithub } from 'react-icons/fi'
 import { Linkedin } from 'lucide-react'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 interface NavDropdownProps {
   label: string
@@ -75,10 +76,7 @@ const NavDropdown: React.FC<NavDropdownProps> = ({
         )}
       >
         {/* Corner accents */}
-        <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none" />
-        <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none" />
-        <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none" />
-        <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.3)] z-10 pointer-events-none" />
+        <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.3)]" />
 
         {/* Spec header */}
         <div className="border-b border-dashed border-[hsl(var(--border)/0.5)] px-4 py-2">

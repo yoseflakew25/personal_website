@@ -5,7 +5,6 @@ import Skills from '~/components/skills'
 import Experience from '~/components/experience'
 import { EducationList } from '~/components/education'
 import { ContactSkeleton, ProjectCarouselSkeleton } from '~/components/ui/blueprint-skeleton'
-import ExploreSection from '~/components/explore-section'
 import CTASection from '~/components/cta-section'
 import { projects } from '~/components/project/_project-mock'
 
@@ -53,9 +52,16 @@ const HomePage = () => {
 
 
 
+       
+
         <div id="contact" className="pb-12">
           <ContactUs />
         </div>
+
+ <div className="pb-12">
+          <CTASection />
+        </div>
+
       </SectionSequencer>
     </div>
   )

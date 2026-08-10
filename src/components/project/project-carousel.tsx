@@ -7,7 +7,7 @@ import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { TProjectSerialized } from './_project-mock'
 import { cn } from '~/lib/utils'
-import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 interface ProjectCarouselProps {
   projects: readonly TProjectSerialized[]
@@ -77,10 +77,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Outer corner accents — larger for more presence */}
-      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[hsl(var(--blueprint-line)/0.6)] z-20 pointer-events-none" />
+      <CornerBrackets size="1.25rem" thickness={2} colorClass="border-[hsl(var(--blueprint-line)/0.6)]" className="z-20" />
 
       {/* ── Carousel Viewport ── */}
       <div className="flex-1 overflow-hidden min-h-0" ref={emblaRef}>
@@ -116,9 +113,12 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                       PRODUCTION
                     </span>
                   </div>
-                  <span className="text-blueprint-meta tabular-nums">
-                    {String(index + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}
-                  </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="hidden sm:inline font-mono text-[9px] tracking-[0.2em] text-muted-foreground uppercase">SHEET 04/06</span>
+                    <span className="text-blueprint-meta tabular-nums">
+                      {String(index + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}
+                    </span>
+                  </div>
                 </div>
 
                 {/* ── Main Content ── */}
@@ -175,8 +175,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                         rel="noopener noreferrer"
                         className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] sm:text-xs tracking-wider uppercase bg-foreground text-background border border-foreground hover:bg-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line))] hover:text-[hsl(var(--accent-foreground))] transition-all duration-200"
                       >
-                        <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
-                        <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                        <CornerBrackets size="0.375rem" colorClass="border-transparent" hoverColorClass="group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} />
                         <FaExternalLinkAlt size={10} />
                         <span>Live Preview</span>
                       </a>
@@ -187,8 +186,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                           rel="noopener noreferrer"
                           className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 border border-[hsl(var(--border))] font-mono text-[10px] sm:text-xs tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.5)] hover:bg-[hsl(var(--blueprint-line)/0.04)] transition-all duration-200"
                         >
-                          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
-                          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                          <CornerBrackets size="0.375rem" colorClass="border-transparent" hoverColorClass="group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} />
                           <FaGithub size={13} />
                           <span>Source</span>
                         </a>
@@ -196,15 +194,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                     </div>
                   </div>
 
-                  {/* Right: Image panel — with interactive dimensions on hover */}
+                  {/* Right: Image panel */}
                   <div className="flex-[1.1] w-full">
-                    <BlueprintMeasure
-                      widthLabel="IMG W"
-                      heightLabel="IMG H"
-                      specTag="VISUAL DIM"
-                      offset={4}
-                    >
-                      <div className="relative group/img">
+                      <div className="relative group/img border border-transparent transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.4)]">
                       {/* Blueprint corner accents */}
                       <div className="absolute top-0 left-0 pointer-events-none z-10">
                         <div className="w-5 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
@@ -250,6 +242,14 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                             className="w-full h-auto object-contain transition-transform duration-700 group-hover/img-link:scale-[1.04]"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
                           />
+                          {/* Blueprint centerline through the figure */}
+                          <span aria-hidden="true" className="blueprint-centerline" />
+                          <span aria-hidden="true" className="blueprint-centerline-dot" />
+                          {/* Scanline sweep — drafting-table light pass on hover */}
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-x-0 top-0 h-1/3 -translate-y-full bg-gradient-to-b from-transparent via-[hsl(var(--blueprint-line)/0.1)] to-[hsl(var(--blueprint-line)/0.4)] opacity-0 group-hover/img-link:opacity-100 group-hover/img-link:translate-y-[350%] transition-all duration-[1100ms] ease-in-out pointer-events-none"
+                          />
                           {/* Click overlay hint */}
                           <div className="absolute inset-0 bg-[hsl(var(--blueprint-line)/0.04)] opacity-0 group-hover/img-link:opacity-100 transition-opacity duration-300 pointer-events-none" />
                           <div className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-background/80 backdrop-blur-sm border border-[hsl(var(--blueprint-line)/0.3)] opacity-0 group-hover/img-link:opacity-100 translate-y-1 group-hover/img-link:translate-y-0 transition-all duration-300 pointer-events-none">
@@ -260,15 +260,16 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                       ) : null}
                     </div>
 
-                    {/* Dimension annotation below image */}
-                    <div className="flex items-center gap-0 mt-1">
-                      <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
-                      <span className="font-mono text-[9px] tracking-widest text-[hsl(var(--blueprint-line)/0.45)] uppercase px-2">
-                        SCALE 1:1
+                    {/* Figure caption + dimension annotation below image */}
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="font-mono text-[9px] tracking-widest text-[hsl(var(--blueprint-line)/0.5)] uppercase truncate min-w-0">
+                        FIG. {id} — {project.title}
                       </span>
                       <div className="h-px flex-1 bg-[hsl(var(--blueprint-line)/0.2)]" />
+                      <span className="font-mono text-[9px] tracking-widest text-[hsl(var(--blueprint-line)/0.45)] uppercase shrink-0">
+                        SCALE 1:1
+                      </span>
                     </div>
-                    </BlueprintMeasure>
                   </div>
                 </div>
               </div>

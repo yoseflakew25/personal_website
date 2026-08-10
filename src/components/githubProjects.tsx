@@ -6,8 +6,8 @@ import { ExternalLink } from 'lucide-react'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
 import { StaggerList, StaggerItem } from './ui/scroll-reveal'
-import { BlueprintMeasure } from './ui/blueprint-measure'
 import { notableProjects } from '~/constants/github-projects'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 const GithubProjects = ({
   title = 'Other Notable Projects',
@@ -29,20 +29,11 @@ const GithubProjects = ({
 
           return (
             <StaggerItem key={index}>
-              <BlueprintMeasure
-                widthLabel="PROJ W"
-                heightLabel="PROJ H"
-                specTag="GITHUB"
-                offset={6}
-                className="h-full"
-              >
-              <div className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.4)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.06)]">
+              <div className="h-full">
+              <div className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
 
                 {/* Blueprint corner accents */}
-                <span className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[hsl(var(--blueprint-line)/0.25)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.65)]" />
-                <span className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[hsl(var(--blueprint-line)/0.25)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.65)]" />
-                <span className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[hsl(var(--blueprint-line)/0.25)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.65)]" />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[hsl(var(--blueprint-line)/0.25)] z-10 pointer-events-none transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.65)]" />
+                <CornerBrackets size="0.625rem" colorClass="border-[hsl(var(--blueprint-line)/0.25)]" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.65)]" transitionClass="transition-colors duration-300" />
 
                 {/* Spec-sheet header bar */}
                 <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex items-center justify-between shrink-0">
@@ -114,7 +105,7 @@ const GithubProjects = ({
                       rel="noopener noreferrer"
                       className="group/link relative inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 border border-[hsl(var(--border))] px-2 py-1 hover:border-[hsl(var(--blueprint-line)/0.4)]"
                     >
-                      <span className="absolute top-0 left-0 w-1 h-1 border-t border-l border-transparent group-hover/link:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                      <CornerBrackets size="0.25rem" colorClass="border-transparent" hoverColorClass="group-hover/link:border-[hsl(var(--blueprint-line)/0.5)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} renderBottomRight={false} />
                       <FiGithub size={11} />
                       Source
                     </a>
@@ -126,7 +117,7 @@ const GithubProjects = ({
                         rel="noopener noreferrer"
                         className="group/link relative inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 border border-[hsl(var(--border))] px-2 py-1 hover:border-[hsl(var(--blueprint-line)/0.4)]"
                       >
-                        <span className="absolute top-0 left-0 w-1 h-1 border-t border-l border-transparent group-hover/link:border-[hsl(var(--blueprint-line)/0.5)] transition-colors duration-200" />
+                        <CornerBrackets size="0.25rem" colorClass="border-transparent" hoverColorClass="group-hover/link:border-[hsl(var(--blueprint-line)/0.5)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} renderBottomRight={false} />
                         <ExternalLink size={10} />
                         Live Demo
                       </a>
@@ -134,7 +125,7 @@ const GithubProjects = ({
                   </div>
                 </div>
               </div>
-              </BlueprintMeasure>
+              </div>
             </StaggerItem>
           )
         })}

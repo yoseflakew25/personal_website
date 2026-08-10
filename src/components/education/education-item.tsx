@@ -1,6 +1,5 @@
 import React from 'react'
 import { GraduationCap, Calendar } from 'lucide-react'
-import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 export interface EducationItemProps {
     degree: string
@@ -18,15 +17,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
     description,
 }) => {
     return (
-        <li role="listitem" className="relative border border-[hsl(var(--border))] bg-card group transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.4)]">
-      <BlueprintMeasure
-        widthLabel="WIDTH"
-        heightLabel="HEIGHT"
-        specTag="ACADEMIC RECORD"
-        offset={10}
-        className="w-full"
-      >
-
+        <li role="listitem" className="relative border border-[hsl(var(--border))] bg-card group transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
             {/* Spec-sheet header bar */}
             <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 shrink-0 bg-muted/20">
                 <div className="flex items-center gap-2">
@@ -70,7 +61,6 @@ const EducationItem: React.FC<EducationItemProps> = ({
                     </div>
                 </div>
             </div>
-            </BlueprintMeasure>
         </li>
     )
 }

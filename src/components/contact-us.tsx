@@ -13,6 +13,7 @@ import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
+import { CornerBrackets } from './ui/corner-brackets'
 
 const ContactUs = () => {
   const [isPending, setIsPending] = useState(false)
@@ -51,7 +52,7 @@ const ContactUs = () => {
   return (
     <section id="contact" aria-label="contact" className="scroll-mt-24">
       <ScrollReveal variant="blueprintReveal">
-        <SectionHeader title="Get in Touch" />
+        <SectionHeader title="Get in Touch" sheet="SHEET 05/06" />
       </ScrollReveal>
 
       <ScrollReveal variant="blueprintReveal" delay={0.15}>
@@ -59,10 +60,7 @@ const ContactUs = () => {
           {/* Left Info Card */}
           <div className="md:max-w-sm size-full relative border border-[hsl(var(--border))] bg-card p-5 space-y-5">
             {/* Corner brackets */}
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <CornerBrackets />
 
             {/* Header */}
             <div className="border-b border-[hsl(var(--border))] pb-2">
@@ -95,10 +93,7 @@ const ContactUs = () => {
           {/* Right Form Card */}
           <div className="flex-1 relative border border-[hsl(var(--border))] bg-card">
             {/* Corner brackets */}
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10" />
+            <CornerBrackets />
 
             {/* Header */}
             <div className="border-b border-[hsl(var(--border))] px-4 py-2">
@@ -194,7 +189,7 @@ const ContactUs = () => {
                   ) : (
                     <span className="flex items-center gap-2">
                       <span>Send Message</span>
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      <span>→</span>
                     </span>
                   )}
                 </Button>

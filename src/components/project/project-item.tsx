@@ -3,6 +3,7 @@ import React from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { TProjectSerialized } from './_project-mock'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 type ProjectItemProps = TProjectSerialized & {
   index: number
@@ -25,10 +26,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   return (
     <div className="group relative border border-[hsl(var(--border))] bg-card transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
       {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.4)] z-10 transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.7)]" />
+      <CornerBrackets colorClass="border-[hsl(var(--blueprint-line)/0.4)]" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.7)]" transitionClass="transition-colors duration-300" />
 
       {/* Spec header */}
       <div className="border-b border-[hsl(var(--border))] px-3 py-1.5 flex items-center justify-between">
@@ -46,6 +44,14 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           className="size-full object-cover transition-all duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
+        {/* Blueprint centerline through the figure */}
+        <span aria-hidden="true" className="blueprint-centerline" />
+        <span aria-hidden="true" className="blueprint-centerline-dot" />
+        {/* Scanline sweep — drafting-table light pass on hover */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-1/3 -translate-y-full bg-gradient-to-b from-transparent via-[hsl(var(--blueprint-line)/0.1)] to-[hsl(var(--blueprint-line)/0.4)] opacity-0 group-hover:opacity-100 group-hover:translate-y-[350%] transition-all duration-[1100ms] ease-in-out pointer-events-none"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
 
         {/* Number overlay */}
@@ -58,6 +64,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         >
           {id}
         </span>
+      </div>
+
+      {/* Figure caption — blueprint figure annotation */}
+      <div className="px-3 py-1 border-b border-[hsl(var(--border)/0.5)] flex items-center justify-between">
+        <span className="text-blueprint-meta">FIG. {id}</span>
+        <span className="text-blueprint-meta max-w-[60%] truncate">{title}</span>
       </div>
 
       {/* Content */}
@@ -97,7 +109,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           >
             <FaExternalLinkAlt size={10} />
             <span>Live Preview</span>
-            <span className="text-[9px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">↗</span>
+            <span className="text-[9px] text-muted-foreground/40">↗</span>
           </a>
 
           {isRepo && (
@@ -109,7 +121,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             >
               <FaGithub size={10} />
               <span>Source</span>
-              <span className="text-[9px] text-muted-foreground/40 group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
+              <span className="text-[9px] text-muted-foreground/40">→</span>
             </a>
           )}
         </div>

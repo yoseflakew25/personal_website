@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '~/lib/utils'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 // Base container for blueprint-style items
 export const BlueprintSkeletonContainer = ({
@@ -17,10 +18,7 @@ export const BlueprintSkeletonContainer = ({
       )}
     >
       {/* Blueprint Corner Accents */}
-      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.4)] pointer-events-none" />
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.4)] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.4)] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.4)] pointer-events-none" />
+      <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.4)]" />
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />

@@ -10,6 +10,7 @@ import ScrollProgress from '~/components/ui/scroll-progress'
 import config from '~/config'
 import { formatDate } from '~/lib/utils'
 import { getSEOTags as getSEOTagsFn } from '~/lib/seo'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 interface BlogPostPageProps {
   params: {
@@ -89,10 +90,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="grid lg:grid-cols-[1fr_280px] gap-8 items-start">
         {/* Main content */}
         <article className="relative border border-[hsl(var(--border))] bg-card p-5 md:p-8">
-          <span className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[hsl(var(--blueprint-line)/0.25)] pointer-events-none" />
-          <span className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[hsl(var(--blueprint-line)/0.25)] pointer-events-none" />
-          <span className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[hsl(var(--blueprint-line)/0.25)] pointer-events-none" />
-          <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[hsl(var(--blueprint-line)/0.25)] pointer-events-none" />
+          <CornerBrackets size="0.625rem" colorClass="border-[hsl(var(--blueprint-line)/0.25)]" />
           <div className="mdx-content max-w-none">
             <MDXContent code={post.body} />
           </div>
@@ -102,10 +100,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* ── Sidebar — TOC ── */}
         <aside className="hidden lg:block sticky top-24">
           <div className="relative border border-[hsl(var(--border))] bg-card p-4">
-            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
+            <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.3)]" />
 
             <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
               <p className="text-blueprint-meta">ON THIS PAGE</p>

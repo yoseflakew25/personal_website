@@ -9,6 +9,7 @@ import SectionHeader from '~/components/ui/section-header'
 import config from '~/config'
 import {getSEOTags} from '~/lib/seo'
 import {getAllTags, sortedTagsCount} from '~/lib/utils'
+import {CornerBrackets} from '~/components/ui/corner-brackets'
 
 export const metadata: ReturnType<typeof getSEOTags> = getSEOTags({
   title: `All Posts - ${config.appName}`,
@@ -124,10 +125,7 @@ const TagsPage = () => {
 
         {/* Sidebar — All Tags Card */}
         <div className="order-1 md:order-2 relative border border-[hsl(var(--border))] bg-card p-4 sticky top-4">
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.4)]" />
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.4)]" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.4)]" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.4)]" />
+          <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.4)]" />
 
           <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
             <p className="text-blueprint-meta">BROWSE BY TAG</p>

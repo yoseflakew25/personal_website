@@ -12,7 +12,6 @@ import {
   SiMui,
   SiMysql,
   SiNextdotjs,
-  SiNginx,
   SiNodedotjs,
   SiPwa,
   SiPython,
@@ -57,7 +56,6 @@ export const BACKEND_STACKS: stacksProps = {
   'Node.js': { Icon: SiNodedotjs, className: 'text-green-600' },
   Supabase: { Icon: SiSupabase, className: 'text-emerald-500' },
   'Artificial Intelligence': { Icon: BsRobot, className: 'text-rose-500' },
-  Nodejs: { Icon: SiNginx, className: 'text-green-500' },
   Socket: { Icon: SiSocketdotio, className: '' },
   Express: { Icon: SiExpress, className: '' },
 }

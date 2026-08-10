@@ -1,16 +1,14 @@
 import Link from 'next/link'
 import { FiGithub } from 'react-icons/fi'
 import { Palette, ArrowUpRight } from 'lucide-react'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 const ExploreSection = () => {
   return (
     <section aria-label="explore more" className="scroll-mt-24">
       <div className="relative border border-[hsl(var(--border))] bg-card overflow-hidden">
         {/* Blueprint corner accents */}
-        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
+        <CornerBrackets />
 
         {/* Dark overlay background for contrast */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-[hsl(var(--blueprint-line)/0.03)] to-[hsl(var(--blueprint-line)/0.06)] pointer-events-none" />
@@ -47,16 +45,13 @@ const ExploreSection = () => {
               className="group relative inline-flex items-center gap-3 blueprint-cta"
             >
               {/* Corner accents */}
-              <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 transition-colors duration-300 group-hover:border-white/40" />
-              <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 transition-colors duration-300 group-hover:border-white/40" />
-              <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 transition-colors duration-300 group-hover:border-white/40" />
-              <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 transition-colors duration-300 group-hover:border-white/40" />
+              <CornerBrackets size="0.5rem" colorClass="border-white/20" hoverColorClass="group-hover:border-white/40" transitionClass="transition-colors duration-300" />
 
               <Palette size={18} className="transition-transform duration-300 group-hover:scale-110" />
               <span className="font-mono text-xs sm:text-sm tracking-[0.15em] uppercase font-medium">
                 View Designs
               </span>
-              <ArrowUpRight size={14} className="transition-all duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
+              <ArrowUpRight size={14} />
             </Link>
 
             {/* GitHub Button */}
@@ -65,16 +60,13 @@ const ExploreSection = () => {
               className="group relative inline-flex items-center gap-3 px-5 py-3 border border-[hsl(var(--border))] bg-card text-foreground hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)] transition-all duration-300"
             >
               {/* Corner accents */}
-              <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.25)] transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.6)]" />
-              <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.25)] transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.6)]" />
-              <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.25)] transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.6)]" />
-              <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.25)] transition-colors duration-300 group-hover:border-[hsl(var(--blueprint-line)/0.6)]" />
+              <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.25)]" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.6)]" transitionClass="transition-colors duration-300" />
 
               <FiGithub size={18} className="transition-transform duration-300 group-hover:scale-110" />
               <span className="font-mono text-xs sm:text-sm tracking-[0.15em] uppercase font-medium">
                 GitHub Projects
               </span>
-              <ArrowUpRight size={14} className="transition-all duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
+              <ArrowUpRight size={14} />
             </Link>
           </div>
 

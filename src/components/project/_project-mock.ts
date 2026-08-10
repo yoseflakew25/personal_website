@@ -4,7 +4,7 @@ import akilCover from '~/assets/images/cover/akil.png'
 import yubanowCover from '~/assets/images/cover/yubanow.png'
 import notionCover from '~/assets/images/cover/jotion.png'
 import summerizerCover from '~/assets/images/cover/summerizer.png'
-import photogramCover from '~/assets/images/cover/photogram.png'
+import dicdoCover from '~/assets/images/cover/dicdo.png'
 
 export const projects = [
   {
@@ -41,6 +41,17 @@ export const projects = [
     repoUrl: 'https://github.com/A2SV/AKIL',
   },
   {
+    id: 'dicdo',
+    title: `DICDO`,
+    description:
+      'DICDO is a landing page for the Dire Integrated Community Development Organization, an Ethiopian NGO empowering communities through peacebuilding, education, and sustainable development. The site presents the organization\'s programs (peacebuilding & conflict resolution, education & literacy, women & youth empowerment, health & nutrition, WASH, and environmental protection), impact metrics, NEBE election-observation accreditation, impact stories with photo galleries, partner organizations, donation details, and a contact form — built to reflect DICDO\'s mission of building peaceful, self-sufficient communities.',
+    deployedURL: 'https://dicdodd.com/',
+    cover: dicdoCover,
+    stacks: ['Next js', 'Tailwind css'],
+    isRepo: false,
+    repoUrl: '',
+  },
+  {
     id: 'notion-clone',
     title: `Jotion`,
     description:
@@ -68,24 +79,6 @@ export const projects = [
     stacks: ['React', 'Tailwind CSS', 'Redux Toolkit', 'RapidAPI', 'GPT-4'],
     isRepo: true,
     repoUrl: 'https://github.com/yoseflakew25/AI-article-summarizer',
-  },
-  {
-    id: 'photogram',
-    title: `Photogram`,
-    description:
-      'Photogram is an interactive media discovery and photo gallery application powered by the Pixabay API. Built with Vue, Vuex, and SCSS, it features a responsive masonry grid layout, real-time image search, category and tag filtering, infinite scroll pagination, single-photo views, and dynamic dark/light mode.',
-    deployedURL: 'https://ai-article-summarizer-c917a2.netlify.app/',
-    cover: photogramCover,
-    stacks: [
-      'Vue',
-      'Vuex',
-      'Vue Router',
-      'SCSS',
-      'Pixabay API',
-      'Masonry Layout',
-    ],
-    isRepo: true,
-    repoUrl: 'https://github.com/yoseflakew25/Photogram-app',
   },
 ] as const
 

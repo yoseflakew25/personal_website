@@ -22,7 +22,7 @@ const Footer = () => {
     <footer className="mt-16 mb-4 relative">
       <div className="border-t border-dashed border-[hsl(var(--border)/0.5)] mb-4" />
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 print:hidden">
         {/* Social icons */}
         <div className="flex items-center gap-1.5">
           {socialLinks.map((social) => (
@@ -44,11 +44,6 @@ const Footer = () => {
           <span className="font-mono text-[9px] tracking-[0.15em] text-muted-foreground">
             © {new Date().getFullYear()} {config.appName}
           </span>
-          <span className="h-3 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
-          <span className="font-mono text-[8px] tracking-[0.2em] text-muted-foreground/60 uppercase">
-            NTS
-          </span>
-          <span className="h-3 w-px bg-[hsl(var(--border))]" aria-hidden="true" />
           <button
             onClick={scrollToTop}
             className="size-7 flex items-center justify-center border border-[hsl(var(--border))] text-muted-foreground hover:text-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line)/0.4)] transition-all duration-200 el-focus-styles"
@@ -58,6 +53,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
+
     </footer>
   )
 }

@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { useTheme } from 'next-themes'
 import { Sun, Moon } from 'lucide-react'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 const ThemeToggle = () => {
   const { theme, setTheme, resolvedTheme } = useTheme()
@@ -26,10 +27,7 @@ const ThemeToggle = () => {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
     >
       {/* Corner bracket accents on hover */}
-      <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.3)] transition-colors duration-200" />
-      <span className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.3)] transition-colors duration-200" />
-      <span className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.3)] transition-colors duration-200" />
-      <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover/btn:border-[hsl(var(--blueprint-line)/0.3)] transition-colors duration-200" />
+      <CornerBrackets size="0.375rem" colorClass="border-transparent" hoverColorClass="group-hover/btn:border-[hsl(var(--blueprint-line)/0.3)]" transitionClass="transition-colors duration-200" />
 
       {isDark ? <Sun size={14} /> : <Moon size={14} />}
     </button>

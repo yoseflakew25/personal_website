@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {Timer, ArrowUpRight} from 'lucide-react'
 import {formatDate} from '~/lib/utils'
 import Tags from '../tags'
-import {cn} from '~/lib/utils'
+import {CornerBrackets} from '~/components/ui/corner-brackets'
 
 interface PostItemProps extends Post {
   index?: number
@@ -27,22 +27,7 @@ const PostItem: React.FC<PostItemProps> = ({
         className="group block relative border border-[hsl(var(--border))] bg-card transition-all duration-200 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]"
       >
         {/* Visible corner brackets (always shown, brighter on hover) */}
-        <span className={cn(
-          'absolute top-0 left-0 w-2.5 h-2.5 border-t border-l z-10 transition-colors duration-300',
-          'border-[hsl(var(--blueprint-line)/0.3)] group-hover:border-[hsl(var(--blueprint-line)/0.6)]',
-        )} />
-        <span className={cn(
-          'absolute top-0 right-0 w-2.5 h-2.5 border-t border-r z-10 transition-colors duration-300',
-          'border-[hsl(var(--blueprint-line)/0.3)] group-hover:border-[hsl(var(--blueprint-line)/0.6)]',
-        )} />
-        <span className={cn(
-          'absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l z-10 transition-colors duration-300',
-          'border-[hsl(var(--blueprint-line)/0.3)] group-hover:border-[hsl(var(--blueprint-line)/0.6)]',
-        )} />
-        <span className={cn(
-          'absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r z-10 transition-colors duration-300',
-          'border-[hsl(var(--blueprint-line)/0.3)] group-hover:border-[hsl(var(--blueprint-line)/0.6)]',
-        )} />
+        <CornerBrackets size="0.625rem" colorClass="border-[hsl(var(--blueprint-line)/0.3)]" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.6)]" transitionClass="transition-colors duration-300" />
 
         {/* ── Spec header ── */}
         <div className="flex items-center justify-between border-b border-[hsl(var(--border))] px-4 py-1.5">
@@ -67,7 +52,7 @@ const PostItem: React.FC<PostItemProps> = ({
             <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 flex-1 leading-snug font-semibold">
               {title}
             </h3>
-            <ArrowUpRight className="size-4 shrink-0 mt-0.5 text-muted-foreground transition-all duration-300 group-hover:text-[hsl(var(--blueprint-line))] group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
+            <ArrowUpRight className="size-4 shrink-0 mt-0.5 text-muted-foreground transition-colors duration-300 group-hover:text-[hsl(var(--blueprint-line))]" />
           </div>
 
           <p className="font-mono text-xs text-muted-foreground/80 leading-relaxed line-clamp-2 mt-2">

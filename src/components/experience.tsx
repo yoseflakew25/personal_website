@@ -6,6 +6,7 @@ import { ChevronDown } from 'lucide-react'
 import { cn } from '~/lib/utils'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
+import { CornerBrackets } from './ui/corner-brackets'
 import './experience.css'
 
 interface TimelineItemProps {
@@ -28,7 +29,7 @@ const TimelineItem = ({
   return (
     <li className="timeline-item">
       {/* BR corner accent */}
-      <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[hsl(var(--blueprint-line)/0)] group-hover/item:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-300 pointer-events-none" />
+      <CornerBrackets size="0.625rem" colorClass="border-[hsl(var(--blueprint-line)/0)]" hoverColorClass="group-hover/item:border-[hsl(var(--blueprint-line)/0.4)]" transitionClass="transition-colors duration-300" renderTopLeft={false} renderTopRight={false} renderBottomLeft={false} />
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
@@ -94,7 +95,7 @@ const Experience = () => {
     <article className="space-y-8" id="experience">
       <section className="timeline space-y-10">
         <ScrollReveal variant="blueprintReveal">
-          <SectionHeader title="Professional Experience" />
+          <SectionHeader title="Professional Experience" sheet="SHEET 02/06" />
         </ScrollReveal>
 
         <ScrollReveal variant="blueprintReveal" delay={0.15}>

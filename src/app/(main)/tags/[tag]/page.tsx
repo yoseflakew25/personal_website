@@ -7,6 +7,7 @@ import {PostList} from '~/components/post'
 import config from '~/config'
 import {getSEOTags} from '~/lib/seo'
 import {getAllTags, getPostsByTagSlug} from '~/lib/utils'
+import {CornerBrackets} from '~/components/ui/corner-brackets'
 
 interface TagPageProps {
   params: {
@@ -42,10 +43,7 @@ const TagDetailPage: React.FC<TagPageProps> = ({params}) => {
     <div className="!mt-8 relative pb-12">
       {/* Tag header card */}
       <div className="relative border border-[hsl(var(--border))] bg-card p-4 mb-8">
-        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)]" />
+        <CornerBrackets />
 
         <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
           <p className="text-blueprint-meta">TAG INDEX</p>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { cn } from '~/lib/utils'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -37,10 +38,7 @@ export default function BackToTop() {
           : 'opacity-0 translate-y-4 pointer-events-none',
       )}
     >
-      <span className="absolute top-px left-px w-1.5 h-1.5 border-t border-l border-[hsl(var(--blueprint-line)/0.2)] pointer-events-none" />
-      <span className="absolute top-px right-px w-1.5 h-1.5 border-t border-r border-[hsl(var(--blueprint-line)/0.2)] pointer-events-none" />
-      <span className="absolute bottom-px left-px w-1.5 h-1.5 border-b border-l border-[hsl(var(--blueprint-line)/0.2)] pointer-events-none" />
-      <span className="absolute bottom-px right-px w-1.5 h-1.5 border-b border-r border-[hsl(var(--blueprint-line)/0.2)] pointer-events-none" />
+      <CornerBrackets size="0.375rem" offset={1} colorClass="border-[hsl(var(--blueprint-line)/0.2)]" />
       ↑
     </button>
   )

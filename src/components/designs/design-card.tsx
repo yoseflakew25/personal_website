@@ -3,7 +3,6 @@ import { ArrowUpRight } from 'lucide-react'
 import { DesignProject } from '~/constants/ui-designs'
 import { cn } from '~/lib/utils'
 import DesignImage from './design-image'
-import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
 
 type DesignCardProps = {
   project: DesignProject
@@ -14,18 +13,12 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
   const id = String(project.id).padStart(2, '0')
 
   return (
-    <BlueprintMeasure
-      widthLabel="CARD W"
-      heightLabel="CARD H"
-      specTag="UI DIM"
-      offset={6}
-      className="h-full"
-    >
+    <div className="h-full">
     <a
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card overflow-hidden transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.45)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]"
+      className="group relative flex flex-col h-full border border-[hsl(var(--border))] bg-card overflow-hidden transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]"
     >
 
       {/* Spec-sheet header bar */}
@@ -79,7 +72,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
         </div>
 
         {/* Arrow icon — top right */}
-        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0">
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span className="flex items-center justify-center w-6 h-6 border border-[hsl(var(--blueprint-line)/0.4)] bg-background/80 text-[hsl(var(--blueprint-line))]">
             <ArrowUpRight size={12} />
           </span>
@@ -114,7 +107,7 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
         </div>
       </div>
     </a>
-    </BlueprintMeasure>
+    </div>
   )
 }
 

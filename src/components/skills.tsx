@@ -3,7 +3,7 @@ import React from 'react'
 import { BACKEND_STACKS, FRONTEND_STACKS } from '~/constants/stack'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
-import { BlueprintMeasure } from '~/components/ui/blueprint-measure'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 const SkillSector = ({
   label,
@@ -36,7 +36,7 @@ const SkillSector = ({
             className="group relative inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase border border-[hsl(var(--border))] px-2 py-1 text-foreground/75 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:text-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.04)] transition-all duration-200 cursor-default"
           >
             {/* TL corner accent on hover */}
-            <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover:border-[hsl(var(--blueprint-line)/0.4)] transition-colors duration-200" />
+            <CornerBrackets size="0.375rem" colorClass="border-transparent" hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.4)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} renderBottomRight={false} />
             <Icon className={className} aria-label={stack} />
             <span>{stack}</span>
           </span>
@@ -50,23 +50,13 @@ const Skills = () => {
   return (
     <section aria-label="skills" className="space-y-8 bg-transparent">
       <ScrollReveal variant="blueprintReveal">
-        <SectionHeader title="Tools & Technologies" />
+        <SectionHeader title="Tools & Technologies" sheet="SHEET 01/06" />
       </ScrollReveal>
 
       <ScrollReveal variant="blueprintReveal" delay={0.15}>
-        {/* Outer container with interactive dimensions on hover */}
-        <BlueprintMeasure
-          widthLabel="SCHEMA W"
-          heightLabel="SCHEMA H"
-          specTag="TECH DIM"
-          offset={6}
-        >
-        <div className="relative border border-[hsl(var(--border))] bg-card divide-y divide-[hsl(var(--border))]">
+        <div className="relative border border-[hsl(var(--border))] bg-card divide-y divide-[hsl(var(--border))] transition-all duration-300 hover:border-[hsl(var(--blueprint-line)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--blueprint-line)/0.08)]">
           {/* Always-visible blueprint corner brackets */}
-          <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)] z-10 pointer-events-none" />
+          <CornerBrackets />
 
           {/* Spec sheet top bar */}
           <div className="px-4 py-1.5 flex items-center justify-between">
@@ -99,7 +89,6 @@ const Skills = () => {
             </span>
           </div>
         </div>
-        </BlueprintMeasure>
       </ScrollReveal>
     </section>
   )

@@ -1,16 +1,14 @@
 'use client'
 
 import { BlueprintSkeletonContainer, BlueprintSkeletonLine } from '~/components/ui/blueprint-skeleton'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 
 const Loading = () => {
   return (
     <div className="!mt-8 relative pb-12 animate-pulse space-y-8">
       {/* Schematic loading header */}
       <div className="relative border border-[hsl(var(--border))] bg-card/40 p-4">
-        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[hsl(var(--blueprint-line)/0.5)]" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[hsl(var(--blueprint-line)/0.5)]" />
+        <CornerBrackets />
 
         <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
           <p className="font-mono text-[9px] tracking-wider text-[hsl(var(--blueprint-line)/0.5)]">[LOADING_SYSTEM_SCHEMA...]</p>

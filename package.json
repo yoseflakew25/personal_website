@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev:next": "next dev",
+    "dev:velite": "node scripts/run-velite.mjs --dev",
     "build:next": "next build",
-    "dev": "npm run dev:next",
-    "build": "velite --clean && npm run build:next",
+    "build:velite": "node scripts/run-velite.mjs",
+    "dev": "npm-run-all --parallel dev:*",
+    "build": "npm-run-all build:*",
     "start": "next start",
     "upgrade:latest": "yarn upgrade-interactive --latest"
   },

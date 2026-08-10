@@ -4,6 +4,7 @@ import SearchInput from '~/components/search-input'
 import { Tag } from '~/components/tags'
 import config from '~/config'
 import { getSEOTags } from '~/lib/seo'
+import { CornerBrackets } from '~/components/ui/corner-brackets'
 import { getAllTags, sortedTagsCount, sortPosts } from '~/lib/utils'
 
 export const metadata = getSEOTags({
@@ -66,10 +67,7 @@ const BlogPage = ({ searchParams }: { searchParams: { search: string | undefined
         {/* Sidebar — Tags */}
         <aside className="order-1 md:order-2 sticky top-24">
           <div className="relative border border-[hsl(var(--border))] bg-card p-4">
-            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[hsl(var(--blueprint-line)/0.3)] pointer-events-none" />
+            <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.3)]" />
             <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[hsl(var(--border))]">
               <span className="font-mono text-[9px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase shrink-0">
                 TAGS
