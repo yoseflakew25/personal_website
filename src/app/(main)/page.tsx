@@ -7,7 +7,6 @@ import { EducationList } from '~/components/education'
 import { ContactSkeleton, ProjectCarouselSkeleton } from '~/components/ui/blueprint-skeleton'
 import CTASection from '~/components/cta-section'
 import { projects } from '~/components/project/_project-mock'
-import StackMarquee from '~/components/stack-marquee'
 
 const ProjectCarousel = dynamic(
   () => import('~/components/project/project-carousel'),
@@ -25,7 +24,7 @@ const ContactUs = dynamic(
 
 const HomePage = () => {
   return (
-    <div className="space-y-16 relative pb-12">
+    <div className="space-y-16y relative pb-12">
       <AboutSection />
 
       {/* Sequenced section reveals with staggered blueprint entrance */}
@@ -34,25 +33,21 @@ const HomePage = () => {
         initialDelay={0.1}
         className='space-y-16'
       >
-        <section aria-label="Tech stack marquee" className="pb-12 pt-8">
-          <StackMarquee />
-        </section>
-
-        <section id="skills" className="pb-12 pt-8 scroll-mt-24">
+        <section id="skills" className="pb-12 pt-8">
           <Skills />
         </section>
 
-        <section id="experience" className="pb-12 scroll-mt-24">
+        <section id="experience" className="pb-12">
           <Experience />
         </section>
 
-        <section id="education" className="pb-12 scroll-mt-24">
+        <section id="education" className="pb-12">
           <EducationList />
         </section>
 
 
 
-        <section id="projects" className="pb-12 scroll-mt-24">
+        <section id="projects" className="pb-12">
           <ProjectCarousel projects={projects} />
         </section>
 
@@ -64,7 +59,7 @@ const HomePage = () => {
           <CTASection />
         </div>
 
-        <div id="contact" className="pb-12 scroll-mt-24">
+        <div id="contact" className="pb-12">
           <ContactUs />
         </div>
 
