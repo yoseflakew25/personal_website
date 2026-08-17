@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight, FolderGit2, Palette, FileText } from 'lucide-react'
 import { CornerBrackets } from '~/components/ui/corner-brackets'
+import Magnetic from '~/components/ui/magnetic'
 
 /* ─────────────────────────────────────────
    Dark CTA — spec-sheet style card.
@@ -10,29 +11,9 @@ import { CornerBrackets } from '~/components/ui/corner-brackets'
 const CTASection = () => {
   return (
     <section className="relative" aria-label="Explore the portfolio">
-      <div className="relative overflow-hidden border border-white/12 bg-[#09090b]">
+      <div className="relative overflow-hidden border border-[hsl(var(--blueprint-line)/0.3)] bg-transparent">
         {/* Corner accents */}
-        <CornerBrackets colorClass="border-white/[0.15]" />
-
-        {/* Grid pattern overlay — major + minor lines, mirrors the site's blueprint-bg on the dark panel */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px)',
-            backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px',
-          }}
-        />
-
-        {/* Teal glow — subtle radial light from top */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--blueprint-line) / 0.08), transparent 70%)',
-          }}
-        />
+        <CornerBrackets colorClass="border-[hsl(var(--blueprint-line)/0.35)]" />
 
         <div className="relative px-6 sm:px-8 py-10 sm:py-14">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-0 items-center">
@@ -40,30 +21,30 @@ const CTASection = () => {
             <div className="flex flex-col">
               {/* Spec header */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-mono text-[9px] tracking-[0.25em] text-white/50 uppercase">
+                <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">
                   NEXT STEP
                 </span>
-                <span className="h-px flex-1 border-t border-white/10" />
-                <span className="font-mono text-[9px] tracking-[0.2em] text-white/50 uppercase">
+                <span className="h-px flex-1 border-t border-[hsl(var(--border)/0.6)]" />
+                <span className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground uppercase">
                   DIRECTORY
                 </span>
               </div>
 
               {/* Title */}
-              <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-tight mb-2">
-                Explore MY Portfolio
+              <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-foreground uppercase tracking-tight leading-tight mb-2">
+                Explore My Portfolio
               </h2>
-              <p className="font-mono text-xs sm:text-sm text-white/50 max-w-xl leading-relaxed">
+              <p className="font-mono text-xs sm:text-sm text-muted-foreground max-w-xl leading-relaxed">
                 Dive into production-grade projects, UI/UX case studies, and engineering
                 write-ups, each documented with design rationale and technical decisions.
               </p>
 
               {/* Bottom annotation */}
-              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="font-mono text-[9px] tracking-[0.2em] text-white/40 uppercase">
+              <div className="mt-8 pt-4 border-t border-[hsl(var(--border)/0.6)] flex items-center justify-between">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground/80 uppercase">
                   SELECT &nbsp;→&nbsp; EXPLORE
                 </span>
-                <span className="font-mono text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground/80 uppercase">
                   NOT TO SCALE
                 </span>
               </div>
@@ -72,15 +53,16 @@ const CTASection = () => {
             {/* Vertical divider between columns */}
             <div
               aria-hidden="true"
-              className="hidden lg:block w-px self-stretch border-l border-white/10 mx-6"
+              className="hidden lg:block w-px self-stretch border-l border-[hsl(var(--border)/0.6)] mx-6"
             />
 
             {/* ── Right: Buttons stacked top to bottom ── */}
-            <div className="grid grid-cols-1 auto-rows-fr border border-white/20 divide-y divide-white/10">
+            <div className="grid grid-cols-1 auto-rows-fr border border-[hsl(var(--blueprint-line)/0.3)] divide-y divide-[hsl(var(--blueprint-line)/0.15)]">
               {/* Projects — primary CTA */}
+              <Magnetic strength={0.15} className="flex">
               <Link
                 href="/projects"
-                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-[#09090b] font-medium transition-all duration-300 bg-white hover:bg-white/90 active:scale-[0.98]"
+                className="group relative flex flex-1 items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-[#09090b] font-medium transition-all duration-300 bg-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.85)] hover:shadow-[0_0_16px_hsl(var(--blueprint-line)/0.35)] active:scale-[0.98]"
               >
                 <CornerBrackets
                   size="0.5rem"
@@ -96,16 +78,17 @@ const CTASection = () => {
                 </span>
                 <ArrowUpRight size={13} className="shrink-0" />
               </Link>
+              </Magnetic>
 
-              {/* Designs — white filled */}
+              {/* Designs — cyan outlined */}
               <Link
                 href="/designs"
-                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-white/70 transition-all duration-300 hover:bg-white/[0.04] hover:text-white active:scale-[0.98]"
+                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-[hsl(var(--blueprint-line))] transition-all duration-300 hover:bg-[hsl(var(--blueprint-line)/0.08)] hover:text-foreground active:scale-[0.98]"
               >
                 <CornerBrackets
                   size="0.5rem"
                   colorClass="border-transparent"
-                  hoverColorClass="group-hover:border-white/30"
+                  hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.7)]"
                   transitionClass="transition-colors"
                   renderTopRight={false}
                   renderBottomLeft={false}
@@ -117,15 +100,15 @@ const CTASection = () => {
                 <ArrowUpRight size={13} className="shrink-0" />
               </Link>
 
-              {/* Blog — outlined */}
+              {/* Blog — cyan outlined */}
               <Link
                 href="/blog"
-                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-white/70 transition-all duration-300 hover:bg-white/[0.04] hover:text-white active:scale-[0.98]"
+                className="group relative flex w-full items-center justify-between gap-2.5 px-5 py-4 font-mono text-xs sm:text-sm tracking-[0.15em] uppercase text-[hsl(var(--blueprint-line))] transition-all duration-300 hover:bg-[hsl(var(--blueprint-line)/0.08)] hover:text-foreground active:scale-[0.98]"
               >
                 <CornerBrackets
                   size="0.5rem"
                   colorClass="border-transparent"
-                  hoverColorClass="group-hover:border-white/30"
+                  hoverColorClass="group-hover:border-[hsl(var(--blueprint-line)/0.7)]"
                   transitionClass="transition-colors"
                   renderTopRight={false}
                   renderBottomLeft={false}

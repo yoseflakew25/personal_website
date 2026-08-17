@@ -44,9 +44,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           className="size-full object-cover transition-all duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        {/* Blueprint centerline through the figure */}
-        <span aria-hidden="true" className="blueprint-centerline" />
-        <span aria-hidden="true" className="blueprint-centerline-dot" />
         {/* Scanline sweep — drafting-table light pass on hover */}
         <div
           aria-hidden="true"
@@ -58,7 +55,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         <span
           className="absolute bottom-2 right-2 font-mono font-bold text-4xl md:text-5xl leading-none select-none pointer-events-none"
           style={{
-            WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.12)',
+            WebkitTextStroke: '1.5px hsl(var(--blueprint-line) / 0.5)',
             color: 'transparent',
           }}
         >
@@ -105,11 +102,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             href={deployedURL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/link inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 uppercase"
+            className="group/link inline-flex items-center gap-1.5 px-2.5 py-1 border border-[hsl(var(--blueprint-line))] bg-[hsl(var(--blueprint-line))] text-[#0a0a0a] font-mono text-[10px] tracking-wider uppercase transition-all duration-200 hover:bg-[hsl(var(--blueprint-line)/0.85)] hover:shadow-[0_0_10px_hsl(var(--blueprint-line)/0.25)]"
           >
             <FaExternalLinkAlt size={10} />
             <span>Live Preview</span>
-            <span className="text-[9px] text-muted-foreground/40">↗</span>
+            <span className="text-[9px] text-[#0a0a0a]/60">↗</span>
           </a>
 
           {isRepo && (
@@ -129,9 +126,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
       {/* Spec footer */}
       <div className="border-t border-dashed border-[hsl(var(--border)/0.6)] px-3 py-1 flex items-center justify-between">
-        <span className="text-blueprint-note text-[9px]">REV A</span>
-        <span className="text-blueprint-note text-[9px]">SHEET {id}/{String(total).padStart(2, '0')}</span>
-        <span className="text-blueprint-note text-[9px]">NOT TO SCALE</span>
+        <span className="blueprint-note text-[9px]">REV A</span>
+        <span className="blueprint-note text-[9px]">SHEET {id}/{String(total).padStart(2, '0')}</span>
+        <span className="blueprint-note text-[9px]">NOT TO SCALE</span>
       </div>
     </div>
   )

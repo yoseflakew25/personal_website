@@ -60,10 +60,10 @@ const NavItem: React.FC<NavItemType & { setOpen?: Dispatch<SetStateAction<boolea
         role="link"
         aria-label={label}
         className={cn(
-          'group font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 transition-all duration-200 el-focus-styles inline-flex items-center gap-1.5',
+          'group font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 transition-all duration-200 el-focus-styles inline-flex items-center gap-1.5 border border-transparent',
           isActive
-            ? 'text-foreground font-semibold'
-            : 'text-muted-foreground hover:text-foreground',
+            ? 'border-[hsl(var(--blueprint-line)/0.55)] bg-[hsl(var(--blueprint-line)/0.07)] text-[hsl(var(--blueprint-line))] font-semibold'
+            : 'text-muted-foreground hover:bg-[hsl(var(--blueprint-line)/0.08)] hover:text-[hsl(var(--blueprint-line))]',
         )}
       >
         {/* Blueprint bracket indicator */}
@@ -71,19 +71,14 @@ const NavItem: React.FC<NavItemType & { setOpen?: Dispatch<SetStateAction<boolea
           className={cn(
             'transition-all duration-200 text-[10px]',
             isActive
-              ? 'text-[hsl(var(--blueprint-line)/0.7)] opacity-100'
-              : 'opacity-0 group-hover:opacity-40',
+              ? 'text-[hsl(var(--blueprint-line)/0.8)] opacity-100'
+              : 'opacity-0 group-hover:opacity-60',
           )}
         >
           ▸
         </span>
         {label}
       </Link>
-
-      {/* Active underline — dashed to match blueprint style */}
-      {isActive && (
-        <span className="absolute bottom-0 left-3 right-3 h-px bg-[hsl(var(--blueprint-line)/0.4)]" />
-      )}
     </li>
   )
 }

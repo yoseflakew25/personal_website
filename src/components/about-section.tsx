@@ -64,6 +64,7 @@ const HeroFade = ({
 const AboutSection = () => {
   return (
     <section
+      id="about"
       className="relative"
       aria-label="About"
     >
@@ -84,7 +85,22 @@ const AboutSection = () => {
             </span>
           </HeroFade>
 
-          <div className="space-y-0">
+          <div className="relative space-y-0">
+            {/* Flanking vertical dimension lines */}
+            <span aria-hidden="true" className="hidden lg:block absolute top-1 bottom-1 -left-7 w-px bg-[hsl(var(--blueprint-line)/0.35)]">
+              <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[9px] leading-none text-[hsl(var(--blueprint-line)/0.6)]">▲</span>
+              <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] leading-none text-[hsl(var(--blueprint-line)/0.6)]">▼</span>
+            </span>
+            <span aria-hidden="true" className="hidden lg:block absolute top-1/2 -translate-y-1/2 -left-16 -rotate-90 origin-center whitespace-nowrap font-mono text-[9px] tracking-[0.3em] text-[hsl(var(--blueprint-line)/0.5)] uppercase">
+              NAME · 001
+            </span>
+            <span aria-hidden="true" className="hidden lg:block absolute top-1 bottom-1 -right-7 w-px bg-[hsl(var(--blueprint-line)/0.35)]">
+              <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[9px] leading-none text-[hsl(var(--blueprint-line)/0.6)]">▲</span>
+              <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] leading-none text-[hsl(var(--blueprint-line)/0.6)]">▼</span>
+            </span>
+            <span aria-hidden="true" className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-16 rotate-90 origin-center whitespace-nowrap font-mono text-[9px] tracking-[0.3em] text-[hsl(var(--blueprint-line)/0.5)] uppercase">
+              TEXT BLOCK · 001
+            </span>
             <HeroFade delay={0.3}>
               <h1 className="font-display block text-[14vw] xs:text-[13vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-bold text-foreground leading-[0.95] uppercase">
                 YOSEF
@@ -97,16 +113,25 @@ const AboutSection = () => {
             </HeroFade>
           </div>
 
+          <HeroFade delay={0.45}>
+            <div className="relative max-w-md" aria-hidden="true">
+              <div className="blueprint-dimension !my-0" />
+              <span className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 font-mono text-[9px] tracking-[0.3em] text-[hsl(var(--blueprint-line)/0.7)] uppercase bg-background px-1.5">
+                WIDTH · 001
+              </span>
+            </div>
+          </HeroFade>
+
           <HeroFade delay={0.5}>
             <div className="pt-1">
               <span
                 className="font-display block text-[5.5vw] xs:text-[6vw] sm:text-[4.5vw] md:text-[1.8rem] lg:text-[2.25rem] xl:text-[2.5rem] font-bold leading-[1.1] select-none uppercase"
                 style={{
-                  WebkitTextStroke: '1.5px hsl(var(--foreground) / 0.78)',
+                  WebkitTextStroke: '1.5px hsl(var(--blueprint-line) / 0.9)',
                   color: 'transparent',
                 }}
               >
-                FULLSTACK ENGINEER & UI/UX DESIGNER
+                FULLSTACK ENGINEER & <br /> UI/UX DESIGNER
               </span>
             </div>
           </HeroFade>
@@ -116,6 +141,7 @@ const AboutSection = () => {
               Full-stack engineer building production systems world wide. I <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">ship fast</span>, <span className="text-[hsl(var(--blueprint-line)/0.85)] font-semibold">optimize relentlessly</span>, and thrive in cross-functional teams.
             </p>
           </HeroFade>
+
 
         </div>
 
@@ -137,9 +163,6 @@ const AboutSection = () => {
                 {/* Image */}
                 <div className="xs:border-r border-b xs:border-b-0 border-[hsl(var(--border))] p-2 xs:p-1.5 flex items-center justify-center group">                    <div className="aspect-square w-full max-w-[200px] xs:max-w-[240px] relative overflow-hidden">
                       <Image alt="Yosef Lakew" src={heroImg} placeholder="blur" className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" priority sizes="240px" />
-                      {/* Blueprint centerline through the portrait */}
-                      <span aria-hidden="true" className="blueprint-centerline" />
-                      <span aria-hidden="true" className="blueprint-centerline-dot" />
                     </div>
                 </div>
 

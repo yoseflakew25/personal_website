@@ -24,8 +24,8 @@ const blueprintPlugin = plugin(
         '--accent-foreground': '45 8% 95%',
         '--destructive': '0 70% 40%',
         '--destructive-foreground': '45 8% 95%',
-        '--border': '45 5% 55%',
-        '--input': '45 5% 55%',
+        '--border': '190 35% 45%',
+        '--input': '190 35% 45%',
         '--ring': '190 65% 36%',
         '--radius': '0rem',
         /* Teal-specific tokens */
@@ -52,14 +52,14 @@ const blueprintPlugin = plugin(
         '--accent-foreground': '0 0% 4%',
         '--destructive': '0 60% 45%',
         '--destructive-foreground': '0 0% 4%',
-        '--border': '0 0% 22%',
-        '--input': '0 0% 22%',
-        '--ring': '190 80% 55%',
+        '--border': '190 45% 26%',
+        '--input': '190 45% 26%',
+        '--ring': '190 85% 60%',
         /* Teal-specific tokens */
         '--grid-color': '0 0% 12%',
         '--grid-sub-color': '0 0% 9%',
-        '--blueprint-line': '190 80% 55%',
-        '--blueprint-accent': '190 80% 62%',
+        '--blueprint-line': '190 85% 60%',
+        '--blueprint-accent': '190 85% 65%',
       },
     }),
       addBase({
@@ -142,42 +142,6 @@ const blueprintPlugin = plugin(
         },
         borderWidth: {
           '1': '1px',
-        },
-        keyframes: {
-          'draw-line': {
-            '0%': { width: '0%' },
-            '100%': { width: '100%' },
-          },
-          'fade-in': {
-            '0%': { opacity: '0' },
-            '100%': { opacity: '1' },
-          },
-          'blueprint-reveal': {
-            '0%': { opacity: '0', filter: 'invert(100%)' },
-            '100%': { opacity: '1', filter: 'invert(0%)' },
-          },
-          'blueprint-draw': {
-            '0%': { clipPath: 'inset(0 100% 100% 0)' },
-            '50%': { clipPath: 'inset(0 0% 100% 0)' },
-            '100%': { clipPath: 'inset(0 0% 0% 0)' },
-          },
-          'scan-line': {
-            '0%': { transform: 'translateY(-100%)' },
-            '100%': { transform: 'translateY(100vh)' },
-          },
-          'grid-fade': {
-            '0%': { opacity: '0' },
-            '50%': { opacity: '0.3' },
-            '100%': { opacity: '1' },
-          },
-        },
-        animation: {
-          'draw-line': 'draw-line 0.8s ease-out forwards',
-          'fade-in': 'fade-in 0.5s ease-out forwards',
-          'blueprint-reveal': 'blueprint-reveal 0.6s ease-out forwards',
-          'blueprint-draw': 'blueprint-draw 1.2s cubic-bezier(0.25, 0.4, 0.25, 1) forwards',
-          'scan-line': 'scan-line 2s linear infinite',
-          'grid-fade': 'grid-fade 1.5s ease-out forwards',
         },
       },
     },

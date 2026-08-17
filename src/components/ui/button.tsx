@@ -10,17 +10,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-foreground text-background border border-foreground hover:bg-foreground/90',
+          'bg-[hsl(var(--blueprint-line))] text-[#0a0a0a] border border-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.9)] hover:shadow-[0_0_14px_hsl(var(--blueprint-line)/0.25)]',
         destructive:
           'bg-destructive text-destructive-foreground border border-destructive hover:bg-destructive/90',
         outline:
-          'bg-transparent text-foreground border border-[hsl(var(--border))] hover:border-[hsl(var(--blueprint-line)/0.5)] hover:bg-[hsl(var(--blueprint-line)/0.05)]',
+          'bg-transparent text-foreground border border-[hsl(var(--blueprint-line)/0.35)] hover:border-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.08)] hover:text-[hsl(var(--blueprint-line))]',
         secondary:
           'bg-[hsl(var(--secondary))] text-secondary-foreground border border-[hsl(var(--border))] hover:bg-[hsl(var(--secondary)/0.8)]',
         ghost:
           'bg-transparent text-foreground hover:bg-[hsl(var(--blueprint-line)/0.05)]',
         link:
-          'text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid',
+          'text-[hsl(var(--blueprint-line))] underline decoration-dotted underline-offset-4 hover:decoration-solid',
       },
       size: {
         default: 'h-9 px-4 py-2',

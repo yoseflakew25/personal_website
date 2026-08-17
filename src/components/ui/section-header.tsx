@@ -37,8 +37,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         </h2>
         {sheet && (
           <>
-            <span className="h-px flex-1 min-w-[1.5rem] border-t border-dashed border-[hsl(var(--border)/0.6)]" aria-hidden="true" />
-            <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase shrink-0">
+            <span className="h-px flex-1 min-w-[1.5rem] border-t border-dashed border-[hsl(var(--blueprint-line)/0.3)]" aria-hidden="true" />
+            <span className="font-mono text-[9px] tracking-[0.25em] text-[hsl(var(--blueprint-line)/0.8)] uppercase shrink-0">
               {sheet}
             </span>
           </>

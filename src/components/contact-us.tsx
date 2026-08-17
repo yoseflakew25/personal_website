@@ -1,6 +1,7 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
+import { Copy } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '~/components/ui/form'
@@ -14,9 +15,22 @@ import { Textarea } from './ui/textarea'
 import SectionHeader from './ui/section-header'
 import ScrollReveal from './ui/scroll-reveal'
 import { CornerBrackets } from './ui/corner-brackets'
+import Magnetic from './ui/magnetic'
 
 const ContactUs = () => {
   const [isPending, setIsPending] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(config.social.email)
+      setCopied(true)
+      toast.success('Email copied to clipboard')
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      toast.error('Could not copy email')
+    }
+  }
   const form = useForm<contactSchemaType>({
     resolver: zodResolver(ContactSchema),
     defaultValues: {
@@ -69,12 +83,32 @@ const ContactUs = () => {
             </div>
 
             <p className="font-mono text-xs text-muted-foreground leading-relaxed">
-              If you have any inquiries, please feel free to reach out. You can contact me via email
-              at{' '}
+              If you have any inquiries, please feel free to reach out. You can contact me via email:
+            </p>
+
+            <div className="flex items-center gap-2.5 flex-wrap">
               <CustomLink href={`mailto:${config.social.email}`} aria-label={config.social.email}>
                 <span className="text-[hsl(var(--blueprint-line))] font-medium">{config.social.email}</span>
               </CustomLink>
-            </p>
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase border border-[hsl(var(--blueprint-line)/0.3)] bg-[hsl(var(--blueprint-line)/0.05)] px-2 py-0.5 text-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.12)] transition-all duration-200 el-focus-styles"
+                aria-label="Copy email address"
+              >
+                {copied ? (
+                  <>
+                    <span aria-hidden="true">✓</span>
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy size={10} aria-hidden="true" />
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
 
             <div className="space-y-3 pt-1">
               <h3 className="text-blueprint-meta">
@@ -179,20 +213,22 @@ const ContactUs = () => {
                   )}
                 />
 
-                <Button
-                  type="submit"
-                  className="w-full blueprint-cta justify-center group"
-                  disabled={isPending}
-                >
-                  {isPending ? (
-                    <span className="animate-pulse">Sending...</span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <span>Send Message</span>
-                      <span>→</span>
-                    </span>
-                  )}
-                </Button>
+                <Magnetic strength={0.15}>
+                  <Button
+                    type="submit"
+                    className="w-full justify-center group px-5 py-3 tracking-[0.15em] sm:text-sm font-medium"
+                    disabled={isPending}
+                  >
+                    {isPending ? (
+                      <span className="animate-pulse">Sending...</span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <span>Send Message</span>
+                        <span>→</span>
+                      </span>
+                    )}
+                  </Button>
+                </Magnetic>
 
                 {/* Footer */}
                 <div className="border-t border-[hsl(var(--border))] pt-2 flex justify-between">

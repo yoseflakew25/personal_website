@@ -286,7 +286,7 @@ export const ProjectCarouselSkeleton = () => {
           <div
             className="font-mono font-bold text-6xl sm:text-7xl leading-none select-none"
             style={{
-              WebkitTextStroke: '1px hsl(var(--foreground) / 0.05)',
+              WebkitTextStroke: '1px hsl(var(--blueprint-line) / 0.3)',
               color: 'transparent',
             }}
           >

@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 import { NavChildItem } from './_nav-mock'
 import { cn } from '~/lib/utils'
@@ -26,6 +27,12 @@ const NavDropdown: React.FC<NavDropdownProps> = ({
   onToggleClick,
   onChildClick,
 }) => {
+  const pathname = usePathname()
+  // Active when any internal child route matches (external links never match)
+  const isActive = children.some(
+    child => !child.external && pathname.startsWith(child.path),
+  )
+
   return (
     <li
       role="listitem"
@@ -36,14 +43,23 @@ const NavDropdown: React.FC<NavDropdownProps> = ({
       {/* Dropdown trigger */}
       <button
         className={cn(
-          'group font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 transition-all duration-200 el-focus-styles inline-flex items-center gap-1.5',
-          'text-muted-foreground hover:text-foreground',
+          'group font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 transition-all duration-200 el-focus-styles inline-flex items-center gap-1.5 border border-transparent',
+          isActive
+            ? 'border-[hsl(var(--blueprint-line)/0.55)] bg-[hsl(var(--blueprint-line)/0.07)] text-[hsl(var(--blueprint-line))] font-semibold'
+            : 'text-muted-foreground hover:bg-[hsl(var(--blueprint-line)/0.08)] hover:text-[hsl(var(--blueprint-line))]',
         )}
         aria-haspopup="true"
         aria-expanded={isOpen}
         onClick={onToggleClick}
       >
-        <span className="transition-all duration-200 text-[10px] opacity-0 group-hover:opacity-40">
+        <span
+          className={cn(
+            'transition-all duration-200 text-[10px]',
+            isActive
+              ? 'text-[hsl(var(--blueprint-line)/0.8)] opacity-100'
+              : 'opacity-0 group-hover:opacity-60',
+          )}
+        >
           ▸
         </span>
         {label}
@@ -158,7 +174,7 @@ const NavDropdown: React.FC<NavDropdownProps> = ({
 
         {/* Footer note */}
         <div className="border-t border-dashed border-[hsl(var(--border)/0.5)] px-4 py-1.5">
-          <span className="text-blueprint-note text-[8px] tracking-[0.2em]">NAV · CONTACT</span>
+          <span className="blueprint-note text-[8px] tracking-[0.2em]">NAV · CONTACT</span>
         </div>
       </div>
     </li>

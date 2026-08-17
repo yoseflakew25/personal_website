@@ -4,10 +4,11 @@ import React from 'react'
 import {ArrowLeft} from 'lucide-react'
 import {CustomLink} from '~/components/mdx'
 import {PostList} from '~/components/post'
+import SectionHeader from '~/components/ui/section-header'
+import ScrollReveal from '~/components/ui/scroll-reveal'
 import config from '~/config'
 import {getSEOTags} from '~/lib/seo'
 import {getAllTags, getPostsByTagSlug} from '~/lib/utils'
-import {CornerBrackets} from '~/components/ui/corner-brackets'
 
 interface TagPageProps {
   params: {
@@ -41,35 +42,24 @@ const TagDetailPage: React.FC<TagPageProps> = ({params}) => {
 
   return (
     <div className="!mt-8 relative pb-12">
-      {/* Tag header card */}
-      <div className="relative border border-[hsl(var(--border))] bg-card p-4 mb-8">
-        <CornerBrackets />
-
-        <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
-          <p className="text-blueprint-meta">TAG INDEX</p>
-          <p className="text-blueprint-meta">FILTER · {tag.toUpperCase()}</p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[10px] tracking-[0.2em] text-[hsl(var(--blueprint-line)/0.6)] uppercase shrink-0">
-            POSTS TAGGED
+      {/* Back to all tags */}
+      <ScrollReveal variant="blueprintReveal">
+        <CustomLink href="/tags">
+          <span className="group/back inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 mb-4 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] px-2 py-1">
+            <ArrowLeft size={12} className="text-[hsl(var(--blueprint-line)/0.5)] group-hover/back:text-[hsl(var(--blueprint-line))] transition-colors duration-200" />
+            Back to all tags
           </span>
-          <h2 className="font-mono text-sm uppercase tracking-wider text-foreground">
-            {title}
-          </h2>
-          <span className="flex-1 h-px bg-[hsl(var(--border))]" aria-hidden="true" />
-          <span className="font-mono text-[10px] text-muted-foreground shrink-0">{displayPosts.length} POSTS</span>
-        </div>
+        </CustomLink>
 
-        <div className="border-t border-[hsl(var(--border))] pt-2 mt-3">
-          <CustomLink href="/tags">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
-              <ArrowLeft size={12} />
-              Back to all tags
-            </span>
-          </CustomLink>
+        {/* Header — shared SectionHeader conventions */}
+        <div className="mb-8">
+          <SectionHeader
+            title={title}
+            subtitle={`${displayPosts.length} post${displayPosts.length !== 1 ? 's' : ''} tagged "${title}"`}
+            sheet="SHEET 06/06"
+          />
         </div>
-      </div>
+      </ScrollReveal>
 
       <PostList posts={displayPosts} showRss={false} layout="grid" />
     </div>

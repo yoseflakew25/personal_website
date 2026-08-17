@@ -6,7 +6,9 @@ import { MDXContent } from '~/components/mdx'
 import { TableOfContent, JsonSchemaLD } from '~/components/post'
 
 import BackToTop from '~/components/ui/back-to-top'
-import ScrollProgress from '~/components/ui/scroll-progress'
+import ReadingProgress from '~/components/ui/reading-progress'
+import SectionHeader from '~/components/ui/section-header'
+import ScrollReveal from '~/components/ui/scroll-reveal'
 import config from '~/config'
 import { formatDate } from '~/lib/utils'
 import { getSEOTags as getSEOTagsFn } from '~/lib/seo'
@@ -47,49 +49,56 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="mt-2 relative pb-12">
+    <div className="!mt-8 relative pb-12">
       <JsonSchemaLD post={post} />
-
-      <ScrollProgress />
 
       <BackToTop />
 
-      {/* ── Post header ── */}
-      <div className="mb-8 pb-6 border-b border-[hsl(var(--border))]">
-        <Link
-          href="/blog"
-          className="group/back inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 mb-4 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] px-2 py-1"
-        >
-          <ArrowLeft size={12} className="text-[hsl(var(--blueprint-line)/0.5)] group-hover/back:text-[hsl(var(--blueprint-line))] transition-colors duration-200" />
-          Back to Blog
-        </Link>
+      {/* ── Post header — shared SectionHeader + ScrollReveal treatment ── */}
+      <ScrollReveal variant="blueprintReveal">
+        <div className="mb-8 pb-6 border-b border-[hsl(var(--border))]">
+          <Link
+            href="/blog"
+            className="group/back inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 mb-4 border border-transparent hover:border-[hsl(var(--blueprint-line)/0.3)] px-2 py-1"
+          >
+            <ArrowLeft size={12} className="text-[hsl(var(--blueprint-line)/0.5)] group-hover/back:text-[hsl(var(--blueprint-line))] transition-colors duration-200" />
+            Back to Blog
+          </Link>
 
-        <h1 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground uppercase leading-[1.1] tracking-tight mb-4">
-          {post.title}
-        </h1>
+          <SectionHeader title="Article" sheet="SHEET 06/06" />
 
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] px-2 py-0.5">
-            <Calendar size={10} />
-            {formatDate(post.date)}
-          </span>
-          <span className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
-            <Timer size={10} />
-            {post.metadata.readingTime} min read
-          </span>
+          <h1 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground uppercase leading-[1.1] tracking-tight mt-4 mb-4">
+            {post.title}
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-[hsl(var(--blueprint-line))] border border-[hsl(var(--blueprint-line)/0.3)] px-2 py-0.5">
+              <Calendar size={10} />
+              {formatDate(post.date)}
+            </span>
+            <span className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
+              <Timer size={10} />
+              {post.metadata.readingTime} min read
+            </span>
+          </div>
+
+          {post.description && (
+            <p className="font-mono text-xs text-muted-foreground/80 leading-relaxed max-w-2xl mt-3">
+              {post.description}
+            </p>
+          )}
         </div>
-
-        {post.description && (
-          <p className="font-mono text-xs text-muted-foreground/80 leading-relaxed max-w-2xl mt-3">
-            {post.description}
-          </p>
-        )}
-      </div>
+      </ScrollReveal>
 
       {/* ── Content + TOC layout ── */}
       <div className="grid lg:grid-cols-[1fr_280px] gap-8 items-start">
         {/* Main content */}
-        <article className="relative border border-[hsl(var(--border))] bg-card p-5 md:p-8">
+        <article
+          id="article-body"
+          className="relative border border-[hsl(var(--border))] bg-card p-5 md:p-8 pt-6"
+        >
+          {/* Article-scoped reading progress bar */}
+          <ReadingProgress targetId="article-body" />
           <CornerBrackets size="0.625rem" colorClass="border-[hsl(var(--blueprint-line)/0.25)]" />
           <div className="mdx-content max-w-none">
             <MDXContent code={post.body} />
@@ -120,9 +129,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </aside>
 
-        {/* ── Mobile TOC ── */}
+        {/* ── Mobile TOC — blueprint card matching the desktop sidebar ── */}
         <div className="lg:hidden">
-          <TableOfContent toc={post.toc} />
+          <div className="relative border border-[hsl(var(--border))] bg-card p-4">
+            <CornerBrackets size="0.5rem" colorClass="border-[hsl(var(--blueprint-line)/0.3)]" />
+
+            <div className="border-b border-[hsl(var(--border))] pb-2 mb-3">
+              <p className="text-blueprint-meta">ON THIS PAGE</p>
+              <p className="text-blueprint-meta">SECTIONS</p>
+            </div>
+
+            <nav aria-label="Table of Contents">
+              <TableOfContent toc={post.toc} />
+            </nav>
+
+            <div className="border-t border-[hsl(var(--border))] pt-2 mt-3 flex justify-between">
+              <span className="text-blueprint-meta">TOP</span>
+              <a href="#" className="text-blueprint-meta hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200">
+                ↑ Back to top
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

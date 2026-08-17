@@ -42,7 +42,7 @@ const MobileNav = () => {
 
         {/* Sheet footer */}
         <div className="absolute bottom-4 left-6 right-6 border-t border-dashed border-[hsl(var(--border)/0.5)] pt-2">
-          <span className="text-blueprint-note text-[9px]">SITE NAV</span>
+          <span className="blueprint-note text-[9px]">SITE NAV</span>
         </div>
       </SheetContent>
     </Sheet>

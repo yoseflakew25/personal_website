@@ -173,7 +173,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                         href={project.deployedURL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] sm:text-xs tracking-wider uppercase bg-foreground text-background border border-foreground hover:bg-[hsl(var(--blueprint-line))] hover:border-[hsl(var(--blueprint-line))] hover:text-[hsl(var(--accent-foreground))] transition-all duration-200"
+                        className="group/btn relative inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] sm:text-xs tracking-wider uppercase bg-[hsl(var(--blueprint-line))] text-[#0a0a0a] border border-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.85)] hover:shadow-[0_0_12px_hsl(var(--blueprint-line)/0.3)] transition-all duration-200"
                       >
                         <CornerBrackets size="0.375rem" colorClass="border-transparent" hoverColorClass="group-hover/btn:border-[hsl(var(--blueprint-line)/0.5)]" transitionClass="transition-colors duration-200" renderTopRight={false} renderBottomLeft={false} />
                         <FaExternalLinkAlt size={10} />
@@ -242,9 +242,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
                             className="w-full h-auto object-contain transition-transform duration-700 group-hover/img-link:scale-[1.04]"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1000px"
                           />
-                          {/* Blueprint centerline through the figure */}
-                          <span aria-hidden="true" className="blueprint-centerline" />
-                          <span aria-hidden="true" className="blueprint-centerline-dot" />
                           {/* Scanline sweep — drafting-table light pass on hover */}
                           <div
                             aria-hidden="true"
@@ -284,7 +281,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
         {/* Prev button */}
         <button
           onClick={() => { scrollPrev(); handleManualInteraction() }}
-          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-r border-[hsl(var(--border))] font-mono text-[9px] tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 shrink-0"
+          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-r border-[hsl(var(--border))] bg-[hsl(var(--blueprint-line)/0.12)] font-mono text-[9px] tracking-wider uppercase text-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.22)] transition-all duration-200 shrink-0"
           aria-label="Previous Project"
         >
           <ChevronLeft size={11} className="transition-transform duration-200 group-hover/btn:-translate-x-0.5" />
@@ -326,7 +323,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
         {/* Next button */}
         <button
           onClick={() => { scrollNext(); handleManualInteraction() }}
-          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-l border-[hsl(var(--border))] font-mono text-[9px] tracking-wider uppercase text-muted-foreground hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 shrink-0"
+          className="group/btn flex items-center gap-1.5 px-3 py-2.5 border-l border-[hsl(var(--border))] bg-[hsl(var(--blueprint-line)/0.12)] font-mono text-[9px] tracking-wider uppercase text-[hsl(var(--blueprint-line))] hover:bg-[hsl(var(--blueprint-line)/0.22)] transition-all duration-200 shrink-0"
           aria-label="Next Project"
         >
           NEXT

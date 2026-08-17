@@ -4,6 +4,7 @@ import Logo from './logo'
 import MobileNav from './mobile-nav'
 import NavList from './nav-list'
 import ThemeToggle from './theme-toggle'
+import CommandPalette, { CommandPaletteTrigger } from '~/components/ui/command-palette'
 import { cn } from '~/lib/utils'
 import { CornerBrackets } from '~/components/ui/corner-brackets'
 
@@ -40,14 +41,19 @@ const Navbar = () => {
 
         <div className="hidden sm:flex items-center gap-1">
           <NavList />
+          <CommandPaletteTrigger />
           <ThemeToggle />
         </div>
 
         <div className="flex items-center gap-1.5 sm:hidden">
+          <CommandPaletteTrigger />
           <ThemeToggle />
           <MobileNav />
         </div>
       </div>
+
+      {/* Global ⌘K palette — mounted once, opened via shortcut or trigger */}
+      <CommandPalette />
     </nav>
   )
 }
