@@ -3,7 +3,7 @@ import eskalateCover from '~/assets/images/cover/eskalate.png'
 import akilCover from '~/assets/images/cover/akil.png'
 import yubanowCover from '~/assets/images/cover/yubanow.png'
 import ordoCover from '~/assets/images/cover/ordo.png'
-import summerizerCover from '~/assets/images/cover/summerizer.png'
+import qrCodeGeneratorCover from '~/assets/images/cover/qr.png'
 import dicdoCover from '~/assets/images/cover/dicdo.png'
 
 export const projects = [
@@ -69,15 +69,15 @@ export const projects = [
     repoUrl: 'https://github.com/yoseflakew25/ordo',
   },
   {
-    id: 'summize',
-    title: `Summize`,
+    id: 'qr-code-generator',
+    title: `QR Code Generator`,
     description:
-      'Summize is an open-source AI article summarizer that leverages OpenAI GPT-4 and Natural Language Processing (NLP) to condense lengthy web articles into clear, digestible summaries. Simply input any article URL to extract core insights within seconds, bypass reading overload, and maintain a history of summarized content.',
-    deployedURL: 'https://ai-article-summarizer-c917a2.netlify.app/',
-    cover: summerizerCover,
-    stacks: ['React', 'Tailwind CSS', 'Redux Toolkit', 'RapidAPI', 'GPT-4'],
+      'Free, open-source QR code generator available as a web app and Chrome extension. Generate, download, and share QR codes instantly: no sign-up, no tracking.',
+    deployedURL: 'https://qr-code-generator-two-henna.vercel.app/',
+    cover: qrCodeGeneratorCover,
+    stacks: ['React', 'Tailwind CSS', 'Next.js'],
     isRepo: true,
-    repoUrl: 'https://github.com/yoseflakew25/AI-article-summarizer',
+    repoUrl: 'https://github.com/yoseflakew25/QR-Code-Generator/tree/master',
   },
 ] as const
 
