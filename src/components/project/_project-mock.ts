@@ -2,7 +2,7 @@
 import eskalateCover from '~/assets/images/cover/eskalate.png'
 import akilCover from '~/assets/images/cover/akil.png'
 import yubanowCover from '~/assets/images/cover/yubanow.png'
-import notionCover from '~/assets/images/cover/jotion.png'
+import ordoCover from '~/assets/images/cover/ordo.png'
 import summerizerCover from '~/assets/images/cover/summerizer.png'
 import dicdoCover from '~/assets/images/cover/dicdo.png'
 
@@ -52,22 +52,21 @@ export const projects = [
     repoUrl: '',
   },
   {
-    id: 'notion-clone',
-    title: `Jotion`,
+    id: 'ordo',
+    title: `Ordo`,
     description:
-      'Jotion is an all-in-one connected workspace designed to unify ideas, documents, and plans for faster, better work. Built as a fullstack productivity platform with Next.js and Convex, it features a real-time database, block-based Notion-style editor, infinite nested document trees, dynamic light and dark mode, Clerk authentication, trash archive & file recovery, and instant page publishing.',
-    deployedURL: 'https://notion-clone-yosef-coder.vercel.app/',
-    cover: notionCover,
+    'Ordo is an all-in-one personal productivity workspace designed to organize notes, tasks, habits, and structured databases in one unified place. Built as a fullstack platform with Next.js 13 and Convex, it features a BlockNote block-based editor, drag-and-drop Kanban task board, streak-tracking habit logs, customizable Notion-style tables, ⌘K command palette search, dynamic light and dark modes, custom session-based auth with OTP email verification, and instant public note publishing.',
+    deployedURL: 'https://ordo-one.vercel.app/',
+    cover: ordoCover,
     stacks: [
       'React',
       'Tailwind CSS',
       'TypeScript',
       'Next.js',
-      'Clerk',
       'Convex',
     ],
-    isRepo: true,
-    repoUrl: 'https://github.com/yoseflakew25/notion-clone',
+    isRepo: false,
+    repoUrl: 'https://github.com/yoseflakew25/ordo',
   },
   {
     id: 'summize',
