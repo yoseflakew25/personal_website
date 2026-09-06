@@ -4,4 +4,7 @@ import { build } from 'velite'
 
 const isDev = process.argv.includes('--dev')
 
-await build({ watch: isDev, clean: true })
+// Clean only on one-shot builds. In watch mode, cleaning wipes the output
+// directory mid-rebuild, so next dev can race the wipe and fail to resolve
+// .velite/posts.json ("Module not found") until velite finishes rewriting.
+await build({ watch: isDev, clean: !isDev })

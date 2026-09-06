@@ -1,0 +1,262 @@
+---
+title: 'Building AI Survey Copilot: From Survey Creation to Actionable Insights'
+description:
+  During my AI for Good Fellowship with Code for Africa, I have been building AI Survey Copilot —
+  an AI-powered platform that supports organizations throughout the survey lifecycle, from planning
+  and designing questionnaires to collecting responses, analyzing results, and generating reports.
+tags: ['ai', 'survey', 'product', 'engineering']
+date: 2026-09-06
+published: true
+---
+
+**Design smarter surveys. Generate better insights. Make better decisions.**
+
+During my AI for Good Fellowship with Code for Africa, I have been working on **AI Survey Copilot**, an AI-powered platform designed to help organizations throughout the survey lifecycle—from planning and designing questionnaires to collecting responses, analyzing results, and generating reports.
+
+The idea came from a simple observation: **collecting survey responses is only one part of research.** Organizations also need to decide what to ask, make sure their questions are well designed, understand the data they collect, and turn the findings into something people can actually use.
+
+AI Survey Copilot is being developed with **Dire Integrated Community Development Organization (DICDO)** as the pilot context, while keeping the product architecture general enough to support other organizations in the future.
+
+## What are we trying to achieve?
+
+The project has one main objective:
+
+> **Make the survey lifecycle faster, more reliable, and easier to manage without taking decision-making away from the people conducting the research.**
+
+The product is organized around a simple workflow:
+
+**Plan → Build → Review → Publish → Collect → Analyze → Report → Ask**
+
+The main objectives are to help users:
+
+**Plan better surveys.**  
+Users should be able to describe what they want to learn and receive a structured starting point with objectives, research questions, target respondents, and suggested survey sections.
+
+**Create surveys faster.**  
+The platform will support both AI-assisted survey generation and traditional manual editing, allowing researchers to use AI as a starting point without losing control of the questionnaire.
+
+**Improve survey quality.**  
+Before publication, AI will review questionnaires for common problems such as leading wording, double-barreled questions, ambiguity, and misalignment with the research objectives.
+
+**Collect structured data.**  
+Surveys will be published through a mobile-friendly web experience designed for respondents and field workers.
+
+**Analyze responses reliably.**  
+The platform will provide statistical analysis such as counts, percentages, distributions, and cross-tabulations.
+
+**Turn results into useful reports.**  
+AI will transform validated survey results into structured reports and allow users to ask questions about the generated report.
+
+---
+
+## One of our most important design decisions
+
+One of the biggest lessons from building the system so far is that **AI should not be used for everything**.
+
+For AI Survey Copilot, we deliberately separate AI tasks from statistical computation.
+
+AI is responsible for things that involve **language, judgment, synthesis, and drafting**, such as:
+
+- Creating survey plans
+- Generating question drafts
+- Reviewing questionnaire quality
+- Writing narrative reports
+- Answering questions about reports
+
+Traditional software is responsible for **numbers**, including:
+
+- Response counts
+- Percentages
+- Means and medians
+- Distributions
+- Cross-tabulations
+
+The LLM is never treated as the source of truth for survey statistics. Instead, the statistical engine calculates the metrics first, and AI receives those validated results as structured input.
+
+This architecture is important because a beautifully written report is not useful if its numbers are wrong.
+
+---
+
+## Key Project Milestones
+
+The project is being developed in stages rather than trying to build everything simultaneously.
+
+### Milestone 1 — Product and Technical Foundation
+
+The first stage focused on defining the product and translating the PRD into an implementable technical architecture.
+
+This included:
+
+- Defining the survey lifecycle
+- Designing the core data model
+- Defining API boundaries
+- Establishing the AI orchestration layer
+- Defining the analytics engine
+- Establishing security and data-handling principles
+
+The technical plan currently uses a **Next.js frontend, FastAPI backend, PostgreSQL database, and OpenAI for AI capabilities**, with additional infrastructure planned for background processing and exports.
+
+### Milestone 2 — Product Interface
+
+A substantial portion of the frontend has now been implemented.
+
+The current interface includes:
+
+- Dashboard
+- Survey management
+- Survey planning
+- Survey builder
+- Survey review
+- Collection flow
+- Analytics dashboard
+- Report workspace
+- Respondent management
+
+The frontend currently uses mock data while the backend is being connected. The survey hub, respondents experience, analytics interface, and report workspace have already been established as part of the product shell.
+
+### Milestone 3 — AI Survey Planning and Building
+
+The next major development stage is connecting the existing product interface to the real AI workflows.
+
+The planner will transform a research goal into a structured survey plan, while the builder will allow that plan to become an editable questionnaire.
+
+The important principle here is **human control**: AI-generated questions are suggestions, not locked outputs. Researchers remain responsible for approving and editing the final survey.
+
+### Milestone 4 — Survey Quality Review
+
+The AI reviewer will evaluate surveys before they are published.
+
+The goal is not to declare a survey "correct," but to highlight potential problems and provide useful suggestions.
+
+This distinction matters because an AI quality score should be treated as **advisory**, not as a replacement for research expertise.
+
+### Milestone 5 — Data Collection and Analytics
+
+Once surveys are published, responses will be stored against a specific survey version so that historical responses retain their original meaning.
+
+The analytics engine will then calculate reliable statistics independently of the AI layer. The current technical design explicitly separates missing responses from valid zero values and stores filters used for analysis so results can be reproduced.
+
+### Milestone 6 — AI Reporting
+
+The final major workflow is turning validated analytics into a usable report.
+
+The planned report workflow is:
+
+**Survey responses → statistical analysis → validated metrics → AI-generated narrative → editable report → PDF/DOCX export**
+
+Users will also be able to chat with the report rather than treating it as a static document.
+
+### Milestone 7 — Pilot and Evaluation
+
+The final stage will involve testing the product with DICDO using real or representative survey workflows, identifying usability and AI-quality issues, and refining the product before the fellowship concludes.
+
+---
+
+## What I am learning while building it
+
+### 1. Start with the workflow, not the AI model
+
+It is tempting to begin by asking:
+
+> "Which AI model should I use?"
+
+But the better question is:
+
+> **"What does the user need to accomplish?"**
+
+Once the workflow is clear, it becomes much easier to decide where AI actually adds value.
+
+---
+
+### 2. Don't let AI calculate what normal software can calculate
+
+One of the strongest architectural decisions in this project has been keeping the analytics engine separate from the LLM.
+
+A percentage doesn't need an LLM.
+
+A count doesn't need an LLM.
+
+A cross-tab doesn't need an LLM.
+
+Those should be deterministic, testable software functions. AI should focus on interpreting and communicating the results.
+
+---
+
+### 3. AI output needs guardrails, not just good prompts
+
+A prompt saying "don't hallucinate" is not enough.
+
+For report generation, AI receives a structured analytics snapshot, and the system validates numerical claims before they are shown to users. If a generated number cannot be traced back to a validated metric, the system is designed to reject or flag it rather than silently publishing it.
+
+This has been one of the most valuable engineering lessons from the project:
+
+> **Responsible AI needs to be enforced by system design, not only by instructions to the model.**
+
+---
+
+### 4. Keep the human in the loop
+
+The goal of AI Survey Copilot is not to replace researchers.
+
+A researcher should be able to:
+
+- Edit AI-generated questions
+- Reject AI suggestions
+- Approve recommendations
+- Edit generated reports
+- Decide what findings matter
+
+The AI should reduce repetitive work while keeping important decisions with the human.
+
+---
+
+### 5. Build with the real user, not just for the real user
+
+DICDO is currently the pilot context for the project, but the product is being designed so that what we learn from the pilot can inform a broader solution.
+
+That means validating assumptions instead of blindly building features.
+
+The current discovery questions include how surveys are conducted, what types of surveys are most common, what reports are required, what languages are needed, and what data should or should not be sent to third-party AI providers.
+
+---
+
+## Where the project stands today
+
+The frontend has progressed significantly, with the main product workflows represented in the interface.
+
+At the moment, however, **the backend and AI integrations are still being connected**. The frontend currently relies on mock services, while the planned next steps include implementing the FastAPI backend, PostgreSQL data layer, real authentication, OpenAI integration, deterministic analytics, report generation, and AI evaluation.
+
+That distinction is important: the product is not being presented as finished. The current phase is about moving from a well-defined product and working interface toward a fully integrated MVP.
+
+---
+
+## What comes next?
+
+The immediate focus is to move from interface scaffolding to a functioning end-to-end system:
+
+**Real backend → real survey data → real AI workflows → deterministic analytics → grounded reports → pilot testing.**
+
+The goal is not simply to demonstrate that AI can generate survey questions or write reports.
+
+The goal is to build a product that can reliably support the **complete survey workflow** and demonstrate measurable value to an organization using it.
+
+---
+
+## Final Thoughts
+
+Building AI Survey Copilot has reinforced a simple principle for me:
+
+> **Good AI products are not about adding AI to everything. They are about identifying where intelligence can genuinely improve a workflow and designing the surrounding system so that the AI can be trusted.**
+
+For survey-based research, that means combining the strengths of both worlds:
+
+**Reliable software for data and statistics.**
+
+**AI for language, judgment, synthesis, and assistance.**
+
+**Humans for final decisions.**
+
+That combination is the foundation I'm using as AI Survey Copilot moves from concept to working product.
+
+**AI Survey Copilot**  
+*Design smarter surveys. Generate better insights. Make better decisions.*
