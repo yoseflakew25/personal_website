@@ -81,11 +81,11 @@ const DesignCard = ({ project, priority = false }: DesignCardProps) => {
 
       {/* Card body */}
       <div className="flex flex-col flex-1 p-4">
-        <h3 className="font-mono text-xs uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 line-clamp-2 leading-snug">
+        <h3 className="font-mono text-sm uppercase tracking-wider text-foreground group-hover:text-[hsl(var(--blueprint-line))] transition-colors duration-200 line-clamp-2 leading-snug">
           {project.title}
         </h3>
 
-        <p className="font-mono text-[10px] text-muted-foreground/75 leading-relaxed line-clamp-3 mt-2 flex-1">
+        <p className="font-mono text-xs text-muted-foreground/75 leading-relaxed line-clamp-3 mt-2 flex-1">
           {project.des}
         </p>
 

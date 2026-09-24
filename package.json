@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:next": "next dev",
-    "dev:velite": "node scripts/run-velite.mjs --dev",
-    "build:velite": "node scripts/run-velite.mjs",
-    "build:next": "next build",
-    "dev": "npm-run-all --parallel dev:*",
-    "build": "npm-run-all build:velite build:next",
-    "start": "next start",
+    "dev:next": "node init && next dev",
+    "dev:velite": "node init && node scripts/run-velite.mjs --dev",
+    "build:velite": "node init && node scripts/run-velite.mjs",
+    "build:next": "node init && next build",
+    "dev": "node init && npm-run-all --parallel dev:*",
+    "build": "node init && npm-run-all build:velite build:next",
+    "start": "node init && next start",
     "upgrade:latest": "yarn upgrade-interactive --latest"
   },
   "dependencies": {

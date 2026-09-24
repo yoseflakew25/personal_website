@@ -20,14 +20,6 @@ export const designProjects: DesignProject[] = [
   },
   {
     id: 2,
-    title: 'Investify Landing Page',
-    des: "Created a product landing page for the Investify mobile app, featuring a clean and visually appealing design that aligns seamlessly with the platform's brand identity.",
-    img: '/designs/investify.png',
-    tags: ['Figma', 'Web'],
-    link: 'https://www.figma.com/design/vQw5M5ELCnLEYB7rQEGkmD/investify-landing-page?node-id=127-950&t=9uVIEc9ob5s9W3Dp-1',
-  },
-  {
-    id: 3,
     title: 'Begena: All-in-One Mobile Learning Platform',
     des: 'Designed an interactive mobile application dedicated to preserving and teaching the traditional Ethiopian Begena. The app features gamified lessons, audio ear-training modules, and interactive quizzes covering historical tuning structures (Kignit) to offer a modern, accessible learning experience for cultural music heritage.',
     img: '/designs/begena.png',
@@ -35,7 +27,23 @@ export const designProjects: DesignProject[] = [
     link: 'https://www.figma.com/design/7lm38mvIdXM5sdj48KpzqB/Begena-All-in-One-App?node-id=2034-511&t=xRzWFUpq8dtwQO3R-1',
   },
   {
+    id: 3,
+    title: 'Shofer: Urban Vehicle Management Ecosystem',
+    des: 'Shofer is a comprehensive, multi-platform ecosystem designed to streamline urban vehicle management, parking automation, and on-demand automotive services. By bridging the gap between drivers, service providers, and administrators, Shofer simplifies everyday vehicle ownership tasks—ranging from instant parking spot requests and QR-code scans to car washes and roadside mechanic assistance.',
+    img: '/designs/shofer.png',
+    tags: ['Figma', 'Web', 'Mobile'],
+    link: 'https://www.figma.com/design/mlWW2i88FEEYFKFve5nOIk/Shofer?node-id=4003-14468&t=DeMG5GFmcKRakPoX-1',
+  },
+  {
     id: 4,
+    title: 'Investify Landing Page',
+    des: "Created a product landing page for the Investify mobile app, featuring a clean and visually appealing design that aligns seamlessly with the platform's brand identity.",
+    img: '/designs/investify.png',
+    tags: ['Figma', 'Web'],
+    link: 'https://www.figma.com/design/vQw5M5ELCnLEYB7rQEGkmD/investify-landing-page?node-id=127-950&t=9uVIEc9ob5s9W3Dp-1',
+  },
+  {
+    id: 5,
     title: 'CRM Platform',
     des: 'Designed a CRM platform aimed at improving customer relationship management. The goal was to simplify user navigation and streamline tasks for business users.',
     img: '/designs/crm.png',
@@ -43,7 +51,7 @@ export const designProjects: DesignProject[] = [
     link: 'https://www.figma.com/design/pfeOEdqjWsPEeDtAHb8ATD/CRM?node-id=14609-3&t=WhldXLa7ksOKyMTZ-1',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Brana : A Bookstore App',
     des: 'Designed a mobile app for a bookstore, with features like book browsing, personalized recommendations, and a seamless checkout process.',
     img: '/designs/brana.png',
@@ -51,20 +59,12 @@ export const designProjects: DesignProject[] = [
     link: 'https://www.figma.com/design/DgRNtq3OzP4pwxamFYl5yw/Brana---Books-Mobile-App?node-id=3861-5106&t=3itYVA7joq2i86J2-1',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Job Finding Portal Website Design',
     des: 'Designed a job portal aimed at improving the recruitment experience for job seekers and employers.',
     img: '/designs/job.png',
     tags: ['Figma', 'Web'],
     link: 'https://www.figma.com/design/PRGsKA4KITU5IacE59klky/JobPort%3A-A-solution-for-connecting-talent-with-business?node-id=501-49194&t=Q4JF9qzYWYRiJyjU-1',
-  },
-  {
-    id: 7,
-    title: 'Landing Page for A2SV Eskalate',
-    des: 'Designed a landing page for A2SV Eskalate, focusing on driving engagement and sign-ups.',
-    img: '/designs/a2sv.png',
-    tags: ['Figma', 'Web'],
-    link: 'https://www.figma.com/design/5bQ0qNXLfP5538NdO8kSah/Eskalate?node-id=3-1040&t=Q1v1xpuNL8Ya2WoG-1',
   },
   {
     id: 8,
@@ -73,5 +73,13 @@ export const designProjects: DesignProject[] = [
     img: '/designs/fetan pay.png',
     tags: ['Figma', 'Web', 'Mobile'],
     link: 'https://www.figma.com/design/8oLGXdXPnQUcCu8WvUNiAV/Fetanpay?node-id=3704-567&t=wg20ISVtNLkUT8Aa-1',
+  },
+  {
+    id: 9,
+    title: 'Landing Page for A2SV Eskalate',
+    des: 'Designed a landing page for A2SV Eskalate, focusing on driving engagement and sign-ups.',
+    img: '/designs/a2sv.png',
+    tags: ['Figma', 'Web'],
+    link: 'https://www.figma.com/design/5bQ0qNXLfP5538NdO8kSah/Eskalate?node-id=3-1040&t=Q1v1xpuNL8Ya2WoG-1',
   },
 ]
